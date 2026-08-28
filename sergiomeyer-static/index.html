@@ -1,0 +1,663 @@
+```html
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sérgio Meyer | Data Analyst & Insights Strategist</title>
+
+  <meta
+    name="description"
+    content="Portfólio de Sérgio Meyer — Data Analyst & Insights Strategist. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav class="container">
+
+      <a class="logo" href="#home">
+        <span class="logo-mark">SM</span>
+        <span>SERGIOMEYER.DEV</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="actions">
+
+        <div class="lang">
+          <button class="active" data-lang="br">BR</button>
+          <button data-lang="en">EN</button>
+        </div>
+
+        <a
+          class="btn btn-ghost"
+          href="assets/curriculo-sergio-meyer.pdf"
+          download
+        >
+          CV
+        </a>
+
+      </div>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        type="button"
+        aria-label="Abrir menu"
+      >
+        ☰
+      </button>
+
+    </nav>
+  </header>
+
+
+  <!-- Menu mobile -->
+
+  <div class="mobile glass" id="mobileMenu">
+
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+
+    <div class="lang mobile-lang">
+      <button class="active" data-lang="br">BR</button>
+      <button data-lang="en">EN</button>
+    </div>
+
+  </div>
+
+
+  <main id="home">
+
+    <!-- Hero -->
+
+    <section class="hero container">
+
+      <div class="hero-grid">
+
+        <div class="hero-content">
+
+          <div class="available">
+            <span class="dot"></span>
+
+            <span data-i18n="available">
+              #OPENTOWORK • Remoto ou Cascavel/PR
+            </span>
+          </div>
+
+          <h1>
+            <span data-i18n="heroGreeting">
+              OLÁ, EU SOU SERGIO MEYER.
+            </span>
+
+            <span
+              class="gradient"
+              data-i18n="heroTitle"
+            >
+              DATA ANALYST & INSIGHTS STRATEGIST.
+            </span>
+          </h1>
+
+          <p class="tagline">
+            “<span data-i18n="tagline">
+              Transformando dados em decisões estratégicas e insights acionáveis.
+            </span>”
+          </p>
+
+          <p
+            class="desc"
+            data-i18n="heroDescription"
+          >
+            Converto dados brutos em narrativas de negócio, dashboards
+            executivos e análises que ajudam equipes comerciais a priorizar
+            oportunidades, reduzir gargalos e vender melhor.
+          </p>
+
+
+          <div class="cta-row">
+
+            <a
+              class="btn btn-primary"
+              href="#portfolio"
+              data-i18n="ctaProjects"
+            >
+              VEJA MEUS PROJETOS
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="#contact"
+              data-i18n="ctaContact"
+            >
+              Fale comigo
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="assets/curriculo-sergio-meyer.pdf"
+              download
+              data-i18n="downloadCv"
+            >
+              Baixar currículo
+            </a>
+
+          </div>
+
+
+          <div class="stats">
+
+            <div class="stat glass">
+              <b>4K+</b>
+              <span data-i18n="heroStatLabel1">
+                clientes analisados
+              </span>
+            </div>
+
+            <div class="stat glass">
+              <b>50+</b>
+              <span data-i18n="heroStatLabel2">
+                vendedores suportados
+              </span>
+            </div>
+
+            <div class="stat glass">
+              <b>3</b>
+              <span data-i18n="heroStatLabel3">
+                anos em inteligência comercial
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Foto principal -->
+
+        <div class="photo-wrap">
+
+          <div class="photo-card glass">
+
+            <div class="photo-inner">
+
+              <img
+                src="assets/sergio-open-to-work.jpg"
+                alt="Sérgio Meyer"
+              >
+
+              <div class="photo-label">
+
+                <div>
+                  <b>Sérgio Meyer</b>
+                  <span>Python • SQL • Power BI • ETL</span>
+                </div>
+
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3v18h18"></path>
+                  <path d="m19 9-5 5-4-4-3 3"></path>
+                </svg>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="bubble glass">
+
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M3 17l6-6 4 4 8-8"></path>
+              <path d="M14 7h7v7"></path>
+            </svg>
+
+            <div>
+              <strong>+80%</strong>
+              <small>Pareto insights</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Sobre -->
+
+    <section class="section" id="about">
+
+      <div class="container about-grid">
+
+        <div class="portrait">
+
+          <div class="portrait-card glass">
+
+            <img
+              src="assets/sergio-open-to-work.jpg"
+              alt="Foto de Sérgio Meyer com badge #OPENTOWORK"
+            >
+
+            <div class="badge">
+              #OPENTOWORK
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+          <span
+            class="eyebrow"
+            data-i18n="aboutEyebrow"
+          >
+            Sobre mim
+          </span>
+
+          <h2 data-i18n="aboutTitle">
+            Análise técnica com visão comercial de campo.
+          </h2>
+
+
+          <div class="text-block">
+
+            <p data-i18n="aboutText1">
+              Sou Sérgio Meyer, profissional de análise comercial e
+              inteligência de vendas com experiência em FMCG, distribuição
+              e varejo. Atuei com gestão analítica de uma carteira de
+              4.000 clientes ativos e suporte estratégico para uma equipe
+              de 50 vendedores.
+            </p>
+
+            <p data-i18n="aboutText2">
+              Hoje aprofundo minha atuação em análise de dados, ETL,
+              Python, SQL, Pandas, PostgreSQL, Power BI, Plotly e Streamlit
+              para transformar dados operacionais em decisões claras,
+              priorizadas e mensuráveis.
+            </p>
+
+            <p data-i18n="aboutText3">
+              Minha diferença está em conectar execução de loja,
+              comportamento do shopper e métricas comerciais com soluções
+              de BI que fazem sentido para quem toma decisão.
+            </p>
+
+          </div>
+
+
+          <div class="mini-grid">
+
+            <div class="mini glass">
+              <b>SAP + Excel</b>
+              <span data-i18n="mini1">
+                rotina analítica
+              </span>
+            </div>
+
+            <div class="mini glass">
+              <b>SQL + Python</b>
+              <span data-i18n="mini2">
+                extração e análise
+              </span>
+            </div>
+
+            <div class="mini glass">
+              <b>BI + Storytelling</b>
+              <span data-i18n="mini3">
+                decisão acionável
+              </span>
+            </div>
+
+          </div>
+
+
+          <h3 data-i18n="skillsTitle">
+            Skills & Ferramentas
+          </h3>
+
+          <div
+            class="skills"
+            id="skills"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Portfolio -->
+
+    <section
+      class="section"
+      id="portfolio"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <span
+            class="eyebrow"
+            data-i18n="projectsEyebrow"
+          >
+            Portfolio
+          </span>
+
+          <h2 data-i18n="projectsTitle">
+            Projetos de dados com foco em decisão.
+          </h2>
+
+          <p data-i18n="projectsDescription">
+            Seleção de análises, dashboards e laboratórios publicados no
+            GitHub — com foco em performance, visualização, automação e
+            leitura de negócio.
+          </p>
+
+        </div>
+
+
+        <div
+          class="projects"
+          id="projects"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Serviços -->
+
+    <section
+      class="section"
+      id="services"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <span
+            class="eyebrow"
+            data-i18n="servicesEyebrow"
+          >
+            Serviços
+          </span>
+
+          <h2 data-i18n="servicesTitle">
+            Como posso gerar valor para o seu negócio.
+          </h2>
+
+          <p data-i18n="servicesDescription">
+            Da extração ao insight: desenho pipelines, organizo indicadores
+            e entrego visualizações acionáveis para líderes comerciais,
+            operações e produto.
+          </p>
+
+        </div>
+
+
+        <div
+          class="services"
+          id="servicesGrid"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Contato -->
+
+    <section
+      class="section"
+      id="contact"
+    >
+
+      <div class="container contact-grid">
+
+        <div class="contact-content">
+
+          <span
+            class="eyebrow"
+            data-i18n="contactEyebrow"
+          >
+            Contato
+          </span>
+
+          <h2 data-i18n="contactTitle">
+            Vamos transformar seus dados em próximos passos?
+          </h2>
+
+          <p
+            class="text-block"
+            data-i18n="contactDescription"
+          >
+            Envie uma mensagem sobre seu desafio de dados, dashboard ou
+            automação. O formulário abre seu e-mail com a mensagem pronta
+            para envio.
+          </p>
+
+
+          <div class="contact-cards">
+
+            <div class="contact-card glass">
+              <span aria-hidden="true">📍</span>
+              <span data-i18n="contact1">
+                Cascavel, Paraná, Brasil
+              </span>
+            </div>
+
+            <div class="contact-card glass">
+              <span aria-hidden="true">💻</span>
+              <span data-i18n="contact2">
+                Português nativo • Inglês B1
+              </span>
+            </div>
+
+            <div class="contact-card glass">
+              <span aria-hidden="true">✨</span>
+              <span data-i18n="contact3">
+                Aberto a oportunidades remotas
+              </span>
+            </div>
+
+          </div>
+
+
+          <div class="social">
+
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/sergiomeyer23"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://www.linkedin.com/in/s%C3%A9rgio-meyer-7aaa45407/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="mailto:sergio.gabriel.meyer10@gmail.com"
+            >
+              E-mail
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <form
+          class="glass"
+          id="contactForm"
+        >
+
+          <div class="form-grid">
+
+            <label>
+              <span data-i18n="name">
+                Nome
+              </span>
+
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Seu nome"
+              >
+            </label>
+
+
+            <label>
+              <span data-i18n="email">
+                E-mail
+              </span>
+
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="seuemail@empresa.com"
+              >
+            </label>
+
+          </div>
+
+
+          <label class="full">
+
+            <span data-i18n="message">
+              Mensagem
+            </span>
+
+            <textarea
+              name="message"
+              rows="6"
+              required
+            >Olá Sérgio! Gostaria de conversar sobre um projeto de dados, BI ou automação comercial.</textarea>
+
+          </label>
+
+
+          <button
+            class="btn btn-primary form-submit"
+            type="submit"
+            data-i18n="send"
+          >
+            Enviar mensagem
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Rodapé -->
+
+  <footer>
+
+    <div class="container foot">
+
+      <div>
+
+        <b>SERGIOMEYER.DEV</b>
+
+        <p>
+          © 2026 Sérgio Meyer.
+          <span data-i18n="footer">
+            Todos os direitos reservados.
+          </span>
+        </p>
+
+      </div>
+
+
+      <div class="social">
+
+        <a
+          class="social-icon"
+          href="https://github.com/sergiomeyer23"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
+          GH
+        </a>
+
+        <a
+          class="social-icon"
+          href="https://www.linkedin.com/in/s%C3%A9rgio-meyer-7aaa45407/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          in
+        </a>
+
+        <a
+          class="social-icon"
+          href="mailto:sergio.gabriel.meyer10@gmail.com"
+          aria-label="E-mail"
+        >
+          @
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>
+```
