@@ -66,6 +66,10 @@ const copy = {
     servicesTitle: "Como posso gerar valor para o seu negócio.",
     servicesDescription:
       "Da extração ao insight: desenho pipelines, organizo indicadores e entrego visualizações acionáveis para líderes comerciais, operações e produto.",
+    casesEyebrow: "Estudos de caso",
+    casesTitle: "De problema a decisão.",
+    casesDescription:
+      "Alguns exemplos de como transformei dados operacionais em ações concretas para times comerciais.",
 
     contactEyebrow: "Contato",
     contactTitle: "Vamos transformar seus dados em próximos passos?",
@@ -134,6 +138,10 @@ const copy = {
     servicesTitle: "How I can create value for your business.",
     servicesDescription:
       "From extraction to insight: I design pipelines, organize KPIs, and deliver actionable visualizations for sales, operations, and product leaders.",
+    casesEyebrow: "Case studies",
+    casesTitle: "From problem to decision.",
+    casesDescription:
+      "A few examples of turning operational data into concrete actions for sales teams.",
 
     contactEyebrow: "Contact",
     contactTitle: "Ready to turn data into next steps?",
@@ -332,6 +340,55 @@ const services = [
   }
 ];
 
+const caseStudies = [
+  {
+    title: "Olist Sales Performance Analysis",
+    titleEn: "Olist Sales Performance Analysis",
+    challenge:
+      "Entender onde estavam concentrados os R$ 13,2M de faturamento e por que alguns vendedores entregavam pior do que outros — sem criar relatório manual todo mês.",
+    challengeEn:
+      "Understand where the BRL 13.2M in revenue was concentrated and why some sellers underperformed others — without rebuilding a manual report every month.",
+    approach:
+      "Pipeline de 9 CSVs com cache em Parquet, 20 funções de análise e dashboard Streamlit com 6 abas (sazonalidade, Pareto, frete, atraso, satisfação).",
+    approachEn:
+      "Pipeline over 9 CSVs with Parquet cache, 20 analysis functions and a 6-tab Streamlit dashboard (seasonality, Pareto, freight, delays, satisfaction).",
+    result: "Base analítica reutilizável + Pareto visual por vendedor e categoria.",
+    resultEn: "Reusable analytics base + visual Pareto by seller and category.",
+    technologies: ["Python", "Pandas", "Plotly", "Streamlit"]
+  },
+  {
+    title: "Mercavel — Comparador de Preços",
+    titleEn: "Mercavel — Price Comparison",
+    challenge:
+      "Consumidor de Cascavel não tinha visibilidade clara de qual mercado era mais barato na semana; comparação manual era inviável.",
+    challengeEn:
+      "Shoppers in Cascavel had no clear view of which supermarket was cheaper this week; manual comparison was infeasible.",
+    approach:
+      "Web scraping automático nos sites dos mercados, armazenando data da coleta e link da oferta; dashboard com tabela por mercado, média por categoria e cesta comparada.",
+    approachEn:
+      "Automated web scraping of market websites storing collection date and offer link; dashboard with per-market table, category averages and compared basket.",
+    result: "Comparação real e auditável entre múltiplos mercados.",
+    resultEn: "Real, auditable comparison across multiple markets.",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind", "Web Scraping"]
+  },
+  {
+    title: "Mangos — Gestão de Caixa com IA",
+    titleEn: "Mangos — Cash Management with AI",
+    challenge:
+      "Microempreendedores jovens perdiam receita por não controlar caixa nem precificar corretamente; digitar formulários não funcionava.",
+    challengeEn:
+      "Young micro-entrepreneurs lost money by not tracking cash or pricing correctly; form-based entry did not work.",
+    approach:
+      "Entrada em linguagem natural convertida em lançamentos estruturados; cálculos determinísticos testados (28 autotestes) com LLM restrito à extração/redação.",
+    approachEn:
+      "Natural-language input turned into structured entries; deterministic, tested calculations (28 self-tests) with the LLM limited to extraction/wording.",
+    result: "Funciona offline mesmo sem IA e sugere preço por produto.",
+    resultEn: "Works offline without AI and suggests a price per product.",
+    technologies: ["JavaScript", "Google Gemini", "Chart.js", "localStorage"]
+  }
+];
+
+
 let currentLanguage = localStorage.getItem("portfolio-lang") || "br";
 if (!copy[currentLanguage]) currentLanguage = "br";
 
@@ -473,10 +530,53 @@ function renderServices() {
     .join("");
 }
 
+function renderCases() {
+  const container = document.getElementById("casesGrid");
+  if (!container) return;
+
+  container.innerHTML = caseStudies
+    .map(item => {
+      const title = escapeHtml(localized(item, "title"));
+      const challenge = escapeHtml(localized(item, "challenge"));
+      const approach = escapeHtml(localized(item, "approach"));
+      const result = escapeHtml(localized(item, "result"));
+      const tech = item.technologies
+        .map(t => `<span>${escapeHtml(t)}</span>`)
+        .join("");
+
+      return `
+        <article class="case glass">
+          <h3>${title}</h3>
+
+          <div class="case-block">
+            <span class="case-label">Problema</span>
+            <p>${challenge}</p>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">Abordagem</span>
+            <p>${approach}</p>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">Resultado</span>
+            <p>${result}</p>
+          </div>
+
+          <div class="tags">${tech}</div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+
 function renderPage() {
   renderSkills();
   renderProjects();
   renderServices();
+  renderCases();
+  renderCases();
 }
 
 function setLanguage(language) {
@@ -511,6 +611,7 @@ function setLanguage(language) {
 
   renderProjects();
   renderServices();
+  renderCases();
 
   document.querySelectorAll("[data-btnrepo]").forEach(element => {
     element.textContent = selectedCopy.viewRepo;
