@@ -568,10 +568,33 @@
         </div>
 
 
+        <!--
+          FormSubmit: as mensagens caem direto no e-mail, sem backend.
+          A primeira submissao envia um link de confirmacao para o e-mail
+          abaixo; sem esse clique nada e entregue. Depois de confirmar, o
+          FormSubmit devolve uma string aleatoria que pode substituir o
+          e-mail no action (impede que robos leiam o endereco).
+        -->
         <form
           class="glass"
           id="contactForm"
+          action="https://formsubmit.co/sergio.gabriel.meyer10@gmail.com"
+          method="POST"
         >
+
+          <input type="hidden" name="_subject" value="Contato pelo portfólio — Sérgio Meyer">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://sergiomeyer23.github.io/portfolio/?enviado=1#contact">
+
+          <!-- Armadilha anti-spam: invisivel para humanos, preenchida por robos -->
+          <input
+            type="text"
+            name="_honey"
+            class="honey"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          >
 
           <div class="form-grid">
 

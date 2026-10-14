@@ -70,7 +70,7 @@ br: {
     contactEyebrow: "Contato",
     contactTitle: "Vamos transformar seus dados em próximos passos?",
     contactDescription:
-    "Envie uma mensagem sobre seu desafio de dados, dashboard ou automação. O formulário abre seu e-mail com a mensagem pronta para envio.",
+    "Envie uma mensagem sobre seu desafio de dados, dashboard ou automação. A mensagem cai direto no meu e-mail e eu respondo em breve.",
 
     contact1: "Cascavel, Paraná, Brasil",
     contact2: "Português nativo • Inglês B1",
@@ -88,6 +88,7 @@ br: {
     emailBtn: "Enviar e-mail",
     formSuccess:
     "Mensagem enviada! Obrigado pelo contato — respondo em breve.",
+    formSending: "Enviando...",
     formFallback:
     "Seu navegador abriu seu programa de e-mail com a mensagem pronta. Se nada aconteceu, escreva direto para sergio.gabriel.meyer10@gmail.com"
 },
@@ -154,6 +155,7 @@ en: {
     emailBtn: "Send email",
     formSuccess:
     "Message sent! Thanks for reaching out — I will reply shortly.",
+    formSending: "Sending...",
     formFallback:
     "Your browser opened your email app with the message ready to send. If nothing happened, write directly to sergio.gabriel.meyer10@gmail.com"
 }
@@ -553,49 +555,74 @@ mobileMenu
 }
 
 
-/* Para receber as mensagens no seu e-mail sem abrir o programa de
-   e-mail do visitante, crie um formulario gratis em https://formspree.io
-   e cole a URL abaixo. Enquanto estiver vazia, o site usa o mailto:. */
-
-const FORM_ENDPOINT = "";
-
+/* O envio e feito pelo proprio formulario: o action aponta para o
+   FormSubmit, que encaminha a mensagem por e-mail. Assim o contato
+   funciona mesmo com JavaScript desativado. O JS aqui serve apenas para
+   mostrar as mensagens de status e, se o action estiver vazio, cair no
+   mailto como alternativa. */
 
 function setupContactForm() {
 const form = document.getElementById("contactForm");
 const status = document.getElementById("formStatus");
 
+if (!form) {
+    return;
+}
+
+const selectedCopy =
+    copy[document.documentElement.lang === "en" ? "en" : "br"];
+
+/* Voltando do FormSubmit com ?enviado=1 */
+
+if (/[?&]enviado=1/.test(window.location.search)) {
+    if (status) {
+        status.textContent = selectedCopy.formSuccess;
+    }
+
+    if (window.history && window.history.replaceState) {
+        window.history.replaceState(
+            null,
+            "",
+            window.location.pathname + "#contact"
+        );
+    }
+}
+
 form.addEventListener("submit", event => {
-    event.preventDefault();
+    const action = form.getAttribute("action") || "";
 
-    const formData = new FormData(form);
+    /* Sem action configurado: monta o e-mail e abre o cliente do visitante */
 
-    const name = formData.get("name") || "Novo lead";
-    const email = formData.get("email") || "";
-    const message = formData.get("message") || "";
+    if (!action.trim()) {
+        event.preventDefault();
 
-    const subject =
-    "Contato pelo portfólio — " + name;
+        const formData = new FormData(form);
 
-    const body =
-    message +
-    "\n\nNome: " + name +
-    "\nE-mail: " + email;
+        const name = formData.get("name") || "Novo lead";
+        const email = formData.get("email") || "";
+        const message = formData.get("message") || "";
 
-    const mailto =
-    "mailto:" + copy.br.mailtoLink +
-    "?subject=" + encodeURIComponent(subject) +
-    "&body=" + encodeURIComponent(body);
+        const subject =
+            "Contato pelo portfólio — " + name;
 
-    if (!FORM_ENDPOINT) {
-        window.location.href = mailto;
+        const body =
+            message +
+            "\n\nNome: " + name +
+            "\nE-mail: " + email;
+
+        window.location.href =
+            "mailto:" + copy.br.mailtoLink +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
 
         if (status) {
-            status.textContent =
-                copy[document.documentElement.lang === "en" ? "en" : "br"].formFallback;
+            status.textContent = selectedCopy.formFallback;
         }
 
         return;
     }
+
+    /* Com action configurado, deixa o navegador enviar (POST nativo) */
 
     const button = form.querySelector("button[type='submit']");
 
@@ -604,39 +631,8 @@ form.addEventListener("submit", event => {
     }
 
     if (status) {
-        status.textContent = "Enviando...";
+        status.textContent = selectedCopy.formSending;
     }
-
-    fetch(FORM_ENDPOINT, {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" }
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Falha no envio");
-            }
-
-            form.reset();
-
-            if (status) {
-                status.textContent =
-                    copy[document.documentElement.lang === "en" ? "en" : "br"].formSuccess;
-            }
-        })
-        .catch(() => {
-            window.location.href = mailto;
-
-            if (status) {
-                status.textContent =
-                    copy[document.documentElement.lang === "en" ? "en" : "br"].formFallback;
-            }
-        })
-        .finally(() => {
-            if (button) {
-                button.disabled = false;
-            }
-        });
 });
 }
 

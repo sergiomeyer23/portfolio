@@ -868,6 +868,17 @@ textarea {
   display: none;
 }
 
+/* Campo armadilha do FormSubmit: nunca deve aparecer para humanos */
+
+.honey {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Colunas de conteudo dos grids (reforco de largura minima) */
 
 .hero-content,

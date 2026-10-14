@@ -240,18 +240,20 @@ Bilingual strings live in the `copy` object under the `br` and `en` keys. Both m
 
 ### Contact form
 
-The form has two modes, controlled by `FORM_ENDPOINT` at the bottom of `script.js`:
+The form posts directly to [FormSubmit](https://formsubmit.co), which forwards each submission by email. There is no backend and no account: the destination address is the one in the `action` attribute of `#contactForm`.
 
-- **Empty (default):** the form opens the visitor's email app with the message ready to send (`mailto:`).
-- **Configured:** the form posts to that endpoint in the background and shows a status message.
+**One-time activation:** the first submission triggers a confirmation email to that address. Nothing is delivered until the link in it is clicked. Once confirmed, FormSubmit returns a random string that can replace the plain address in the `action`, keeping it hidden from spam bots.
 
-To receive messages without relying on the visitor's email app, create a free form at [formspree.io](https://formspree.io) and paste its URL:
+Fields used:
 
-```js
-const FORM_ENDPOINT = "https://formspree.io/f/SEU_ID";
-```
+| Field | Purpose |
+|---|---|
+| `_subject` | Email subject line |
+| `_template` | `table` renders the submission as a table |
+| `_next` | Returns the visitor to `?enviado=1#contact` after sending |
+| `_honey` | Honeypot; hidden by `.honey` in the CSS. If filled, the submission is silently dropped |
 
-If the request fails, the form automatically falls back to `mailto:`.
+`script.js` reads the `action` attribute: if it is filled, the browser performs a native POST (works even with JavaScript disabled); if it is empty, the form falls back to opening the visitor's email app via `mailto:`.
 
 ### Link preview
 
