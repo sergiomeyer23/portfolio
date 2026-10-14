@@ -238,6 +238,25 @@ Projects, skills and services are defined as plain JavaScript arrays at the top 
 
 Bilingual strings live in the `copy` object under the `br` and `en` keys. Both must keep the same set of keys.
 
+### Contact form
+
+The form has two modes, controlled by `FORM_ENDPOINT` at the bottom of `script.js`:
+
+- **Empty (default):** the form opens the visitor's email app with the message ready to send (`mailto:`).
+- **Configured:** the form posts to that endpoint in the background and shows a status message.
+
+To receive messages without relying on the visitor's email app, create a free form at [formspree.io](https://formspree.io) and paste its URL:
+
+```js
+const FORM_ENDPOINT = "https://formspree.io/f/SEU_ID";
+```
+
+If the request fails, the form automatically falls back to `mailto:`.
+
+### Link preview
+
+The `<head>` of `index.html` carries Open Graph and Twitter Card tags so the portfolio renders a proper preview card when shared on LinkedIn, WhatsApp or X. The `og:url`, `og:image` and `canonical` values assume the site is served at `https://sergiomeyer23.github.io/portfolio/`. If you move it to a custom domain, update those three URLs.
+
 ## Structure
 
 ```text

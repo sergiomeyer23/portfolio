@@ -83,7 +83,13 @@ br: {
 
     footer: "Todos os direitos reservados.",
     viewRepo: "Ver repositório",
-    viewDemo: "Ver demo"
+    viewDemo: "Ver demo",
+    mailtoLink: "sergio.gabriel.meyer10@gmail.com",
+    emailBtn: "Enviar e-mail",
+    formSuccess:
+    "Mensagem enviada! Obrigado pelo contato — respondo em breve.",
+    formFallback:
+    "Seu navegador abriu seu programa de e-mail com a mensagem pronta. Se nada aconteceu, escreva direto para sergio.gabriel.meyer10@gmail.com"
 },
 
 en: {
@@ -143,7 +149,13 @@ en: {
 
     footer: "All rights reserved.",
     viewRepo: "View repository",
-    viewDemo: "View demo"
+    viewDemo: "View demo",
+    mailtoLink: "sergio.gabriel.meyer10@gmail.com",
+    emailBtn: "Send email",
+    formSuccess:
+    "Message sent! Thanks for reaching out — I will reply shortly.",
+    formFallback:
+    "Your browser opened your email app with the message ready to send. If nothing happened, write directly to sergio.gabriel.meyer10@gmail.com"
 }
 };
 
@@ -475,6 +487,28 @@ document
     element.textContent = selectedCopy.viewDemo;
     });
 
+document
+    .querySelectorAll("[data-i18n-href]")
+    .forEach(element => {
+    const key = element.dataset.i18nHref;
+
+    if (selectedCopy[key]) {
+        element.setAttribute(
+            "href",
+            "mailto:" + selectedCopy[key]
+        );
+    }
+    });
+
+document
+    .querySelectorAll("[data-lang]")
+    .forEach(button => {
+    button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.lang === language)
+    );
+    });
+
 document.documentElement.lang =
     language === "br" ? "pt-BR" : "en";
 }
@@ -496,7 +530,12 @@ const menuButton = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
 menuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("open");
+    const isOpen = mobileMenu.classList.toggle("open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
 });
 
 mobileMenu
@@ -504,13 +543,26 @@ mobileMenu
     .forEach(link => {
     link.addEventListener("click", () => {
         mobileMenu.classList.remove("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
     });
     });
 }
 
 
+/* Para receber as mensagens no seu e-mail sem abrir o programa de
+   e-mail do visitante, crie um formulario gratis em https://formspree.io
+   e cole a URL abaixo. Enquanto estiver vazia, o site usa o mailto:. */
+
+const FORM_ENDPOINT = "";
+
+
 function setupContactForm() {
 const form = document.getElementById("contactForm");
+const status = document.getElementById("formStatus");
 
 form.addEventListener("submit", event => {
     event.preventDefault();
@@ -530,11 +582,61 @@ form.addEventListener("submit", event => {
     "\nE-mail: " + email;
 
     const mailto =
-    "mailto:sergio.gabriel.meyer10@gmail.com" +
+    "mailto:" + copy.br.mailtoLink +
     "?subject=" + encodeURIComponent(subject) +
     "&body=" + encodeURIComponent(body);
 
-    window.location.href = mailto;
+    if (!FORM_ENDPOINT) {
+        window.location.href = mailto;
+
+        if (status) {
+            status.textContent =
+                copy[document.documentElement.lang === "en" ? "en" : "br"].formFallback;
+        }
+
+        return;
+    }
+
+    const button = form.querySelector("button[type='submit']");
+
+    if (button) {
+        button.disabled = true;
+    }
+
+    if (status) {
+        status.textContent = "Enviando...";
+    }
+
+    fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Falha no envio");
+            }
+
+            form.reset();
+
+            if (status) {
+                status.textContent =
+                    copy[document.documentElement.lang === "en" ? "en" : "br"].formSuccess;
+            }
+        })
+        .catch(() => {
+            window.location.href = mailto;
+
+            if (status) {
+                status.textContent =
+                    copy[document.documentElement.lang === "en" ? "en" : "br"].formFallback;
+            }
+        })
+        .finally(() => {
+            if (button) {
+                button.disabled = false;
+            }
+        });
 });
 }
 
