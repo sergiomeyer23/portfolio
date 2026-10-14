@@ -1,0 +1,19 @@
+# Changelog
+
+## v0.3 (2026-10-14)
+- Formulário de contato via FormSubmit com fallback para mailto
+- Projetos e serviços agora traduzidos em inglês
+- Persistência do idioma selecionado
+- Melhorias de acessibilidade (skip link, foco visível, menu mobile)
+- SEO (Open Graph, Twitter Card, favicon, sitemap, robots)
+- Escape de HTML nas renderizações dinâmicas
+- Botão voltar ao topo
+
+## v0.2
+- Migração para renderização dinâmica via `script.js`
+- Versão bilíngue BR/EN dos textos principais
+- Menu mobile
+
+## v0.1
+- Portfólio inicial com HTML/CSS/JS vanilla
+- Projetos, habilidades e serviços estáticos

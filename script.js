@@ -335,6 +335,8 @@ const services = [
 let currentLanguage = localStorage.getItem("portfolio-lang") || "br";
 if (!copy[currentLanguage]) currentLanguage = "br";
 
+// Tudo que vem de dados (projetos, skills, etc.) entra no DOM via template string,
+// então escape para não quebrar markup nem permitir XSS.
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
