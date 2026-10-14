@@ -16,7 +16,13 @@ const skills = [
 "Streamlit",
 "Git & GitHub",
 "SAP",
-"Trade Marketing"
+"Trade Marketing",
+"TypeScript",
+"React",
+"Node.js",
+"Java",
+"Spring Boot",
+"APIs REST"
 ];
 
 const copy = {
@@ -76,7 +82,8 @@ br: {
     send: "Enviar mensagem",
 
     footer: "Todos os direitos reservados.",
-    viewRepo: "Ver repositório"
+    viewRepo: "Ver repositório",
+    viewDemo: "Ver demo"
 },
 
 en: {
@@ -135,7 +142,8 @@ en: {
     send: "Send message",
 
     footer: "All rights reserved.",
-    viewRepo: "View repository"
+    viewRepo: "View repository",
+    viewDemo: "View demo"
 }
 };
 
@@ -207,6 +215,78 @@ const projects = [
     repository:
     "https://github.com/sergiomeyer23/pandas-fundamentos",
     bars: [67, 44, 75, 88, 52, 81, 69]
+},
+
+{
+    title: "Mercavel — Comparador de Preços",
+    category: "Web Scraping & Retail Price Intelligence",
+    description:
+    "Plataforma web que compara preços de supermercados de Cascavel/PR a partir de dados coletados automaticamente nos sites dos mercados. Traz tabela de preços por mercado, média por categoria, cesta de compras comparada e dashboard geral — cada preço guarda a data da coleta e o link da oferta.",
+    result: "Preços reais • Múltiplos mercados • Cesta comparada",
+    technologies: [
+    "React",
+    "TypeScript",
+    "Vite",
+    "Tailwind",
+    "Web Scraping"
+    ],
+    repository:
+    "https://github.com/sergiomeyer23/Mercavel",
+    bars: [81, 56, 93, 64, 72, 88, 60]
+},
+
+{
+    title: "Mangos — Gestão de Caixa com IA",
+    category: "AI for Impact • Natural Language to Structured Data",
+    description:
+    "Aplicação web de gestão de caixa para jovens microempreendedores: aceita frases como “vendi 6 bolos a 12 e gastei 40 de ingrediente” e converte em lançamentos estruturados, com resultado por produto, sugestão de preço e diagnóstico em linguagem simples. Todo cálculo roda em funções determinísticas testadas (28 autotestes), com o LLM restrito à extração e à redação. Projeto do NAUFest Challenge 2026 (#AIForImpact).",
+    result: "28 autotestes • Funciona offline sem IA",
+    technologies: [
+    "JavaScript",
+    "Google Gemini",
+    "Chart.js",
+    "localStorage",
+    "SheetJS"
+    ],
+    repository:
+    "https://github.com/sergiomeyer23/Mangos",
+    live:
+    "https://sergiomeyer23.github.io/Mangos/",
+    bars: [76, 91, 58, 83, 69, 95, 54]
+},
+
+{
+    title: "Pipoca — Bot de WhatsApp com LLM",
+    category: "Conversational AI & Automation",
+    description:
+    "Bot de WhatsApp com personalidade própria, construído sobre whatsapp-web.js e API compatível com OpenAI. Sessão persistida por QR Code, fallback automático de modelo, persona separada da lógica em arquivo de dados e suíte de testes de pipeline e roteamento.",
+    result: "v0.2 • Fallback de modelo • Testes automatizados",
+    technologies: [
+    "Node.js",
+    "whatsapp-web.js",
+    "LLM APIs",
+    "Docker"
+    ],
+    repository:
+    "https://github.com/sergiomeyer23/pipoca",
+    bars: [63, 85, 71, 49, 90, 66, 79]
+},
+
+{
+    title: "Personal Finance API",
+    category: "Backend Engineering & REST API Design",
+    description:
+    "API REST em Java e Spring Boot para gestão de finanças pessoais, com camadas de entidade, repositório e controller, Maven Wrapper para build reprodutível e testes automatizados — a base de backend por trás de soluções de dados que precisam de fonte própria e confiável.",
+    result: "Java 17 • Spring Boot • Maven",
+    technologies: [
+    "Java",
+    "Spring Boot",
+    "REST API",
+    "Maven"
+    ],
+    repository:
+    "https://github.com/sergiomeyer23/personal-finance-api",
+    bars: [58, 74, 87, 61, 79, 55, 84]
 }
 ];
 
@@ -271,6 +351,19 @@ container.innerHTML = projects
         .map(technology => `<span>${technology}</span>`)
         .join("");
 
+    const liveButton = project.live
+        ? `
+            <a
+            class="btn btn-ghost"
+            href="${project.live}"
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+            <span data-btnlive></span> ↗
+            </a>
+            `
+        : "";
+
     return `
         <article class="project glass">
         <div class="dash">
@@ -293,6 +386,7 @@ container.innerHTML = projects
             ${tags}
             </div>
 
+            <div class="project-actions">
             <a
             class="btn btn-primary"
             href="${project.repository}"
@@ -301,6 +395,8 @@ container.innerHTML = projects
             >
             <span data-btnrepo></span> ↗
             </a>
+            ${liveButton}
+        </div>
         </div>
         </article>
     `;
@@ -371,6 +467,12 @@ document
     .querySelectorAll("[data-btnrepo]")
     .forEach(element => {
     element.textContent = selectedCopy.viewRepo;
+    });
+
+document
+    .querySelectorAll("[data-btnlive]")
+    .forEach(element => {
+    element.textContent = selectedCopy.viewDemo;
     });
 
 document.documentElement.lang =

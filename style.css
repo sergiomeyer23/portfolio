@@ -697,6 +697,12 @@ h2 {
   font-weight: 700;
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 /* Services */
 
 .services {

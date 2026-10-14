@@ -28,6 +28,10 @@ Currently, I am developing my skills in:
 - Data Visualization
 - Statistical Analysis
 - Data Storytelling
+- TypeScript
+- React
+- Node.js
+- Java / Spring Boot
 
 ## Featured Projects
 
@@ -97,6 +101,65 @@ Topics include:
 
 [View repository](https://github.com/sergiomeyer23/pandas-fundamentos)
 
+---
+
+### Mercavel — Supermarket Price Comparison
+
+Web platform that compares supermarket prices in Cascavel/PR using data collected automatically from the retailers' own websites.
+
+Each price keeps the collection date and the offer link, and the site shows a price table per market, an average per category, a shopping basket compared across markets and an overview dashboard.
+
+Main features:
+
+- Price table per market (price, type, source, collection date and difference)
+- Average price per category
+- Comparison of a full shopping basket per market (R$ and % difference)
+- Separation between online and in-store prices
+
+**Technologies:** React, TypeScript, Vite, Tailwind, Web Scraping
+
+[View repository](https://github.com/sergiomeyer23/Mercavel)
+
+---
+
+### Mangos — Cash Management with AI
+
+Web application that helps young micro-entrepreneurs manage their cash flow using natural language input.
+
+It accepts sentences such as `vendi 6 bolos a 12 e gastei 40 de ingrediente` and converts them into structured entries, consolidating revenue, expenses, result per product and a suggested selling price.
+
+Architectural highlight: the language model is used only to extract structured data and to write explanations, while every numeric calculation runs in deterministic, tested JavaScript functions (28 self-tests). Without an API key, a rules-based extractor keeps the application fully functional offline.
+
+Developed for the NAUFest Challenge 2026 (#AIForImpact, Junior Achievement Americas and HP).
+
+**Technologies:** JavaScript, Google Gemini, Chart.js, SheetJS, localStorage
+
+[Live demo](https://sergiomeyer23.github.io/Mangos/) · [View repository](https://github.com/sergiomeyer23/Mangos)
+
+---
+
+### Pipoca — WhatsApp Bot with LLM
+
+WhatsApp bot with its own personality, built on `whatsapp-web.js` and an OpenAI-compatible LLM API.
+
+Features include persisted sessions (no repeated QR scan), automatic model fallback when the primary one fails, the persona kept in a data file separately from the logic, and a test suite covering the pipeline and the router.
+
+**Technologies:** Node.js, whatsapp-web.js, LLM APIs, Docker
+
+[View repository](https://github.com/sergiomeyer23/pipoca)
+
+---
+
+### Personal Finance API
+
+REST API for personal finance management, built with Java and Spring Boot.
+
+Organised in entity, repository and controller layers, with a Maven Wrapper for reproducible builds and automated tests — the backend foundation behind data solutions that need their own reliable source.
+
+**Technologies:** Java, Spring Boot, REST API, Maven
+
+[View repository](https://github.com/sergiomeyer23/personal-finance-api)
+
 ## Technologies
 
 ### Data Analysis
@@ -123,8 +186,15 @@ Streamlit
 ETL  
 Data Quality  
 
-### Development
+### Data Products & Engineering
 
+React  
+TypeScript  
+Node.js  
+Java  
+Spring Boot  
+REST APIs  
+Web Scraping  
 Git  
 GitHub  
 
@@ -149,6 +219,25 @@ The site includes:
 - CV download
 - Mobile navigation
 
+### Project data
+
+Projects, skills and services are defined as plain JavaScript arrays at the top of `script.js`. Adding a project means appending one object:
+
+```js
+{
+  title: "Project name",
+  category: "Short category line",
+  description: "What the project does and why it matters.",
+  result: "Key result or highlight",
+  technologies: ["Python", "SQL"],
+  repository: "https://github.com/sergiomeyer23/repo",
+  live: "https://example.com",   // optional: renders a "View demo" button
+  bars: [72, 48, 86, 62, 95, 53, 78]  // decorative bar chart heights
+}
+```
+
+Bilingual strings live in the `copy` object under the `br` and `en` keys. Both must keep the same set of keys.
+
 ## Structure
 
 ```text
@@ -162,3 +251,4 @@ portfolio/
 ├── style.css
 ├── script.js
 └── README.md
+```
