@@ -86,7 +86,12 @@ const copy = {
     viewDemo: "Ver demo",
 
     backToTop: "Voltar ao topo",
-    menuClose: "Fechar menu"
+    menuClose: "Fechar menu",
+    mailtoLink: "sergio.gabriel.meyer10@gmail.com",
+    emailBtn: "Enviar e-mail",
+    formSuccess: "Mensagem enviada! Obrigado pelo contato — respondo em breve.",
+    formSending: "Enviando...",
+    formFallback: "Seu navegador abriu seu programa de e-mail com a mensagem pronta. Se nada aconteceu, escreva direto para sergio.gabriel.meyer10@gmail.com"
   },
 
   en: {
@@ -149,7 +154,12 @@ const copy = {
     viewDemo: "View demo",
 
     backToTop: "Back to top",
-    menuClose: "Close menu"
+    menuClose: "Close menu",
+    mailtoLink: "sergio.gabriel.meyer10@gmail.com",
+    emailBtn: "Send email",
+    formSuccess: "Message sent! Thanks for reaching out — I will reply shortly.",
+    formSending: "Sending...",
+    formFallback: "Your browser opened your email app with the message ready to send. If nothing happened, write directly to sergio.gabriel.meyer10@gmail.com"
   }
 };
 
@@ -576,32 +586,68 @@ function setupMobileMenu() {
 
 function setupContactForm() {
   const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+
   if (!form) return;
 
+  const selectedCopy = copy[currentLanguage];
+
+  if (/[?&]enviado=1/.test(window.location.search)) {
+    if (status) {
+      status.textContent = selectedCopy.formSuccess;
+    }
+
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname + "#contact"
+      );
+    }
+  }
+
   form.addEventListener("submit", event => {
-    event.preventDefault();
+    const liveCopy = copy[currentLanguage];
+    const action = form.getAttribute("action") || "";
 
-    const formData = new FormData(form);
+    if (!action.trim()) {
+      event.preventDefault();
 
-    const name = formData.get("name") || "Novo lead";
-    const email = formData.get("email") || "";
-    const message = formData.get("message") || "";
+      const formData = new FormData(form);
 
-    const subject =
-      "Contato pelo portfólio — " + name;
+      const name = formData.get("name") || "Novo lead";
+      const email = formData.get("email") || "";
+      const message = formData.get("message") || "";
 
-    const body =
-      message +
-      "\n\nNome: " + name +
-      "\nE-mail: " + email;
+      const subject =
+        "Contato pelo portfólio — " + name;
 
-    const mailto =
-      "mailto:sergio.gabriel.meyer10@gmail.com" +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
+      const body =
+        message +
+        "\n\nNome: " + name +
+        "\nE-mail: " + email;
 
-    window.location.href = mailto;
-    form.reset();
+      window.location.href =
+        "mailto:" + copy.br.mailtoLink +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+      if (status) {
+        status.textContent = liveCopy.formFallback;
+      }
+
+      return;
+    }
+
+    const button = form.querySelector("button[type='submit']");
+
+    if (button) {
+      button.disabled = true;
+    }
+
+    if (status) {
+      status.textContent = liveCopy.formSending;
+    }
   });
 }
 

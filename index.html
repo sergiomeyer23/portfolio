@@ -587,7 +587,22 @@
         <form
           class="glass"
           id="contactForm"
+          action="https://formsubmit.co/sergio.gabriel.meyer10@gmail.com"
+          method="POST"
         >
+
+          <input type="hidden" name="_subject" value="Contato pelo portfólio — Sérgio Meyer">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://sergiomeyer23.github.io/portfolio/?enviado=1#contact">
+
+          <input
+            type="text"
+            name="_honey"
+            class="honey"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          >
 
           <div class="form-grid">
 
@@ -643,6 +658,13 @@
           >
             Enviar mensagem
           </button>
+
+          <p
+            class="form-status"
+            id="formStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
 
         </form>
 

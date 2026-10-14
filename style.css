@@ -1031,3 +1031,27 @@ footer {
 .nav-links a.active {
   color: var(--green);
 }
+
+.form-submit {
+  margin-top: 17px;
+}
+
+.form-status {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.honey {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
