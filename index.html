@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sérgio Meyer | Data Analyst & Insights Strategist</title>
+  <title>Sérgio Meyer | Analista de Dados — Python · SQL · Power BI</title>
 
   <meta
     name="description"
-    content="Portfólio de Sérgio Meyer — Data Analyst & Insights Strategist. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
+    content="Portfólio de Sérgio Meyer — Analista de Dados. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
   >
 
   <meta name="theme-color" content="#0d1117">
@@ -21,10 +21,10 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sérgio Meyer | Data Analyst & Insights Strategist">
+  <meta property="og:title" content="Sérgio Meyer | Analista de Dados — Python · SQL · Power BI">
   <meta
     property="og:description"
-    content="Portfólio de Sérgio Meyer — Data Analyst & Insights Strategist. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
+    content="Portfólio de Sérgio Meyer — Analista de Dados. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
   >
   <meta property="og:url" content="https://sergiomeyer23.github.io/portfolio/">
   <meta property="og:image" content="https://sergiomeyer23.github.io/portfolio/assets/sergio-open-to-work.jpg">
@@ -33,10 +33,10 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sérgio Meyer | Data Analyst & Insights Strategist">
+  <meta name="twitter:title" content="Sérgio Meyer | Analista de Dados — Python · SQL · Power BI">
   <meta
     name="twitter:description"
-    content="Portfólio de Sérgio Meyer — Data Analyst & Insights Strategist."
+    content="Portfólio de Sérgio Meyer — Analista de Dados."
   >
   <meta name="twitter:image" content="https://sergiomeyer23.github.io/portfolio/assets/sergio-open-to-work.jpg">
 
@@ -46,7 +46,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Sérgio Meyer",
-    "jobTitle": "Data Analyst & Insights Strategist",
+    "jobTitle": "Data Analyst",
     "url": "https://sergiomeyer23.github.io/portfolio/",
     "sameAs": [
       "https://github.com/sergiomeyer23",
@@ -58,13 +58,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <a href="#home" class="skip-link">Pular para o conteúdo</a>
+  <a href="#home" class="skip-link" data-i18n="skipLink">Pular para o conteúdo</a>
 
   <header>
     <nav class="container">
@@ -75,11 +79,12 @@
       </a>
 
       <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <a href="#home" data-i18n="navHome">Início</a>
+        <a href="#about" data-i18n="navAbout">Sobre</a>
+        <a href="#portfolio" data-i18n="navPortfolio">Projetos</a>
+        <a href="#cases" data-i18n="navCases">Estudos de caso</a>
+        <a href="#services" data-i18n="navServices">Serviços</a>
+        <a href="#contact" data-i18n="navContact">Contato</a>
       </div>
 
       <div class="actions">
@@ -118,11 +123,12 @@
 
   <div class="mobile glass" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
 
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+    <a href="#home" data-i18n="navHome">Início</a>
+    <a href="#about" data-i18n="navAbout">Sobre</a>
+    <a href="#portfolio" data-i18n="navPortfolio">Projetos</a>
+    <a href="#cases" data-i18n="navCases">Estudos de caso</a>
+    <a href="#services" data-i18n="navServices">Serviços</a>
+    <a href="#contact" data-i18n="navContact">Contato</a>
 
     <div class="lang mobile-lang">
       <button class="active" data-lang="br">BR</button>
@@ -159,7 +165,7 @@
               class="gradient"
               data-i18n="heroTitle"
             >
-              DATA ANALYST & INSIGHTS STRATEGIST.
+              ANALISTA DE DADOS.
             </span>
           </h1>
 
@@ -247,9 +253,11 @@
 
               <img
                 src="assets/sergio-open-to-work.jpg"
-                alt="Sérgio Meyer"
-              loading="lazy"
-              decoding="async"
+                alt="Sérgio Meyer, analista de dados"
+                width="1024"
+                height="1003"
+                fetchpriority="high"
+                decoding="async"
               >
 
               <div class="photo-label">
@@ -291,8 +299,8 @@
             </svg>
 
             <div>
-              <strong>+80%</strong>
-              <small>Pareto insights</small>
+              <strong data-i18n="bubbleValue">80/20</strong>
+              <small data-i18n="bubbleLabel">Pareto de vendas</small>
             </div>
 
           </div>
@@ -317,8 +325,10 @@
             <img
               src="assets/sergio-open-to-work.jpg"
               alt="Foto de Sérgio Meyer com badge #OPENTOWORK"
-            loading="lazy"
-            decoding="async"
+              width="1024"
+              height="1003"
+              loading="lazy"
+              decoding="async"
             >
 
             <div class="badge">
@@ -589,6 +599,7 @@
             <a
               class="btn btn-ghost"
               href="mailto:sergio.gabriel.meyer10@gmail.com"
+              data-i18n="email"
             >
               E-mail
             </a>
@@ -630,6 +641,7 @@
                 name="name"
                 required
                 placeholder="Seu nome"
+                data-i18n-placeholder="namePlaceholder"
               >
             </label>
 
@@ -644,6 +656,7 @@
                 name="email"
                 required
                 placeholder="seuemail@empresa.com"
+                data-i18n-placeholder="emailPlaceholder"
               >
             </label>
 
@@ -660,7 +673,9 @@
               name="message"
               rows="6"
               required
-            >Olá Sérgio! Gostaria de conversar sobre um projeto de dados, BI ou automação comercial.</textarea>
+              placeholder="Conte um pouco sobre seu desafio de dados, dashboard ou automação."
+              data-i18n-placeholder="messagePlaceholder"
+            ></textarea>
 
           </label>
 

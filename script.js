@@ -27,9 +27,18 @@ const skills = [
 
 const copy = {
   br: {
+    skipLink: "Pular para o conteúdo",
     available: "#OPENTOWORK • Remoto ou Cascavel/PR",
+    navHome: "Início",
+    navAbout: "Sobre",
+    navPortfolio: "Projetos",
+    navCases: "Estudos de caso",
+    navServices: "Serviços",
+    navContact: "Contato",
+    menuOpen: "Abrir menu",
+    menuLabel: "Menu de navegação",
     heroGreeting: "OLÁ, EU SOU SERGIO MEYER.",
-    heroTitle: "DATA ANALYST & INSIGHTS STRATEGIST.",
+    heroTitle: "ANALISTA DE DADOS.",
     tagline: "Transformando dados em decisões estratégicas e insights acionáveis.",
     heroDescription:
       "Converto dados brutos em narrativas de negócio, dashboards executivos e análises que ajudam equipes comerciais a priorizar oportunidades, reduzir gargalos e vender melhor.",
@@ -41,6 +50,8 @@ const copy = {
     heroStatLabel1: "clientes analisados",
     heroStatLabel2: "vendedores suportados",
     heroStatLabel3: "anos em inteligência comercial",
+    bubbleValue: "80/20",
+    bubbleLabel: "Pareto de vendas",
 
     aboutEyebrow: "Sobre mim",
     aboutTitle: "Análise técnica com visão comercial de campo.",
@@ -70,6 +81,9 @@ const copy = {
     casesTitle: "De problema a decisão.",
     casesDescription:
       "Alguns exemplos de como transformei dados operacionais em ações concretas para times comerciais.",
+    caseProblem: "Problema",
+    caseApproach: "Abordagem",
+    caseResult: "Resultado",
 
     contactEyebrow: "Contato",
     contactTitle: "Vamos transformar seus dados em próximos passos?",
@@ -83,6 +97,9 @@ const copy = {
     name: "Nome",
     email: "E-mail",
     message: "Mensagem",
+    namePlaceholder: "Seu nome",
+    emailPlaceholder: "seuemail@empresa.com",
+    messagePlaceholder: "Conte um pouco sobre seu desafio de dados, dashboard ou automação.",
     send: "Enviar mensagem",
 
     footer: "Todos os direitos reservados.",
@@ -99,9 +116,18 @@ const copy = {
   },
 
   en: {
+    skipLink: "Skip to content",
     available: "#OPENTOWORK • Remote or Cascavel/PR",
+    navHome: "Home",
+    navAbout: "About",
+    navPortfolio: "Portfolio",
+    navCases: "Case studies",
+    navServices: "Services",
+    navContact: "Contact",
+    menuOpen: "Open menu",
+    menuLabel: "Navigation menu",
     heroGreeting: "HI, I AM SERGIO MEYER.",
-    heroTitle: "DATA ANALYST & INSIGHTS STRATEGIST.",
+    heroTitle: "DATA ANALYST.",
     tagline: "Turning data into strategic decisions and actionable insights.",
     heroDescription:
       "I convert raw data into business narratives, executive dashboards, and analyses that help sales teams prioritize opportunities, remove bottlenecks, and sell smarter.",
@@ -113,6 +139,8 @@ const copy = {
     heroStatLabel1: "customers analyzed",
     heroStatLabel2: "sales reps supported",
     heroStatLabel3: "years in sales intelligence",
+    bubbleValue: "80/20",
+    bubbleLabel: "Sales Pareto",
 
     aboutEyebrow: "About me",
     aboutTitle: "Technical analysis with field-driven commercial vision.",
@@ -142,6 +170,9 @@ const copy = {
     casesTitle: "From problem to decision.",
     casesDescription:
       "A few examples of turning operational data into concrete actions for sales teams.",
+    caseProblem: "Problem",
+    caseApproach: "Approach",
+    caseResult: "Result",
 
     contactEyebrow: "Contact",
     contactTitle: "Ready to turn data into next steps?",
@@ -155,6 +186,9 @@ const copy = {
     name: "Name",
     email: "Email",
     message: "Message",
+    namePlaceholder: "Your name",
+    emailPlaceholder: "you@company.com",
+    messagePlaceholder: "Tell me a bit about your data, dashboard, or automation challenge.",
     send: "Send message",
 
     footer: "All rights reserved.",
@@ -175,65 +209,33 @@ const projects = [
   {
     title: "Olist Sales Performance Analysis",
     titleEn: "Olist Sales Performance Analysis",
-    category: "Customer & Seller Segmentation Model",
-    categoryEn: "Customer & Seller Segmentation Model",
+    category: "E-commerce Analytics & Customer/Seller Insights",
+    categoryEn: "E-commerce Analytics & Customer/Seller Insights",
     description:
       "Pipeline analítico com limpeza de 9 CSVs, cache em Parquet, 20 funções de análise e dashboard Streamlit com 6 abas para investigar sazonalidade, Pareto, frete, atraso e satisfação.",
     descriptionEn:
       "Analytical pipeline covering 9 CSVs, Parquet cache, 20 analysis functions and a 6-tab Streamlit dashboard to explore seasonality, Pareto, freight, delays and satisfaction.",
-    result: "R$ 13,2M analisados • 96k pedidos",
-    resultEn: "R$ 13.2M analyzed • 96k orders",
-    technologies: ["Python", "Pandas", "Plotly", "Streamlit", "PostgreSQL"],
+    result: "R$ 13,2M analisados • 96 mil pedidos",
+    resultEn: "BRL 13.2M analyzed • 96k orders",
+    technologies: ["Python", "Pandas", "Plotly", "Streamlit", "Pytest"],
     repository: "https://github.com/sergiomeyer23/olist-sales-performance-analysis",
     bars: [72, 48, 86, 62, 95, 53, 78]
   },
 
   {
-    title: "Retail Sales Analyzer",
-    titleEn: "Retail Sales Analyzer",
-    category: "Predictive Sales Analysis Foundation",
-    categoryEn: "Predictive Sales Analysis Foundation",
+    title: "Automação de Relatório de Vendas",
+    titleEn: "Sales Report Automation",
+    category: "Excel Automation & Data Quality",
+    categoryEn: "Excel Automation & Data Quality",
     description:
-      "Script Python para leitura de vendas em CSV, estatísticas gerais, ranking de produtos, filtros por valor e tratamento robusto de erros — base para automações e modelos de previsão.",
+      "Aplicação Java que lê planilhas de vendas, valida datas, quantidades e preços, filtra o mês de referência e gera um relatório Excel com resumo, vendas por produto e top 5. Linhas inválidas são reportadas em vez de contaminar os totais.",
     descriptionEn:
-      "Python script reading sales from CSV, general stats, product ranking, value filters and robust error handling — base for automations and forecasting models.",
-    result: "Relatórios automatizados em CSV",
-    resultEn: "Automated CSV reports",
-    technologies: ["Python", "CSV", "Data Quality", "Automation"],
-    repository: "https://github.com/sergiomeyer23/retail-sales-analyzer",
-    bars: [42, 68, 51, 84, 58, 73, 66]
-  },
-
-  {
-    title: "Excel Dashboard Vendas & Estoque",
-    titleEn: "Excel Sales & Inventory Dashboard",
-    category: "Financial Dashboard & Operational KPIs",
-    categoryEn: "Financial Dashboard & Operational KPIs",
-    description:
-      "Dashboard para identificar produtos sem estoque, lojas abaixo da meta e categorias mais rentáveis, conectando análise financeira, estoque e desempenho comercial.",
-    descriptionEn:
-      "Dashboard identifying out-of-stock products, stores below target and most profitable categories, connecting financial analysis, inventory and sales performance.",
-    result: "Metas • Estoque • Rentabilidade",
-    resultEn: "Targets • Inventory • Profitability",
-    technologies: ["Excel", "Power Query", "Dashboard", "KPIs"],
-    repository: "https://github.com/sergiomeyer23/excel-dashboard-vendas-estoque-",
-    bars: [55, 77, 45, 89, 70, 64, 92]
-  },
-
-  {
-    title: "Pandas Fundamentos — Lab 12/12",
-    titleEn: "Pandas Fundamentals — Lab 12/12",
-    category: "Healthcare Data Insights Ready Stack",
-    categoryEn: "Healthcare Data Insights Ready Stack",
-    description:
-      "Laboratório prático cobrindo ciclo integral de dados: leitura, limpeza, filtros, groupby, merge, datas e exportação. Base técnica para análises setoriais, incluindo saúde, varejo e finanças.",
-    descriptionEn:
-      "Practical lab covering the full data cycle: reading, cleaning, filtering, groupby, merge, dates and export. Technical foundation for sector analyses including healthcare, retail and finance.",
-    result: "12/12 exercícios concluídos",
-    resultEn: "12/12 exercises completed",
-    technologies: ["Python", "Pandas", "Data Cleaning", "EDA"],
-    repository: "https://github.com/sergiomeyer23/pandas-fundamentos",
-    bars: [67, 44, 75, 88, 52, 81, 69]
+      "Java application that reads sales spreadsheets, validates dates, quantities and prices, filters the reference month and generates an Excel report with summary, sales by product and top 5. Invalid rows are reported instead of contaminating totals.",
+    result: "3 abas • 13 testes • CI",
+    resultEn: "3 tabs • 13 tests • CI",
+    technologies: ["Java", "Apache POI", "Maven", "JUnit 5"],
+    repository: "https://github.com/sergiomeyer23/automacao-planilha",
+    bars: [64, 82, 57, 91, 73, 68, 87]
   },
 
   {
@@ -270,35 +272,35 @@ const projects = [
   },
 
   {
-    title: "Pipoca — Bot de WhatsApp com LLM",
-    titleEn: "Pipoca — WhatsApp Bot with LLM",
-    category: "Conversational AI & Automation",
-    categoryEn: "Conversational AI & Automation",
+    title: "Pandas Fundamentos — Lab 12/12",
+    titleEn: "Pandas Fundamentals — Lab 12/12",
+    category: "Data Cleaning & Pandas Fundamentals",
+    categoryEn: "Data Cleaning & Pandas Fundamentals",
     description:
-      "Bot de WhatsApp com personalidade própria, construído sobre whatsapp-web.js e API compatível com OpenAI. Sessão persistida por QR Code, fallback automático de modelo, persona separada da lógica em arquivo de dados e suíte de testes de pipeline e roteamento.",
+      "Laboratório prático cobrindo o ciclo integral de dados: leitura, limpeza, filtros, groupby, merge, datas e exportação. Base técnica para análises de varejo, finanças e operações.",
     descriptionEn:
-      "WhatsApp bot with its own personality, built on whatsapp-web.js and an OpenAI-compatible API. Persisted QR session, automatic model fallback, persona separated from logic in a data file, and pipeline and routing test suite.",
-    result: "v0.2 • Fallback de modelo • Testes automatizados",
-    resultEn: "v0.2 • Model fallback • Automated tests",
-    technologies: ["Node.js", "whatsapp-web.js", "LLM APIs", "Docker"],
-    repository: "https://github.com/sergiomeyer23/pipoca",
-    bars: [63, 85, 71, 49, 90, 66, 79]
+      "Practical lab covering the full data cycle: reading, cleaning, filtering, groupby, merge, dates and export. Technical foundation for retail, finance and operations analyses.",
+    result: "12/12 exercícios concluídos",
+    resultEn: "12/12 exercises completed",
+    technologies: ["Python", "Pandas", "Data Cleaning", "EDA"],
+    repository: "https://github.com/sergiomeyer23/pandas-fundamentos",
+    bars: [67, 44, 75, 88, 52, 81, 69]
   },
 
   {
-    title: "Personal Finance API",
-    titleEn: "Personal Finance API",
-    category: "Backend Engineering & REST API Design",
-    categoryEn: "Backend Engineering & REST API Design",
+    title: "Retail Sales Analyzer",
+    titleEn: "Retail Sales Analyzer",
+    category: "Sales Analysis & Data Quality",
+    categoryEn: "Sales Analysis & Data Quality",
     description:
-      "API REST em Java e Spring Boot para gestão de finanças pessoais, com camadas de entidade, repositório e controller, Maven Wrapper para build reprodutível e testes automatizados — a base de backend por trás de soluções de dados que precisam de fonte própria e confiável.",
+      "Script Python para leitura de vendas em CSV, estatísticas gerais, ranking de produtos, filtros por valor e tratamento robusto de erros — base para automações e análises recorrentes.",
     descriptionEn:
-      "REST API in Java and Spring Boot for personal finance management, with entity, repository and controller layers, Maven Wrapper for reproducible builds and automated tests — the backend foundation behind data solutions needing their own reliable source.",
-    result: "Java 17 • Spring Boot • Maven",
-    resultEn: "Java 17 • Spring Boot • Maven",
-    technologies: ["Java", "Spring Boot", "REST API", "Maven"],
-    repository: "https://github.com/sergiomeyer23/personal-finance-api",
-    bars: [58, 74, 87, 61, 79, 55, 84]
+      "Python script reading sales from CSV, general stats, product ranking, value filters and robust error handling — a foundation for automations and recurring analyses.",
+    result: "Relatórios automatizados em CSV",
+    resultEn: "Automated CSV reports",
+    technologies: ["Python", "CSV", "Data Quality", "Automation"],
+    repository: "https://github.com/sergiomeyer23/retail-sales-analyzer",
+    bars: [42, 68, 51, 84, 58, 73, 66]
   }
 ];
 
@@ -389,7 +391,32 @@ const caseStudies = [
 ];
 
 
-let currentLanguage = localStorage.getItem("portfolio-lang") || "br";
+function readStoredLanguage() {
+  try {
+    return window.localStorage.getItem("portfolio-lang");
+  } catch (error) {
+    return null;
+  }
+}
+
+function storeLanguage(language) {
+  try {
+    window.localStorage.setItem("portfolio-lang", language);
+  } catch (error) {
+    // localStorage pode estar bloqueado (modo privado ou política do navegador).
+  }
+}
+
+function updateMenuButtonLabel() {
+  const menuButton = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (!menuButton || !mobileMenu) return;
+
+  const key = mobileMenu.classList.contains("open") ? "menuClose" : "menuOpen";
+  menuButton.setAttribute("aria-label", copy[currentLanguage][key]);
+}
+
+let currentLanguage = readStoredLanguage() || "br";
 if (!copy[currentLanguage]) currentLanguage = "br";
 
 // Tudo que vem de dados (projetos, skills, etc.) entra no DOM via template string,
@@ -534,6 +561,8 @@ function renderCases() {
   const container = document.getElementById("casesGrid");
   if (!container) return;
 
+  const selectedCopy = copy[currentLanguage];
+
   container.innerHTML = caseStudies
     .map(item => {
       const title = escapeHtml(localized(item, "title"));
@@ -549,17 +578,17 @@ function renderCases() {
           <h3>${title}</h3>
 
           <div class="case-block">
-            <span class="case-label">Problema</span>
+            <span class="case-label">${escapeHtml(selectedCopy.caseProblem)}</span>
             <p>${challenge}</p>
           </div>
 
           <div class="case-block">
-            <span class="case-label">Abordagem</span>
+            <span class="case-label">${escapeHtml(selectedCopy.caseApproach)}</span>
             <p>${approach}</p>
           </div>
 
           <div class="case-block">
-            <span class="case-label">Resultado</span>
+            <span class="case-label">${escapeHtml(selectedCopy.caseResult)}</span>
             <p>${result}</p>
           </div>
 
@@ -571,19 +600,11 @@ function renderCases() {
 }
 
 
-function renderPage() {
-  renderSkills();
-  renderProjects();
-  renderServices();
-  renderCases();
-  renderCases();
-}
-
 function setLanguage(language) {
   if (!copy[language]) return;
 
   currentLanguage = language;
-  localStorage.setItem("portfolio-lang", language);
+  storeLanguage(language);
 
   const selectedCopy = copy[language];
 
@@ -594,6 +615,16 @@ function setLanguage(language) {
 
       if (selectedCopy[key]) {
         element.textContent = selectedCopy[key];
+      }
+    });
+
+  document
+    .querySelectorAll("[data-i18n-placeholder]")
+    .forEach(element => {
+      const key = element.dataset.i18nPlaceholder;
+
+      if (selectedCopy[key]) {
+        element.setAttribute("placeholder", selectedCopy[key]);
       }
     });
 
@@ -609,9 +640,19 @@ function setLanguage(language) {
   document.documentElement.lang =
     language === "br" ? "pt-BR" : "en";
 
+  document.title = language === "br"
+    ? "Sérgio Meyer | Analista de Dados — Python · SQL · Power BI"
+    : "Sérgio Meyer | Data Analyst — Python · SQL · Power BI";
+
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (mobileMenu) {
+    mobileMenu.setAttribute("aria-label", selectedCopy.menuLabel);
+  }
+
   renderProjects();
   renderServices();
   renderCases();
+  updateMenuButtonLabel();
 
   document.querySelectorAll("[data-btnrepo]").forEach(element => {
     element.textContent = selectedCopy.viewRepo;
@@ -620,11 +661,6 @@ function setLanguage(language) {
   document.querySelectorAll("[data-btnlive]").forEach(element => {
     element.textContent = selectedCopy.viewDemo;
   });
-
-  const menuButton = document.getElementById("menuBtn");
-  if (menuButton) {
-    menuButton.setAttribute("aria-label", selectedCopy.menuClose === "Fechar menu" ? "Abrir menu" : "Open menu");
-  }
 
   const backBtn = document.querySelector(".back-to-top");
   if (backBtn) backBtn.setAttribute("aria-label", selectedCopy.backToTop);
@@ -648,11 +684,13 @@ function setupMobileMenu() {
   const closeMenu = () => {
     mobileMenu.classList.remove("open");
     menuButton.setAttribute("aria-expanded", "false");
+    updateMenuButtonLabel();
   };
 
   const openMenu = () => {
     mobileMenu.classList.add("open");
     menuButton.setAttribute("aria-expanded", "true");
+    updateMenuButtonLabel();
   };
 
   menuButton.addEventListener("click", event => {
@@ -722,16 +760,17 @@ function setupContactForm() {
       const email = formData.get("email") || "";
       const message = formData.get("message") || "";
 
+      const isEnglish = currentLanguage === "en";
       const subject =
-        "Contato pelo portfólio — " + name;
+        (isEnglish ? "Portfolio contact — " : "Contato pelo portfólio — ") + name;
 
       const body =
         message +
-        "\n\nNome: " + name +
-        "\nE-mail: " + email;
+        (isEnglish ? "\n\nName: " : "\n\nNome: ") + name +
+        (isEnglish ? "\nEmail: " : "\nE-mail: ") + email;
 
       window.location.href =
-        "mailto:" + copy.br.mailtoLink +
+        "mailto:" + liveCopy.mailtoLink +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
 
@@ -802,7 +841,7 @@ function setupBackToTop() {
   toggle();
 }
 
-renderPage();
+renderSkills();
 setLanguage(currentLanguage);
 
 setupLanguageButtons();

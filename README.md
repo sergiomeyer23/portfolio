@@ -52,7 +52,7 @@ Main topics analyzed:
 - Customer satisfaction
 - Seasonality
 
-**Technologies:** Python, Pandas, Plotly, Streamlit, PostgreSQL
+**Technologies:** Python, Pandas, Plotly, Streamlit, Pytest
 
 [View repository](https://github.com/sergiomeyer23/olist-sales-performance-analysis)
 
@@ -70,15 +70,15 @@ The application performs statistical summaries, product rankings, value-based fi
 
 ---
 
-### Excel Dashboard — Sales & Inventory
+### Sales Report Automation
 
-Commercial dashboard designed to analyze sales performance, inventory and profitability.
+Java application that reads raw sales spreadsheets, validates dates, quantities and prices, filters a reference month and generates an Excel report with three tabs: summary, sales by product and top 5 products.
 
-The project focuses on identifying products without stock, stores below target and more profitable categories.
+Invalid rows are reported instead of silently contaminating totals, and the project includes JUnit 5 tests plus a GitHub Actions workflow.
 
-**Technologies:** Excel, Power Query, Dashboards, KPIs
+**Technologies:** Java, Apache POI, Maven, JUnit 5
 
-[View repository](https://github.com/sergiomeyer23/excel-dashboard-vendas-estoque-)
+[View repository](https://github.com/sergiomeyer23/automacao-planilha)
 
 ---
 
@@ -138,28 +138,6 @@ Developed for the NAUFest Challenge 2026 (#AIForImpact, Junior Achievement Ameri
 
 ---
 
-### Pipoca — WhatsApp Bot with LLM
-
-WhatsApp bot with its own personality, built on `whatsapp-web.js` and an OpenAI-compatible LLM API.
-
-Features include persisted sessions (no repeated QR scan), automatic model fallback when the primary one fails, the persona kept in a data file separately from the logic, and a test suite covering the pipeline and the router.
-
-**Technologies:** Node.js, whatsapp-web.js, LLM APIs, Docker
-
-[View repository](https://github.com/sergiomeyer23/pipoca)
-
----
-
-### Personal Finance API
-
-REST API for personal finance management, built with Java and Spring Boot.
-
-Organised in entity, repository and controller layers, with a Maven Wrapper for reproducible builds and automated tests — the backend foundation behind data solutions that need their own reliable source.
-
-**Technologies:** Java, Spring Boot, REST API, Maven
-
-[View repository](https://github.com/sergiomeyer23/personal-finance-api)
-
 ## Technologies
 
 ### Data Analysis
@@ -213,6 +191,7 @@ The site includes:
 - Responsive layout
 - Portuguese and English versions
 - Project showcase
+- Case studies section
 - Skills section
 - Services section
 - Contact form
