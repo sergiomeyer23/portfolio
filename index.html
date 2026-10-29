@@ -89,9 +89,9 @@
 
       <div class="actions">
 
-        <div class="lang">
-          <button type="button" class="active" data-lang="br">BR</button>
-          <button type="button" data-lang="en">EN</button>
+        <div class="lang" role="group" aria-label="Idioma" data-i18n-aria-label="languageLabel">
+          <button type="button" class="active" data-lang="br" aria-pressed="true">BR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
 
         <a
@@ -130,15 +130,15 @@
     <a href="#services" data-i18n="navServices">Serviços</a>
     <a href="#contact" data-i18n="navContact">Contato</a>
 
-    <div class="lang mobile-lang">
-      <button type="button" class="active" data-lang="br">BR</button>
-      <button type="button" data-lang="en">EN</button>
+    <div class="lang mobile-lang" role="group" aria-label="Idioma" data-i18n-aria-label="languageLabel">
+      <button type="button" class="active" data-lang="br" aria-pressed="true">BR</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
 
   </nav>
 
 
-  <main id="home">
+  <main id="home" tabindex="-1">
 
     <!-- Hero -->
 
@@ -731,7 +731,7 @@
           rel="noopener noreferrer"
           aria-label="GitHub"
         >
-          GH
+          GitHub
         </a>
 
         <a
@@ -741,7 +741,7 @@
           rel="noopener noreferrer"
           aria-label="LinkedIn"
         >
-          in
+          LinkedIn
         </a>
 
         <a
@@ -749,7 +749,7 @@
           href="mailto:sergio.gabriel.meyer10@gmail.com"
           aria-label="E-mail"
         >
-          @
+          E-mail
         </a>
 
       </div>

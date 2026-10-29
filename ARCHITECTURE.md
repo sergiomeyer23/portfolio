@@ -35,8 +35,11 @@ no e-mail.
 - O painel do menu rola em telas baixas e é fechado ao trocar para o layout
   desktop; a navegação por `Tab` pode sair normalmente do painel.
 - Navegação inclui link para `#cases` e `scroll-margin-top` compensa o header
-  fixo.
-- `prefers-reduced-motion` desativa animações/transições pesadas.
+  fixo. O link de atalho e o botão de voltar ao topo levam o foco ao conteúdo.
+- O botão de voltar ao topo fica oculto e fora da navegação por teclado quando
+  não está disponível; os seletores de idioma expõem o estado com `aria-pressed`.
+- `prefers-reduced-motion` desativa animações/transições pesadas. Os testes
+  automatizados com axe-core complementam, mas não substituem, a revisão manual.
 
 ## Persistência
 

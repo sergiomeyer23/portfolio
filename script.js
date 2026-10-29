@@ -29,6 +29,7 @@ const copy = {
   br: {
     skipLink: "Pular para o conteúdo",
     mainNavLabel: "Navegação principal",
+    languageLabel: "Idioma",
     available: "#OPENTOWORK • Remoto ou Cascavel/PR",
     navHome: "Início",
     navAbout: "Sobre",
@@ -119,6 +120,7 @@ const copy = {
   en: {
     skipLink: "Skip to content",
     mainNavLabel: "Main navigation",
+    languageLabel: "Language",
     available: "#OPENTOWORK • Remote or Cascavel/PR",
     navHome: "Home",
     navAbout: "About",
@@ -645,10 +647,9 @@ function setLanguage(language) {
   document
     .querySelectorAll("[data-lang]")
     .forEach(button => {
-      button.classList.toggle(
-        "active",
-        button.dataset.lang === language
-      );
+      const selected = button.dataset.lang === language;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-pressed", String(selected));
     });
 
   document.documentElement.lang =
@@ -860,20 +861,26 @@ function setupScrollSpy() {
 }
 
 function setupBackToTop() {
+  const main = document.getElementById("home");
   const backBtn = document.createElement("button");
   backBtn.type = "button";
   backBtn.className = "back-to-top";
   backBtn.textContent = "↑";
+  backBtn.hidden = true;
   backBtn.setAttribute("aria-label", copy[currentLanguage].backToTop);
   document.body.appendChild(backBtn);
 
   backBtn.addEventListener("click", () => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (main) main.focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   });
 
   const toggle = () => {
-    backBtn.classList.toggle("visible", window.scrollY > 320);
+    const visible = window.scrollY > 320;
+    if (!visible && document.activeElement === backBtn && main) main.focus({ preventScroll: true });
+    backBtn.hidden = !visible;
+    backBtn.classList.toggle("visible", visible);
   };
 
   window.addEventListener("scroll", toggle, { passive: true });

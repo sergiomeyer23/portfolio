@@ -1,4 +1,5 @@
 const { test, expect } = require("@playwright/test");
+const AxeBuilder = require("@axe-core/playwright").default;
 
 test.beforeEach(async ({ page }, testInfo) => {
   const localOrigin = new URL(testInfo.project.use.baseURL).origin;
@@ -95,7 +96,12 @@ test("os projetos apontam para repositórios HTTPS e o currículo está disponí
 test("troca o idioma e o mantém após recarregar", async ({ page }) => {
   await page.goto("./");
 
+  await expect(page.locator('.actions [data-lang="br"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator('.actions [data-lang="en"]')).toHaveAttribute("aria-pressed", "false");
   await page.locator('.actions [data-lang="en"]').click();
+  await expect(page.locator('.actions [data-lang="br"]')).toHaveAttribute("aria-pressed", "false");
+  await expect(page.locator('.actions [data-lang="en"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator(".actions .lang")).toHaveAccessibleName("Language");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page).toHaveTitle(/Sérgio Meyer \| Data Analyst/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA ANALYST");
@@ -159,6 +165,105 @@ test("valida o contato e envia apenas para o serviço simulado", async ({ page }
   await expect(page.getByText("Envio simulado; nenhuma mensagem foi enviada.")).toBeVisible();
 });
 
+test("o atalho para o conteúdo transfere o foco ao conteúdo principal", async ({ page }) => {
+  await page.goto("./");
+  await page.keyboard.press("Tab");
+  await expect(page.locator(".skip-link")).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("main#home")).toBeFocused();
+  await page.keyboard.press("Tab");
+  const firstAction = page.locator(".hero .btn-primary");
+  await expect(firstAction).toBeFocused();
+  expect(await firstAction.evaluate(element => element.matches(":focus-visible"))).toBe(true);
+  expect(await firstAction.evaluate(element => parseFloat(getComputedStyle(element).outlineWidth))).toBeGreaterThanOrEqual(2);
+});
+
+test("o botão voltar ao topo só recebe foco quando visível", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("./");
+  const button = page.locator(".back-to-top");
+
+  await expect(button).toBeHidden();
+  await expect(button).toHaveAttribute("hidden", "");
+  await page.keyboard.press("Tab");
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await expect(button).toBeVisible();
+  await button.focus();
+  await expect(button).toBeFocused();
+  expect(await button.evaluate(element => element.matches(":focus-visible"))).toBe(true);
+  await page.keyboard.press("Enter");
+  await expect(page.locator("main#home")).toBeFocused();
+  await expect(button).toBeHidden();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+});
+
+test("preserva o foco ao ocultar o botão por rolagem", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("./");
+  await page.evaluate(() => window.scrollTo(0, 900));
+  const button = page.locator(".back-to-top");
+  await expect(button).toBeVisible();
+  await button.focus();
+  await expect(button).toBeFocused();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(button).toBeHidden();
+  await expect(page.locator("main#home")).toBeFocused();
+});
+
+for (const width of [320, 1440]) {
+  test(`o botão de voltar ao topo não cobre os links do rodapé em ${width}px`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.setViewportSize({ width, height: 720 });
+    await page.goto("./");
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    const button = page.locator(".back-to-top");
+    await expect(button).toBeVisible();
+    const buttonBox = await button.boundingBox();
+
+    for (const name of ["GitHub", "LinkedIn", "E-mail"]) {
+      const link = page.locator("footer").getByRole("link", { name, exact: true });
+      await expect(link).toBeVisible();
+      const linkBox = await link.boundingBox();
+      const overlap = linkBox.x < buttonBox.x + buttonBox.width &&
+        linkBox.x + linkBox.width > buttonBox.x &&
+        linkBox.y < buttonBox.y + buttonBox.height &&
+        linkBox.y + linkBox.height > buttonBox.y;
+      expect(overlap, `${name} não deve ficar coberto pelo botão`).toBe(false);
+    }
+  });
+}
+
+const wcagTags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
+
+for (const scenario of [
+  "desktop em português com botão destacado",
+  "desktop em inglês com botão destacado",
+  "mobile em português com menu aberto",
+  "mobile em inglês com menu aberto"
+]) {
+  test(`não apresenta violações automáticas WCAG em ${scenario}`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    const isMobile = scenario.startsWith("mobile");
+    const isEnglish = scenario.includes("inglês");
+    if (isMobile) await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto("./");
+    if (isMobile) {
+      await page.locator("#menuBtn").click();
+      if (isEnglish) await page.locator('#mobileMenu [data-lang="en"]').click();
+    } else {
+      if (isEnglish) await page.locator('.actions [data-lang="en"]').click();
+      await page.locator(".hero .btn-primary").hover();
+    }
+
+    const results = await new AxeBuilder({ page }).withTags(wcagTags).analyze();
+    const violations = results.violations.map(violation => ({
+      id: violation.id,
+      targets: violation.nodes.map(node => node.target)
+    }));
+    expect(violations).toEqual([]);
+  });
+}
+
 test.describe("em telas móveis", () => {
   test.use({ viewport: { width: 375, height: 812 } });
 
@@ -199,6 +304,9 @@ test.describe("em telas móveis", () => {
 
     await button.click();
     await menu.getByRole("button", { name: "EN" }).click();
+    await expect(menu.getByRole("button", { name: "EN" })).toHaveAttribute("aria-pressed", "true");
+    await expect(menu.getByRole("button", { name: "BR" })).toHaveAttribute("aria-pressed", "false");
+    await expect(menu.locator(".mobile-lang")).toHaveAccessibleName("Language");
     await expect(page.locator("header nav")).toHaveAccessibleName("Main navigation");
     await expect(menu).toHaveAccessibleName("Navigation menu");
     await expect(button).toHaveAccessibleName("Close menu");
