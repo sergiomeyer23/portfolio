@@ -71,7 +71,7 @@
   <a href="#home" class="skip-link" data-i18n="skipLink">Pular para o conteúdo</a>
 
   <header>
-    <nav class="container">
+    <nav class="container" aria-label="Navegação principal" data-i18n-aria-label="mainNavLabel">
 
       <a class="logo" href="#home">
         <span class="logo-mark">SM</span>
@@ -89,9 +89,9 @@
 
       <div class="actions">
 
-        <div class="lang">
-          <button type="button" class="active" data-lang="br">BR</button>
-          <button type="button" data-lang="en">EN</button>
+        <div class="lang" role="group" aria-label="Idioma" data-i18n-aria-label="languageLabel">
+          <button type="button" class="active" data-lang="br" aria-pressed="true">BR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
 
         <a
@@ -112,7 +112,7 @@
         aria-expanded="false"
         aria-controls="mobileMenu"
       >
-        ☰
+        <span class="menu-icon" aria-hidden="true">☰</span>
       </button>
 
     </nav>
@@ -121,7 +121,7 @@
 
   <!-- Menu mobile -->
 
-  <div class="mobile glass" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <nav class="mobile glass" id="mobileMenu" aria-label="Menu de navegação" hidden>
 
     <a href="#home" data-i18n="navHome">Início</a>
     <a href="#about" data-i18n="navAbout">Sobre</a>
@@ -130,15 +130,15 @@
     <a href="#services" data-i18n="navServices">Serviços</a>
     <a href="#contact" data-i18n="navContact">Contato</a>
 
-    <div class="lang mobile-lang">
-      <button type="button" class="active" data-lang="br">BR</button>
-      <button type="button" data-lang="en">EN</button>
+    <div class="lang mobile-lang" role="group" aria-label="Idioma" data-i18n-aria-label="languageLabel">
+      <button type="button" class="active" data-lang="br" aria-pressed="true">BR</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
 
-  </div>
+  </nav>
 
 
-  <main id="home">
+  <main id="home" tabindex="-1">
 
     <!-- Hero -->
 
@@ -325,8 +325,6 @@
             <img
               src="assets/sergio-open-to-work.jpg"
               alt="Foto de Sérgio Meyer com badge #OPENTOWORK"
-              width="1024"
-              height="1003"
               loading="lazy"
               decoding="async"
             >
@@ -733,7 +731,7 @@
           rel="noopener noreferrer"
           aria-label="GitHub"
         >
-          GH
+          GitHub
         </a>
 
         <a
@@ -743,7 +741,7 @@
           rel="noopener noreferrer"
           aria-label="LinkedIn"
         >
-          in
+          LinkedIn
         </a>
 
         <a
@@ -751,7 +749,7 @@
           href="mailto:sergio.gabriel.meyer10@gmail.com"
           aria-label="E-mail"
         >
-          @
+          E-mail
         </a>
 
       </div>

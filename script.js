@@ -28,6 +28,8 @@ const skills = [
 const copy = {
   br: {
     skipLink: "Pular para o conteúdo",
+    mainNavLabel: "Navegação principal",
+    languageLabel: "Idioma",
     available: "#OPENTOWORK • Remoto ou Cascavel/PR",
     navHome: "Início",
     navAbout: "Sobre",
@@ -117,6 +119,8 @@ const copy = {
 
   en: {
     skipLink: "Skip to content",
+    mainNavLabel: "Main navigation",
+    languageLabel: "Language",
     available: "#OPENTOWORK • Remote or Cascavel/PR",
     navHome: "Home",
     navAbout: "About",
@@ -412,8 +416,10 @@ function updateMenuButtonLabel() {
   const mobileMenu = document.getElementById("mobileMenu");
   if (!menuButton || !mobileMenu) return;
 
-  const key = mobileMenu.classList.contains("open") ? "menuClose" : "menuOpen";
+  const key = mobileMenu.hidden ? "menuOpen" : "menuClose";
   menuButton.setAttribute("aria-label", copy[currentLanguage][key]);
+  const icon = menuButton.querySelector(".menu-icon");
+  if (icon) icon.textContent = mobileMenu.hidden ? "☰" : "×";
 }
 
 let currentLanguage = readStoredLanguage() || "br";
@@ -629,12 +635,21 @@ function setLanguage(language) {
     });
 
   document
+    .querySelectorAll("[data-i18n-aria-label]")
+    .forEach(element => {
+      const key = element.dataset.i18nAriaLabel;
+
+      if (selectedCopy[key]) {
+        element.setAttribute("aria-label", selectedCopy[key]);
+      }
+    });
+
+  document
     .querySelectorAll("[data-lang]")
     .forEach(button => {
-      button.classList.toggle(
-        "active",
-        button.dataset.lang === language
-      );
+      const selected = button.dataset.lang === language;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-pressed", String(selected));
     });
 
   document.documentElement.lang =
@@ -681,48 +696,73 @@ function setupMobileMenu() {
   const mobileMenu = document.getElementById("mobileMenu");
   if (!menuButton || !mobileMenu) return;
 
-  const closeMenu = () => {
-    mobileMenu.classList.remove("open");
+  const mobileViewport = window.matchMedia("(max-width: 980px)");
+  let focusWasInMenu = false;
+
+  const closeMenu = ({ restoreFocus = false } = {}) => {
+    if (mobileMenu.hidden) return;
+    mobileMenu.hidden = true;
+    focusWasInMenu = false;
     menuButton.setAttribute("aria-expanded", "false");
     updateMenuButtonLabel();
+    if (restoreFocus && mobileViewport.matches) menuButton.focus();
   };
 
   const openMenu = () => {
-    mobileMenu.classList.add("open");
+    if (!mobileViewport.matches) return;
+    mobileMenu.hidden = false;
+    focusWasInMenu = mobileMenu.contains(document.activeElement) || document.activeElement === menuButton;
     menuButton.setAttribute("aria-expanded", "true");
     updateMenuButtonLabel();
   };
 
-  menuButton.addEventListener("click", event => {
-    event.stopPropagation();
-    if (mobileMenu.classList.contains("open")) {
-      closeMenu();
-    } else {
+  menuButton.addEventListener("click", () => {
+    if (mobileMenu.hidden) {
       openMenu();
+    } else {
+      closeMenu();
     }
   });
 
-  mobileMenu
-    .querySelectorAll("a")
-    .forEach(link => {
-      link.addEventListener("click", () => {
-        closeMenu();
-      });
-    });
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => closeMenu());
+  });
 
   document.addEventListener("click", event => {
-    if (
-      mobileMenu.classList.contains("open") &&
-      !mobileMenu.contains(event.target) &&
-      !menuButton.contains(event.target)
-    ) {
+    if (!mobileMenu.hidden && !mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
       closeMenu();
     }
+  });
+
+  document.addEventListener("focusin", event => {
+    if (mobileMenu.hidden) return;
+    focusWasInMenu = mobileMenu.contains(event.target) || menuButton.contains(event.target);
+    if (!focusWasInMenu) closeMenu();
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key === "Escape" && !mobileMenu.hidden) {
+      const restoreFocus = mobileMenu.contains(document.activeElement) || document.activeElement === menuButton;
+      closeMenu({ restoreFocus });
+    }
   });
+
+  const handleViewportChange = event => {
+    if (event.matches || mobileMenu.hidden) return;
+    // O navegador pode desfocar o menu assim que a media query o oculta.
+    const hadFocus = focusWasInMenu || mobileMenu.contains(document.activeElement) || document.activeElement === menuButton;
+    closeMenu();
+    if (hadFocus) {
+      const firstDesktopLink = document.querySelector(".nav-links a");
+      if (firstDesktopLink) firstDesktopLink.focus({ preventScroll: true });
+    }
+  };
+
+  if (mobileViewport.addEventListener) {
+    mobileViewport.addEventListener("change", handleViewportChange);
+  } else {
+    mobileViewport.addListener(handleViewportChange);
+  }
 }
 
 function setupContactForm() {
@@ -821,20 +861,26 @@ function setupScrollSpy() {
 }
 
 function setupBackToTop() {
+  const main = document.getElementById("home");
   const backBtn = document.createElement("button");
   backBtn.type = "button";
   backBtn.className = "back-to-top";
   backBtn.textContent = "↑";
+  backBtn.hidden = true;
   backBtn.setAttribute("aria-label", copy[currentLanguage].backToTop);
   document.body.appendChild(backBtn);
 
   backBtn.addEventListener("click", () => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (main) main.focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   });
 
   const toggle = () => {
-    backBtn.classList.toggle("visible", window.scrollY > 320);
+    const visible = window.scrollY > 320;
+    if (!visible && document.activeElement === backBtn && main) main.focus({ preventScroll: true });
+    backBtn.hidden = !visible;
+    backBtn.classList.toggle("visible", visible);
   };
 
   window.addEventListener("scroll", toggle, { passive: true });
