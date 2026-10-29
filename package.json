@@ -9,12 +9,14 @@
   "scripts": {
     "lint:html": "html-validate index.html",
     "lint:css": "stylelint style.css",
-    "lint:js": "eslint script.js --max-warnings=0",
+    "lint:js": "eslint script.js tests playwright.config.cjs eslint.config.mjs stylelint.config.mjs --max-warnings=0",
     "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
-    "check": "npm run lint"
+    "check": "npm run lint && npm test",
+    "test": "playwright test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
     "eslint": "10.13.0",
     "globals": "16.5.0",
     "html-validate": "11.17.0",
