@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-sergio-meyer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ferramentas de desenvolvimento para o portfólio de Sérgio Meyer.",
+  "engines": {
+    "node": "^22.22.0 || >=24.8.0"
+  },
+  "scripts": {
+    "lint:html": "html-validate index.html",
+    "lint:css": "stylelint style.css",
+    "lint:js": "eslint script.js --max-warnings=0",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "check": "npm run lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.13.0",
+    "globals": "16.5.0",
+    "html-validate": "11.17.0",
+    "stylelint": "17.16.0"
+  }
+}

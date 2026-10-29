@@ -198,6 +198,17 @@ The site includes:
 - CV download
 - Mobile navigation
 
+### Local development and checks
+
+The website itself does not need a build or runtime dependencies. For the development checks, use Node.js 22.22 or newer in the 22.x line, or Node.js 24.8 or newer, and npm:
+
+```bash
+npm ci
+npm run check
+```
+
+To serve the site locally, run `python3 -m http.server 8000` and open `http://localhost:8000`.
+
 ### Project data
 
 Projects, skills and services are defined as plain JavaScript arrays at the top of `script.js`. Adding a project means appending one object:
