@@ -198,6 +198,20 @@ The site includes:
 - CV download
 - Mobile navigation
 
+### Local development and checks
+
+The website itself does not need a build or runtime dependencies. For the development checks, use Node.js 22.22 or newer in the 22.x line, or Node.js 24.8 or newer, and npm:
+
+```bash
+npm ci
+npx playwright install chromium
+npm run check
+```
+
+`npm run check` runs the HTML, CSS and JavaScript checks plus the browser smoke tests. Use `npm run lint` or `npm test` to run either part separately. The tests use a local server and intercept FormSubmit requests, so they never send a real message. If port 4173 is occupied, set `PORTFOLIO_TEST_PORT` to another port before running the tests. To use a compatible system Chromium instead of the Playwright download, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable.
+
+To serve the site locally, run `python3 -m http.server 8000` and open `http://localhost:8000`.
+
 ### Project data
 
 Projects, skills and services are defined as plain JavaScript arrays at the top of `script.js`. Adding a project means appending one object:
