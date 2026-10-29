@@ -488,6 +488,10 @@ h1 {
 .portrait-card img {
   display: block;
   width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 1003;
+  object-fit: cover;
+  object-position: 50% 35%;
   border: 1px solid var(--border);
   border-radius: 25px;
 }

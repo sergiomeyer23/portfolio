@@ -43,6 +43,39 @@ test("renderiza o conteúdo principal e os links internos", async ({ page }) => 
   expect(pageErrors).toEqual([]);
 });
 
+for (const width of [320, 375, 768, 981, 1440]) {
+  test(`mantém a proporção natural da foto Sobre em ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("./");
+
+    const portrait = page.locator(".portrait-card img");
+    await portrait.scrollIntoViewIfNeeded();
+    await expect.poll(() => portrait.evaluate(image => image.naturalWidth)).toBe(1024);
+
+    const dimensions = await portrait.evaluate(image => {
+      const rect = image.getBoundingClientRect();
+      const style = getComputedStyle(image);
+      return {
+        width: rect.width,
+        height: rect.height,
+        naturalWidth: image.naturalWidth,
+        naturalHeight: image.naturalHeight,
+        objectFit: style.objectFit,
+        objectPosition: style.objectPosition
+      };
+    });
+
+    expect(dimensions.naturalHeight).toBe(1003);
+    expect(dimensions.width).toBeGreaterThan(0);
+    expect(dimensions.height).toBeGreaterThan(0);
+    const renderedRatio = dimensions.width / dimensions.height;
+    const naturalRatio = dimensions.naturalWidth / dimensions.naturalHeight;
+    expect(Math.abs(renderedRatio / naturalRatio - 1)).toBeLessThan(0.01);
+    expect(dimensions.objectFit).toBe("cover");
+    expect(dimensions.objectPosition).toBe("50% 35%");
+  });
+}
+
 test("os projetos apontam para repositórios HTTPS e o currículo está disponível", async ({ page, request }) => {
   await page.goto("./");
 
