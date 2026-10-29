@@ -71,7 +71,7 @@
   <a href="#home" class="skip-link" data-i18n="skipLink">Pular para o conteúdo</a>
 
   <header>
-    <nav class="container">
+    <nav class="container" aria-label="Navegação principal" data-i18n-aria-label="mainNavLabel">
 
       <a class="logo" href="#home">
         <span class="logo-mark">SM</span>
@@ -112,7 +112,7 @@
         aria-expanded="false"
         aria-controls="mobileMenu"
       >
-        ☰
+        <span class="menu-icon" aria-hidden="true">☰</span>
       </button>
 
     </nav>
@@ -121,7 +121,7 @@
 
   <!-- Menu mobile -->
 
-  <div class="mobile glass" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <nav class="mobile glass" id="mobileMenu" aria-label="Menu de navegação" hidden>
 
     <a href="#home" data-i18n="navHome">Início</a>
     <a href="#about" data-i18n="navAbout">Sobre</a>
@@ -135,7 +135,7 @@
       <button type="button" data-lang="en">EN</button>
     </div>
 
-  </div>
+  </nav>
 
 
   <main id="home">

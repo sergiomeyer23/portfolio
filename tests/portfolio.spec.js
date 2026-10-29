@@ -172,11 +172,18 @@ test.describe("em telas móveis", () => {
     await page.keyboard.press("Enter");
     await expect(button).toHaveAttribute("aria-expanded", "true");
     await expect(button).toHaveAccessibleName("Fechar menu");
+    await expect(button.locator(".menu-icon")).toHaveText("×");
     await expect(menu).toBeVisible();
+    await expect(menu).toHaveRole("navigation");
+    await expect(button).toBeFocused();
+    await page.keyboard.press("Tab");
+    await expect(menu.getByRole("link", { name: "Início" })).toBeFocused();
 
     await page.keyboard.press("Escape");
     await expect(menu).toBeHidden();
     await expect(button).toHaveAttribute("aria-expanded", "false");
+    await expect(button.locator(".menu-icon")).toHaveText("☰");
+    await expect(button).toBeFocused();
 
     await button.click();
     await menu.getByRole("link", { name: "Projetos" }).click();
@@ -185,12 +192,78 @@ test.describe("em telas móveis", () => {
     await expect(button).toHaveAttribute("aria-expanded", "false");
   });
 
+  test("traduz os nomes acessíveis do menu", async ({ page }) => {
+    await page.goto("./");
+    const button = page.locator("#menuBtn");
+    const menu = page.locator("#mobileMenu");
+
+    await button.click();
+    await menu.getByRole("button", { name: "EN" }).click();
+    await expect(page.locator("header nav")).toHaveAccessibleName("Main navigation");
+    await expect(menu).toHaveAccessibleName("Navigation menu");
+    await expect(button).toHaveAccessibleName("Close menu");
+
+    await page.keyboard.press("Escape");
+    await expect(button).toBeFocused();
+    await expect(button).toHaveAccessibleName("Open menu");
+  });
+
   test("fecha o menu ao clicar fora", async ({ page }) => {
     await page.goto("./");
     await page.locator("#menuBtn").click();
     await expect(page.locator("#mobileMenu")).toBeVisible();
     await page.locator("header .logo").click();
     await expect(page.locator("#mobileMenu")).toBeHidden();
+  });
+
+  test("fecha ao sair com Tab sem prender o foco", async ({ page }) => {
+    await page.goto("./");
+    const button = page.locator("#menuBtn");
+    const menu = page.locator("#mobileMenu");
+
+    await button.click();
+    await menu.getByRole("button", { name: "EN" }).focus();
+    await page.keyboard.press("Tab");
+
+    await expect(menu).toBeHidden();
+    await expect(button).toHaveAttribute("aria-expanded", "false");
+    await expect(page.getByRole("link", { name: "VEJA MEUS PROJETOS" })).toBeFocused();
+  });
+
+  test("fecha ao mudar para o layout de desktop", async ({ page }) => {
+    await page.goto("./");
+    const button = page.locator("#menuBtn");
+    const menu = page.locator("#mobileMenu");
+
+    await button.click();
+    await menu.getByRole("link", { name: "Sobre" }).focus();
+    await page.setViewportSize({ width: 981, height: 900 });
+
+    await expect(menu).toBeHidden();
+    await expect(menu).toHaveAttribute("hidden", "");
+    await expect(button).toHaveAttribute("aria-expanded", "false");
+    await expect(page.locator(".nav-links a").first()).toBeFocused();
+
+    await page.setViewportSize({ width: 375, height: 812 });
+    await expect(menu).toBeHidden();
+  });
+
+  test("permite alcançar todo o menu em uma tela de pouca altura", async ({ page }) => {
+    await page.setViewportSize({ width: 667, height: 320 });
+    await page.goto("./");
+    await page.locator("#menuBtn").click();
+    const menu = page.locator("#mobileMenu");
+    const lastButton = menu.getByRole("button", { name: "EN" });
+
+    await expect(menu).toBeVisible();
+    const menuBox = await menu.boundingBox();
+    expect(menuBox.y + menuBox.height).toBeLessThanOrEqual(320);
+    expect(await menu.evaluate(element => element.scrollHeight > element.clientHeight)).toBe(true);
+
+    await lastButton.focus();
+    const buttonBox = await lastButton.boundingBox();
+    expect(buttonBox.y).toBeGreaterThanOrEqual(menuBox.y);
+    expect(buttonBox.y + buttonBox.height).toBeLessThanOrEqual(menuBox.y + menuBox.height + 1);
   });
 });
 
