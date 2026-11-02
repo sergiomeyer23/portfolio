@@ -243,6 +243,22 @@ const projects = [
   },
 
   {
+    title: "Print Guard: Impressão Agendada com Confirmação",
+    titleEn: "Print Guard: Scheduled Printing with Confirmation",
+    category: "Windows Automation & Failure Recovery",
+    categoryEn: "Windows Automation & Failure Recovery",
+    description:
+      "CLI em Python que gera um relatório em PDF, imprime e só marca o dia como concluído depois que o job sai da fila de impressão. Cada tentativa é gravada num diário SQLite antes do envio, um lock do sistema operacional impede execuções simultâneas e, quando o resultado não pode ser confirmado, o estado fica unknown e nada é reimpresso sozinho. O backend do Windows foi validado numa fila de impressão real no CI, mas ainda não numa impressora física.",
+    descriptionEn:
+      "Python CLI that renders a PDF report, prints it and marks the day done only after the job leaves the print queue. Each attempt is written to a SQLite journal before sending, an OS-level lock blocks simultaneous runs and, when the outcome can't be confirmed, the state stays unknown and nothing is reprinted automatically. The Windows backend was validated against a real print queue in CI, but not yet on a physical printer.",
+    result: "74 testes • CI em Linux e Windows",
+    resultEn: "74 tests • Linux and Windows CI",
+    technologies: ["Python", "SQLite", "PowerShell", "ReportLab", "GitHub Actions"],
+    repository: "https://github.com/sergiomeyer23/print-guard",
+    bars: [58, 79, 66, 90, 47, 84, 71]
+  },
+
+  {
     title: "Mercavel — Comparador de Preços",
     titleEn: "Mercavel — Price Comparison",
     category: "Web Scraping & Retail Price Intelligence",
@@ -391,6 +407,21 @@ const caseStudies = [
     result: "Funciona offline mesmo sem IA e sugere preço por produto.",
     resultEn: "Works offline without AI and suggests a price per product.",
     technologies: ["JavaScript", "Google Gemini", "Chart.js", "localStorage"]
+  },
+  {
+    title: "Print Guard: Impressão Agendada com Confirmação",
+    titleEn: "Print Guard: Scheduled Printing with Confirmation",
+    challenge:
+      "Uma tarefa agendada que imprime um relatório pode terminar com sucesso enquanto nada sai da impressora: o job fica preso na fila ou o computador reinicia no meio do envio. Reimprimir às cegas gera cópias duplicadas, e não reimprimir perde o relatório.",
+    challengeEn:
+      "A scheduled task that prints a report can finish successfully while nothing comes out of the printer: the job gets stuck in the queue or the computer restarts mid-send. Reprinting blindly creates duplicates, and not reprinting loses the report.",
+    approach:
+      "Cada tentativa vai para um diário SQLite antes de chamar a impressora e um lock do sistema operacional impede duas execuções ao mesmo tempo. O dia só vira ok quando o job sai da fila. Se o resultado não pode ser confirmado, fica unknown e só uma pessoa decide reimprimir.",
+    approachEn:
+      "Each attempt goes into a SQLite journal before the printer is called, and an OS-level lock prevents two runs at once. The day only becomes ok when the job leaves the queue. If the outcome can't be confirmed it stays unknown and only a person decides whether to reprint.",
+    result: "Falhas viram alertas em vez de silêncio. Testado com injeção de falhas e contra uma fila de impressão real do Windows no CI.",
+    resultEn: "Failures become alerts instead of silence. Tested with fault injection and against a real Windows print queue in CI.",
+    technologies: ["Python", "SQLite", "PowerShell", "GitHub Actions"]
   }
 ];
 
