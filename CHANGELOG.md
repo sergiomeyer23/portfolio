@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5 (2026-11-02)
+- Adiciona o card e o case do Print Guard (automação de impressão agendada com confirmação)
+- Adiciona teste de que o card aparece nos dois idiomas com o repositório correto
+
 ## v0.4 (2026-10-26)
 - Remove cards de projetos sem repositório público (Pipoca, Personal Finance API) e do dashboard vazio
 - Adiciona card da automação de relatórios de vendas em Java

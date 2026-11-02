@@ -82,6 +82,20 @@ Invalid rows are reported instead of silently contaminating totals, and the proj
 
 ---
 
+### Print Guard
+
+Python command-line tool for scheduled reports that fail silently. It renders a PDF report, prints it and marks the day as done only after the job has left the print queue, with a guardian script and scheduled task for Windows.
+
+Every attempt is written to a SQLite journal before the printer is called, and an OS-level lock stops two runs from working at once. When the outcome cannot be confirmed, for example after a crash or an unreadable queue, the day stays `unknown` and nothing is reprinted automatically. A person settles it with one command.
+
+The suite has 74 tests (67 run on Linux and Windows, 7 more run against a real print queue on a Windows runner in CI). It has not been tested on a physical printer, and the repository documents exactly what was and was not validated.
+
+**Technologies:** Python, SQLite, PowerShell, ReportLab, GitHub Actions
+
+[View repository](https://github.com/sergiomeyer23/print-guard)
+
+---
+
 ### Pandas Fundamentals
 
 Practical laboratory covering the main stages of a data analysis workflow.
