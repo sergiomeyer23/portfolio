@@ -251,8 +251,8 @@ const projects = [
       "CLI em Python que gera um relatório em PDF, imprime e só marca o dia como concluído depois que o job sai da fila de impressão. Cada tentativa é gravada num diário SQLite antes do envio, um lock do sistema operacional impede execuções simultâneas e, quando o resultado não pode ser confirmado, o estado fica unknown e nada é reimpresso sozinho. O backend do Windows foi validado numa fila de impressão real no CI, mas ainda não numa impressora física.",
     descriptionEn:
       "Python CLI that renders a PDF report, prints it and marks the day done only after the job leaves the print queue. Each attempt is written to a SQLite journal before sending, an OS-level lock blocks simultaneous runs and, when the outcome can't be confirmed, the state stays unknown and nothing is reprinted automatically. The Windows backend was validated against a real print queue in CI, but not yet on a physical printer.",
-    result: "74 testes • CI em Linux e Windows",
-    resultEn: "74 tests • Linux and Windows CI",
+    result: "Testes com injeção de falhas • CI em Linux e Windows",
+    resultEn: "Fault-injection tests • Linux and Windows CI",
     technologies: ["Python", "SQLite", "PowerShell", "ReportLab", "GitHub Actions"],
     repository: "https://github.com/sergiomeyer23/print-guard",
     bars: [58, 79, 66, 90, 47, 84, 71]

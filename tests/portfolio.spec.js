@@ -102,10 +102,10 @@ test("o card do Print Guard aparece nos dois idiomas com o repositório correto"
     "href",
     "https://github.com/sergiomeyer23/print-guard"
   );
-  await expect(card).toContainText("74 testes");
+  await expect(card).toContainText("Testes com injeção de falhas");
 
   await page.locator('.actions [data-lang="en"]').click();
-  await expect(card).toContainText("74 tests");
+  await expect(card).toContainText("Fault-injection tests");
   await expect(card).toContainText("Scheduled Printing with Confirmation");
   await expect(page.locator("#casesGrid article", { hasText: "Print Guard" })).toHaveCount(1);
 });
