@@ -93,6 +93,23 @@ test("os projetos apontam para repositórios HTTPS e o currículo está disponí
   expect(cv.headers()["content-type"]).toContain("application/pdf");
 });
 
+test("o card do Print Guard aparece nos dois idiomas com o repositório correto", async ({ page }) => {
+  await page.goto("./");
+
+  const card = page.locator("#projects article", { hasText: "Print Guard" });
+  await expect(card).toHaveCount(1);
+  await expect(card.locator("[data-btnrepo]").locator("xpath=ancestor::a")).toHaveAttribute(
+    "href",
+    "https://github.com/sergiomeyer23/print-guard"
+  );
+  await expect(card).toContainText("74 testes");
+
+  await page.locator('.actions [data-lang="en"]').click();
+  await expect(card).toContainText("74 tests");
+  await expect(card).toContainText("Scheduled Printing with Confirmation");
+  await expect(page.locator("#casesGrid article", { hasText: "Print Guard" })).toHaveCount(1);
+});
+
 test("troca o idioma e o mantém após recarregar", async ({ page }) => {
   await page.goto("./");
 
