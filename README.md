@@ -88,7 +88,7 @@ Python command-line tool for scheduled reports that fail silently. It renders a 
 
 Every attempt is written to a SQLite journal before the printer is called, and an OS-level lock stops two runs from working at once. When the outcome cannot be confirmed, for example after a crash or an unreadable queue, the day stays `unknown` and nothing is reprinted automatically. A person settles it with one command.
 
-The suite has 74 tests (67 run on Linux and Windows, 7 more run against a real print queue on a Windows runner in CI). It has not been tested on a physical printer, and the repository documents exactly what was and was not validated.
+The tests inject failures (stuck jobs, an unreadable queue, killed processes, simultaneous runs) and run on Linux and Windows in CI, with an extra Windows job that exercises the backend against a real print queue. It has not been tested on a physical printer, and the repository documents exactly what was and was not validated.
 
 **Technologies:** Python, SQLite, PowerShell, ReportLab, GitHub Actions
 
