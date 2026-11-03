@@ -41,7 +41,7 @@ const copy = {
     navContact: "Contato",
     menuOpen: "Abrir menu",
     menuLabel: "Menu de navegação",
-    heroGreeting: "OLÁ, EU SOU SERGIO MEYER.",
+    heroGreeting: "OLÁ, EU SOU SÉRGIO MEYER.",
     heroTitle: "DATA & SOFTWARE ENGINEER.",
     tagline: "Do dado bruto à decisão, com pipelines e APIs testados em CI.",
     heroDescription:
@@ -163,7 +163,7 @@ const copy = {
     navContact: "Contact",
     menuOpen: "Open menu",
     menuLabel: "Navigation menu",
-    heroGreeting: "HI, I AM SERGIO MEYER.",
+    heroGreeting: "HI, I AM SÉRGIO MEYER.",
     heroTitle: "DATA & SOFTWARE ENGINEER.",
     tagline: "From raw data to decisions, with pipelines and APIs tested in CI.",
     heroDescription:

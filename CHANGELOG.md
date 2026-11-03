@@ -1,6 +1,7 @@
 # Changelog
 
 ## v0.6 (2026-11-03)
+- Corrige o acento de SÉRGIO no hero (BR e EN)
 - Reposiciona o site como Data & Software Engineer (título, hero, sobre, serviços, SEO)
 - Novo visual: superfícies translúcidas, brilho esmeralda/ciano, Plus Jakarta Sans e JetBrains Mono nos dados técnicos
 - Grid de projetos assimétrico com cards em destaque, fluxo de arquitetura em cada card e borda com spotlight no hover
