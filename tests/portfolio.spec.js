@@ -88,9 +88,48 @@ test("os projetos apontam para repositórios HTTPS e o currículo está disponí
     await expect(link).toHaveAttribute("rel", /noopener/);
   }
 
-  const cv = await request.get("assets/curriculo-sergio-meyer.pdf");
-  expect(cv.ok()).toBeTruthy();
-  expect(cv.headers()["content-type"]).toContain("application/pdf");
+  for (const version of ["data", "software"]) {
+    const cv = await request.get(`assets/curriculo-sergio-meyer-${version}.pdf`);
+    expect(cv.ok()).toBeTruthy();
+    expect(cv.headers()["content-type"]).toContain("application/pdf");
+  }
+
+  const preview = await request.get("assets/og-image.png");
+  expect(preview.ok()).toBeTruthy();
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /assets\/og-image\.png$/);
+});
+
+test("o menu de currículo oferece as duas versões e fecha com Esc", async ({ page }) => {
+  await page.goto("./");
+  const menu = page.locator(".hero .cv-menu");
+  const links = menu.locator("a");
+
+  await expect(links.first()).toBeHidden();
+  await menu.locator("summary").click();
+  await expect(links).toHaveCount(2);
+  await expect(links.nth(0)).toHaveAttribute("href", "assets/curriculo-sergio-meyer-data.pdf");
+  await expect(links.nth(1)).toHaveAttribute("href", "assets/curriculo-sergio-meyer-software.pdf");
+
+  await page.keyboard.press("Escape");
+  await expect(links.first()).toBeHidden();
+  await expect(menu.locator("summary")).toBeFocused();
+
+  await page.locator('.actions [data-lang="en"]').click();
+  await menu.locator("summary").click();
+  await expect(links.nth(0)).toContainText("Data & Analytics (PDF)");
+});
+
+test("os cards mostram o badge de CI e o Expense Tracker cita Flyway, Swagger e Actuator", async ({ page }) => {
+  await page.goto("./");
+  const card = page.locator("#projects article", { hasText: "Expense Tracker API" });
+
+  await expect(card).toHaveCount(1);
+  await expect(card).toContainText("Flyway");
+  await expect(card).toContainText("Swagger");
+  await expect(card).toContainText("Actuator");
+  await expect(card.locator("img.ci-badge")).toHaveAttribute("src", /expense-tracker-api\/actions\/workflows\/ci\.yml\/badge\.svg$/);
+  await expect(card.locator("img.ci-badge")).toHaveAttribute("alt", /Status do CI/);
+  await expect(page.locator("#projects img.ci-badge").first()).toBeAttached();
 });
 
 test("a lista de projetos tem os destaques de engenharia e não tem exercícios básicos", async ({ page }) => {
@@ -143,7 +182,7 @@ test("a paleta de comandos abre com Ctrl+K, filtra, executa e devolve o foco", a
   await expect(dialog).toBeVisible();
   await expect(page.locator("#cmdInput")).toBeFocused();
 
-  await page.keyboard.type("data");
+  await page.keyboard.type("filtrar projetos: data");
   await expect(page.locator("#cmdList .cmd-item")).toHaveCount(1);
   await page.keyboard.press("Enter");
   await expect(dialog).toBeHidden();

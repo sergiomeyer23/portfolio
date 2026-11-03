@@ -2,6 +2,10 @@
 
 ## v0.6 (2026-11-03)
 - Corrige o acento de SÉRGIO no hero (BR e EN)
+- Currículo em duas versões (Data & Analytics e Software & Backend) com menu de download no header, no hero e na paleta Ctrl+K
+- Nova imagem de compartilhamento (og-image.png, 1200x630) com nome, cargo e stack
+- Badge de CI nos cards dos projetos com pipeline
+- Card do Expense Tracker API atualizado com Flyway, Swagger, Actuator e CI
 - Reposiciona o site como Data & Software Engineer (título, hero, sobre, serviços, SEO)
 - Novo visual: superfícies translúcidas, brilho esmeralda/ciano, Plus Jakarta Sans e JetBrains Mono nos dados técnicos
 - Grid de projetos assimétrico com cards em destaque, fluxo de arquitetura em cada card e borda com spotlight no hover

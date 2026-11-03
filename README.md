@@ -251,7 +251,9 @@ Bilingual strings live in the `copy` object under the `br` and `en` keys. Both m
 portfolio/
 │
 ├── assets/
-│   ├── curriculo-sergio-meyer.pdf
+│   ├── curriculo-sergio-meyer-data.pdf
+│   ├── curriculo-sergio-meyer-software.pdf
+│   ├── og-image.png
 │   └── sergio-open-to-work.jpg
 │
 ├── index.html

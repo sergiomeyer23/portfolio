@@ -27,7 +27,10 @@
     content="Portfólio de Sérgio Meyer — Data &amp; Software Engineer. Pipelines de dados, ETL, APIs REST em Java com Spring Boot, TypeScript, Python, SQL e contribuições open source."
   >
   <meta property="og:url" content="https://sergiomeyer23.github.io/portfolio/">
-  <meta property="og:image" content="https://sergiomeyer23.github.io/portfolio/assets/sergio-open-to-work.jpg">
+  <meta property="og:image" content="https://sergiomeyer23.github.io/portfolio/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sérgio Meyer, Data & Software Engineer. Python, SQL, Java, Spring Boot e TypeScript.">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:locale:alternate" content="en_US">
 
@@ -38,7 +41,7 @@
     name="twitter:description"
     content="Portfólio de Sérgio Meyer — Data &amp; Software Engineer."
   >
-  <meta name="twitter:image" content="https://sergiomeyer23.github.io/portfolio/assets/sergio-open-to-work.jpg">
+  <meta name="twitter:image" content="https://sergiomeyer23.github.io/portfolio/assets/og-image.png">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -105,13 +108,13 @@
           <button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
 
-        <a
-          class="btn btn-ghost"
-          href="assets/curriculo-sergio-meyer.pdf"
-          download
-        >
-          CV
-        </a>
+        <details class="cv-menu">
+          <summary class="btn btn-ghost">CV</summary>
+          <div class="cv-list">
+            <a href="assets/curriculo-sergio-meyer-data.pdf" download data-i18n="cvData">Data &amp; Analytics (PDF)</a>
+            <a href="assets/curriculo-sergio-meyer-software.pdf" download data-i18n="cvSoftware">Software &amp; Backend (PDF)</a>
+          </div>
+        </details>
 
       </div>
 
@@ -214,14 +217,13 @@
               Fale comigo
             </a>
 
-            <a
-              class="btn btn-ghost"
-              href="assets/curriculo-sergio-meyer.pdf"
-              download
-              data-i18n="downloadCv"
-            >
-              Baixar currículo
-            </a>
+            <details class="cv-menu">
+              <summary class="btn btn-ghost" data-i18n="downloadCv">Baixar currículo</summary>
+              <div class="cv-list">
+                <a href="assets/curriculo-sergio-meyer-data.pdf" download data-i18n="cvData">Data &amp; Analytics (PDF)</a>
+                <a href="assets/curriculo-sergio-meyer-software.pdf" download data-i18n="cvSoftware">Software &amp; Backend (PDF)</a>
+              </div>
+            </details>
 
           </div>
 

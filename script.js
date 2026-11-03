@@ -104,7 +104,11 @@ const copy = {
     cmdFilterAll: "Mostrar todos os projetos",
     cmdLanguage: "Mudar idioma para English",
     cmdCopyEmail: "Copiar e-mail",
-    cmdCv: "Baixar currículo (PDF)",
+    cmdCvData: "Baixar currículo: Data & Analytics (PDF)",
+    cmdCvSoftware: "Baixar currículo: Software & Backend (PDF)",
+    cvData: "Data & Analytics (PDF)",
+    cvSoftware: "Software & Backend (PDF)",
+    ciAlt: "Status do CI",
     toastEmailCopied: "E-mail copiado.",
     toastEmailManual: "Não foi possível copiar. O e-mail é sergio.gabriel.meyer10@gmail.com",
 
@@ -226,7 +230,11 @@ const copy = {
     cmdFilterAll: "Show all projects",
     cmdLanguage: "Switch language to Português",
     cmdCopyEmail: "Copy email",
-    cmdCv: "Download résumé (PDF)",
+    cmdCvData: "Download résumé: Data & Analytics (PDF)",
+    cmdCvSoftware: "Download résumé: Software & Backend (PDF)",
+    cvData: "Data & Analytics (PDF)",
+    cvSoftware: "Software & Backend (PDF)",
+    ciAlt: "CI status",
     toastEmailCopied: "Email copied.",
     toastEmailManual: "Could not copy. The email is sergio.gabriel.meyer10@gmail.com",
 
@@ -287,6 +295,7 @@ const projects = [
     resultEn: "Daily collection in 4 shards • Vitest tests",
     technologies: ["TypeScript", "React", "Node.js", "Supabase", "Vitest", "GitHub Actions"],
     repository: "https://github.com/sergiomeyer23/Mercavel",
+    ci: "https://img.shields.io/github/check-runs/sergiomeyer23/Mercavel/main?label=CI",
     live: "https://sergiomeyer23.github.io/Mercavel/",
     areas: ["data", "software"],
     featured: true,
@@ -300,15 +309,16 @@ const projects = [
     category: "Backend & REST API",
     categoryEn: "Backend & REST API",
     description:
-      "API REST de gestão financeira pessoal em camadas (Controller, Service e Repository), com validação estrita por DTOs, tratamento global de exceções, persistência relacional e ambiente conteinerizado com Docker Compose.",
+      "API REST de gestão financeira pessoal em camadas (Controller, Service e Repository), com validação por DTOs e erros no formato RFC 7807. O schema é versionado com migrations Flyway, a documentação sai em OpenAPI (Swagger UI), o Actuator expõe a saúde da aplicação e o GitHub Actions roda os testes a cada push. PostgreSQL sobe via Docker Compose.",
     descriptionEn:
-      "Personal finance REST API in layers (Controller, Service and Repository), with strict DTO validation, global exception handling, relational persistence and a containerized Docker Compose environment.",
-    result: "Java 21 • Spring Boot • JUnit 5",
-    resultEn: "Java 21 • Spring Boot • JUnit 5",
-    technologies: ["Java 21", "Spring Boot", "Spring Data JPA", "PostgreSQL", "Docker Compose", "JUnit 5"],
+      "Personal finance REST API in layers (Controller, Service and Repository), with DTO validation and RFC 7807 error responses. The schema is versioned with Flyway migrations, docs are served as OpenAPI (Swagger UI), Actuator exposes application health and GitHub Actions runs the tests on every push. PostgreSQL runs through Docker Compose.",
+    result: "Flyway • Swagger • Actuator • CI",
+    resultEn: "Flyway • Swagger • Actuator • CI",
+    technologies: ["Java 21", "Spring Boot", "Spring Data JPA", "PostgreSQL", "Flyway", "OpenAPI", "Actuator", "Docker Compose", "JUnit 5", "GitHub Actions"],
     repository: "https://github.com/sergiomeyer23/expense-tracker-api",
+    ci: "https://github.com/sergiomeyer23/expense-tracker-api/actions/workflows/ci.yml/badge.svg",
     areas: ["software"],
-    flow: ["Controller", "Service", "Repository", "PostgreSQL"]
+    flow: ["Controller", "Service", "Repository", "Flyway + PostgreSQL"]
   },
 
   {
@@ -324,6 +334,7 @@ const projects = [
     resultEn: "BRL 13.2M analyzed • 96k orders",
     technologies: ["Python", "Pandas", "Plotly", "Streamlit", "Pytest"],
     repository: "https://github.com/sergiomeyer23/olist-sales-performance-analysis",
+    ci: "https://img.shields.io/github/check-runs/sergiomeyer23/olist-sales-performance-analysis/main?label=CI",
     areas: ["data"],
     flow: ["9 CSVs", "Cache Parquet", "20 funções", "Streamlit"],
     flowEn: ["9 CSVs", "Parquet cache", "20 functions", "Streamlit"]
@@ -342,6 +353,7 @@ const projects = [
     resultEn: "Fault-injection tests • Linux and Windows CI",
     technologies: ["Python", "SQLite", "PowerShell", "ReportLab", "GitHub Actions"],
     repository: "https://github.com/sergiomeyer23/print-guard",
+    ci: "https://img.shields.io/github/check-runs/sergiomeyer23/print-guard/main?label=CI",
     areas: ["software"],
     flow: ["Relatório PDF", "Diário SQLite", "Impressão", "Job saiu da fila"],
     flowEn: ["PDF report", "SQLite journal", "Print", "Job left the queue"]
@@ -397,6 +409,7 @@ const projects = [
     resultEn: "ETL + DCF • --mock and --live modes",
     technologies: ["Python", "Pandas", "Streamlit", "Pytest", "GitHub Actions"],
     repository: "https://github.com/sergiomeyer23/weg_equity_pipeline",
+    ci: "https://img.shields.io/github/check-runs/sergiomeyer23/weg_equity_pipeline/main?label=CI",
     areas: ["data"],
     featured: true,
     flow: ["CVM + Yahoo Finance", "ETL", "Múltiplos + DCF", "Streamlit"],
@@ -434,6 +447,7 @@ const projects = [
     resultEn: "3 tabs • 13 tests • CI",
     technologies: ["Java", "Apache POI", "Maven", "JUnit 5"],
     repository: "https://github.com/sergiomeyer23/automacao-planilha",
+    ci: "https://img.shields.io/github/check-runs/sergiomeyer23/automacao-planilha/main?label=CI",
     areas: ["data", "software"],
     flow: ["Excel .xlsx", "Validação", "Relatório"],
     flowEn: ["Excel .xlsx", "Validation", "Report"]
@@ -627,6 +641,9 @@ function renderProjects() {
       const live = project.live ? escapeHtml(project.live) : "";
       const areas = escapeHtml(project.areas.join(" "));
       const featured = project.featured ? " featured" : "";
+      const badge = project.ci
+        ? `<img class="ci-badge" src="${escapeHtml(project.ci)}" alt="${escapeHtml(selectedCopy.ciAlt)}: ${title}" height="20" loading="lazy" decoding="async">`
+        : "";
 
       const flowSteps = currentLanguage === "en" && project.flowEn ? project.flowEn : project.flow;
       const flow = flowSteps
@@ -667,6 +684,8 @@ function renderProjects() {
           <div class="tags">
             ${tags}
           </div>
+
+          ${badge}
 
           <div class="project-actions">
             <a
@@ -1049,6 +1068,44 @@ function setupBackToTop() {
   toggle();
 }
 
+// Menus de currículo: fecham ao clicar fora, ao escolher uma opção e com Esc.
+function setupResumeMenus() {
+  const menus = Array.from(document.querySelectorAll(".cv-menu"));
+
+  const closeAll = except => {
+    menus.forEach(menu => {
+      if (menu !== except) menu.open = false;
+    });
+  };
+
+  menus.forEach(menu => {
+    menu.addEventListener("toggle", () => {
+      if (menu.open) closeAll(menu);
+    });
+    menu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.open = false;
+      });
+    });
+  });
+
+  document.addEventListener("click", event => {
+    menus.forEach(menu => {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+    menus.forEach(menu => {
+      if (!menu.open) return;
+      const hadFocus = menu.contains(document.activeElement);
+      menu.open = false;
+      if (hadFocus) menu.querySelector("summary").focus();
+    });
+  });
+}
+
 function setupProjectFilters() {
   document.querySelectorAll("[data-filter]").forEach(button => {
     button.addEventListener("click", () => applyProjectFilter(button.dataset.filter));
@@ -1104,9 +1161,9 @@ function copyEmail() {
   );
 }
 
-function downloadResume() {
+function downloadResume(version) {
   const link = document.createElement("a");
-  link.href = "assets/curriculo-sergio-meyer.pdf";
+  link.href = `assets/curriculo-sergio-meyer-${version}.pdf`;
   link.download = "";
   document.body.appendChild(link);
   link.click();
@@ -1126,7 +1183,8 @@ function getCommands() {
     { label: c.cmdFilterAll, run: () => { applyProjectFilter("all"); scrollToSection("portfolio"); } },
     { label: c.cmdLanguage, run: () => setLanguage(currentLanguage === "br" ? "en" : "br") },
     { label: c.cmdCopyEmail, run: copyEmail },
-    { label: c.cmdCv, run: downloadResume }
+    { label: c.cmdCvData, run: () => downloadResume("data") },
+    { label: c.cmdCvSoftware, run: () => downloadResume("software") }
   ];
 }
 
@@ -1238,6 +1296,7 @@ setLanguage(currentLanguage);
 
 setupLanguageButtons();
 setupProjectFilters();
+setupResumeMenus();
 setupSpotlight();
 setupCommandPalette();
 setupMobileMenu();

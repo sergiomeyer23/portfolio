@@ -1404,3 +1404,75 @@ footer {
   opacity: 1;
   transform: translate(-50%, 0);
 }
+
+
+/* Resume menu and CI badge */
+
+.cv-menu {
+  position: relative;
+}
+
+.cv-menu summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.cv-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.cv-menu summary::after {
+  content: "▾";
+}
+
+.cv-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 60;
+  display: grid;
+  min-width: 250px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(16, 20, 27, 0.97);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.actions .cv-list {
+  right: 0;
+  left: auto;
+}
+
+.cv-list a {
+  padding: 11px 12px;
+  border-radius: 9px;
+  color: #e2e8f0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cv-list a:hover {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--green);
+}
+
+.ci-badge {
+  display: block;
+  height: 20px;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .cta-row .cv-menu,
+  .cta-row .cv-menu summary {
+    width: 100%;
+  }
+
+  .cv-list {
+    right: 0;
+    left: 0;
+    min-width: 0;
+  }
+}
