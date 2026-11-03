@@ -21,6 +21,14 @@ no e-mail.
   fallback para `mailto:` quando não está. Assim o contato nunca fica indisponível
   mesmo sem JavaScript.
 
+- **Filtros e paleta de comandos em Vanilla JS**: cada projeto tem `areas`
+  (`data`, `software`, `oss`); `applyProjectFilter()` alterna o atributo `hidden`
+  dos cards e guarda o filtro atual entre trocas de idioma. A paleta (Ctrl+K /
+  ⌘K) é um `dialog` com foco preso, `Esc` para fechar e retorno do foco ao
+  elemento anterior.
+- **Spotlight dos cards**: um único `pointermove` no container grava `--mx` e
+  `--my` no card sob o cursor; o brilho é desenhado em CSS.
+
 ## Segurança
 
 - Todo dado vindo de `projects`/`services`/`skills`/`caseStudies` é escapado em

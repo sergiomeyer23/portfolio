@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.6 (2026-11-03)
+- Reposiciona o site como Data & Software Engineer (título, hero, sobre, serviços, SEO)
+- Novo visual: superfícies translúcidas, brilho esmeralda/ciano, Plus Jakarta Sans e JetBrains Mono nos dados técnicos
+- Grid de projetos assimétrico com cards em destaque, fluxo de arquitetura em cada card e borda com spotlight no hover
+- Filtros por área (Todos, Data & Analytics, Software & Backend, Open Source) que persistem na troca de idioma
+- Nova seção Open Source com os PRs #91 e #106 do Bayer-Group/MotherML
+- Paleta de comandos com Ctrl+K / ⌘K (navegação, filtros, idioma, copiar e-mail, currículo)
+- Adiciona weg_equity_pipeline, expense-tracker-api, FalowAI e MotherML; remove pandas-fundamentos e retail-sales-analyzer
+- Atualiza os testes E2E e adiciona testes para filtros e paleta de comandos
+
 ## v0.5 (2026-11-02)
 - Adiciona o card e o case do Print Guard (automação de impressão agendada com confirmação)
 - Adiciona teste de que o card aparece nos dois idiomas com o repositório correto

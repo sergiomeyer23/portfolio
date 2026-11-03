@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sérgio Meyer | Analista de Dados — Python · SQL · Power BI</title>
+  <title>Sérgio Meyer | Data &amp; Software Engineer — Python · SQL · Java</title>
 
   <meta
     name="description"
-    content="Portfólio de Sérgio Meyer — Analista de Dados. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
+    content="Portfólio de Sérgio Meyer — Data &amp; Software Engineer. Pipelines de dados, ETL, APIs REST em Java com Spring Boot, TypeScript, Python, SQL e contribuições open source."
   >
 
-  <meta name="theme-color" content="#0d1117">
+  <meta name="theme-color" content="#0a0d12">
 
   <link rel="canonical" href="https://sergiomeyer23.github.io/portfolio/">
 
@@ -21,10 +21,10 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sérgio Meyer | Analista de Dados — Python · SQL · Power BI">
+  <meta property="og:title" content="Sérgio Meyer | Data &amp; Software Engineer — Python · SQL · Java">
   <meta
     property="og:description"
-    content="Portfólio de Sérgio Meyer — Analista de Dados. Dashboards, análise de dados, ETL, Power BI, Python, SQL e insights acionáveis."
+    content="Portfólio de Sérgio Meyer — Data &amp; Software Engineer. Pipelines de dados, ETL, APIs REST em Java com Spring Boot, TypeScript, Python, SQL e contribuições open source."
   >
   <meta property="og:url" content="https://sergiomeyer23.github.io/portfolio/">
   <meta property="og:image" content="https://sergiomeyer23.github.io/portfolio/assets/sergio-open-to-work.jpg">
@@ -33,10 +33,10 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sérgio Meyer | Analista de Dados — Python · SQL · Power BI">
+  <meta name="twitter:title" content="Sérgio Meyer | Data &amp; Software Engineer — Python · SQL · Java">
   <meta
     name="twitter:description"
-    content="Portfólio de Sérgio Meyer — Analista de Dados."
+    content="Portfólio de Sérgio Meyer — Data &amp; Software Engineer."
   >
   <meta name="twitter:image" content="https://sergiomeyer23.github.io/portfolio/assets/sergio-open-to-work.jpg">
 
@@ -46,20 +46,20 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Sérgio Meyer",
-    "jobTitle": "Data Analyst",
+    "jobTitle": "Data & Software Engineer",
     "url": "https://sergiomeyer23.github.io/portfolio/",
     "sameAs": [
       "https://github.com/sergiomeyer23",
       "https://www.linkedin.com/in/s%C3%A9rgio-meyer-7aaa45407/"
     ],
-    "knowsAbout": ["Data Analysis", "SQL", "Python", "Power BI", "ETL", "Pandas", "PostgreSQL"]
+    "knowsAbout": ["Data Engineering", "SQL", "Python", "ETL", "Pandas", "PostgreSQL", "Java", "Spring Boot", "TypeScript", "React"]
   }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -88,6 +88,17 @@
       </div>
 
       <div class="actions">
+
+        <button
+          class="cmd-open"
+          id="cmdOpen"
+          type="button"
+          aria-haspopup="dialog"
+          aria-keyshortcuts="Control+K Meta+K"
+        >
+          <span data-i18n="cmdButton">Buscar</span>
+          <kbd aria-hidden="true">Ctrl K</kbd>
+        </button>
 
         <div class="lang" role="group" aria-label="Idioma" data-i18n-aria-label="languageLabel">
           <button type="button" class="active" data-lang="br" aria-pressed="true">BR</button>
@@ -165,13 +176,13 @@
               class="gradient"
               data-i18n="heroTitle"
             >
-              ANALISTA DE DADOS.
+              DATA &amp; SOFTWARE ENGINEER.
             </span>
           </h1>
 
           <p class="tagline">
             “<span data-i18n="tagline">
-              Transformando dados em decisões estratégicas e insights acionáveis.
+              Do dado bruto à decisão, com pipelines e APIs testados em CI.
             </span>”
           </p>
 
@@ -179,9 +190,9 @@
             class="desc"
             data-i18n="heroDescription"
           >
-            Converto dados brutos em narrativas de negócio, dashboards
-            executivos e análises que ajudam equipes comerciais a priorizar
-            oportunidades, reduzir gargalos e vender melhor.
+            Construo pipelines de dados, automações e aplicações backend.
+            Python e SQL de um lado, Java com Spring Boot e TypeScript do
+            outro, sempre com testes automatizados e CI/CD.
           </p>
 
 
@@ -218,23 +229,23 @@
           <div class="stats">
 
             <div class="stat glass">
-              <b>4K+</b>
+              <b>2</b>
               <span data-i18n="heroStatLabel1">
-                clientes analisados
+                PRs no MotherML (Bayer)
               </span>
             </div>
 
             <div class="stat glass">
-              <b>50+</b>
+              <b>96K</b>
               <span data-i18n="heroStatLabel2">
-                vendedores suportados
+                pedidos reais analisados
               </span>
             </div>
 
             <div class="stat glass">
-              <b>3</b>
+              <b>4</b>
               <span data-i18n="heroStatLabel3">
-                anos em inteligência comercial
+                shards de coleta paralela
               </span>
             </div>
 
@@ -253,7 +264,7 @@
 
               <img
                 src="assets/sergio-open-to-work.jpg"
-                alt="Sérgio Meyer, analista de dados"
+                alt="Sérgio Meyer, engenheiro de dados e software"
                 width="1024"
                 height="1003"
                 fetchpriority="high"
@@ -264,7 +275,7 @@
 
                 <div>
                   <b>Sérgio Meyer</b>
-                  <span>Python • SQL • Power BI • ETL</span>
+                  <span>Python • SQL • Java • TypeScript</span>
                 </div>
 
                 <svg
@@ -299,13 +310,63 @@
             </svg>
 
             <div>
-              <strong data-i18n="bubbleValue">80/20</strong>
-              <small data-i18n="bubbleLabel">Pareto de vendas</small>
+              <strong data-i18n="bubbleValue">CI/CD</strong>
+              <small data-i18n="bubbleLabel">Testes automatizados</small>
             </div>
 
           </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Open source -->
+
+    <section class="section oss" id="opensource" aria-labelledby="ossTitle">
+
+      <div class="container oss-grid">
+
+        <div>
+          <span class="eyebrow" data-i18n="ossEyebrow">Open Source</span>
+
+          <h2 id="ossTitle" data-i18n="ossTitle">
+            Contribuições no repositório da Bayer.
+          </h2>
+
+          <p class="text-block" data-i18n="ossText">
+            O MotherML é um framework de Machine Learning em Python mantido
+            pelo grupo Bayer, usado em predição de propriedades moleculares e
+            dados de transcriptômica. Tenho dois PRs nele.
+          </p>
+        </div>
+
+        <ul class="oss-prs">
+          <li>
+            <a
+              class="pr glass"
+              href="https://github.com/Bayer-Group/MotherML"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code>PR #91</code>
+              <span data-i18n="ossPr91">Model Registry: descoberta e instanciação padronizada de modelos</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="pr glass"
+              href="https://github.com/Bayer-Group/MotherML"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code>PR #106</code>
+              <span data-i18n="ossPr106">Murcko Scaffold Grouping: validação cruzada sem vazamento entre compostos parecidos</span>
+            </a>
+          </li>
+        </ul>
 
       </div>
 
@@ -348,7 +409,7 @@
           </span>
 
           <h2 data-i18n="aboutTitle">
-            Análise técnica com visão comercial de campo.
+            Engenharia de dados com visão de negócio.
           </h2>
 
 
@@ -363,10 +424,10 @@
             </p>
 
             <p data-i18n="aboutText2">
-              Hoje aprofundo minha atuação em análise de dados, ETL,
-              Python, SQL, Pandas, PostgreSQL, Power BI, Plotly e Streamlit
-              para transformar dados operacionais em decisões claras,
-              priorizadas e mensuráveis.
+              Hoje atuo com engenharia de dados e desenvolvimento: ETL,
+              Python, SQL, Pandas e PostgreSQL de um lado, Java com Spring
+              Boot, TypeScript e React do outro, com testes automatizados
+              e CI/CD.
             </p>
 
             <p data-i18n="aboutText3">
@@ -381,9 +442,9 @@
           <div class="mini-grid">
 
             <div class="mini glass">
-              <b>SAP + Excel</b>
+              <b>ETL + CI/CD</b>
               <span data-i18n="mini1">
-                rotina analítica
+                pipelines automatizados
               </span>
             </div>
 
@@ -395,9 +456,9 @@
             </div>
 
             <div class="mini glass">
-              <b>BI + Storytelling</b>
+              <b>Java + TypeScript</b>
               <span data-i18n="mini3">
-                decisão acionável
+                APIs e interfaces
               </span>
             </div>
 
@@ -439,15 +500,27 @@
           </span>
 
           <h2 data-i18n="projectsTitle">
-            Projetos de dados com foco em decisão.
+            Projetos de dados e de software, testados em CI.
           </h2>
 
           <p data-i18n="projectsDescription">
-            Seleção de análises, dashboards e laboratórios publicados no
-            GitHub — com foco em performance, visualização, automação e
-            leitura de negócio.
+            Seleção de pipelines, APIs e análises publicados no GitHub.
+            Use os filtros para ver só a área que interessa.
           </p>
 
+        </div>
+
+
+        <div
+          class="filters"
+          role="group"
+          aria-label="Filtrar projetos por área"
+          data-i18n-aria-label="filterGroupLabel"
+        >
+          <button type="button" class="filter" data-filter="all" aria-pressed="true" data-i18n="filterAll">Todos</button>
+          <button type="button" class="filter" data-filter="data" aria-pressed="false" data-i18n="filterData">Data &amp; Analytics</button>
+          <button type="button" class="filter" data-filter="software" aria-pressed="false" data-i18n="filterSoftware">Software &amp; Backend</button>
+          <button type="button" class="filter" data-filter="oss" aria-pressed="false" data-i18n="filterOss">Open Source</button>
         </div>
 
 
@@ -498,9 +571,8 @@
           </h2>
 
           <p data-i18n="servicesDescription">
-            Da extração ao insight: desenho pipelines, organizo indicadores
-            e entrego visualizações acionáveis para líderes comerciais,
-            operações e produto.
+            Do pipeline à API e ao dashboard: construo a camada de dados e a
+            de aplicação, com testes e integração contínua.
           </p>
 
         </div>
@@ -758,6 +830,28 @@
 
   </footer>
 
+
+  <!-- Paleta de comandos (Ctrl+K / ⌘K) -->
+
+  <div class="cmd" id="cmd" hidden>
+    <div class="cmd-panel glass" role="dialog" aria-modal="true" aria-labelledby="cmdTitle">
+      <p class="visually-hidden" id="cmdTitle" data-i18n="cmdTitle">Navegar pelo portfólio</p>
+
+      <input
+        id="cmdInput"
+        type="text"
+        autocomplete="off"
+        placeholder="Digite um comando"
+        aria-label="Buscar comando"
+        data-i18n-placeholder="cmdPlaceholder"
+        data-i18n-aria-label="cmdInputLabel"
+      >
+
+      <ul class="cmd-list" id="cmdList"></ul>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js" defer></script>
 

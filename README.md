@@ -1,6 +1,6 @@
-# Sérgio Meyer — Data Analyst Portfolio
+# Sérgio Meyer — Data & Software Engineer Portfolio
 
-Personal portfolio website for Sérgio Meyer, focused on data analysis, business intelligence and commercial insights.
+Personal portfolio website for Sérgio Meyer, focused on data engineering, backend development and analytics.
 
 The portfolio brings together my projects, technical skills and professional experience in commercial analytics, retail and sales intelligence.
 

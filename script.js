@@ -1,28 +1,30 @@
 const skills = [
-  "Data Visualization",
-  "A/B Testing",
-  "Data Storytelling",
-  "Statistical Analysis",
   "Python",
   "Pandas",
   "SQL",
   "PostgreSQL",
-  "Power BI",
-  "DAX",
   "ETL",
-  "Excel Avançado",
-  "Power Query",
-  "Plotly",
-  "Streamlit",
-  "Git & GitHub",
-  "SAP",
-  "Trade Marketing",
+  "Java",
+  "Spring Boot",
+  "APIs REST",
   "TypeScript",
   "React",
   "Node.js",
-  "Java",
-  "Spring Boot",
-  "APIs REST"
+  "Docker",
+  "GitHub Actions",
+  "Pytest",
+  "JUnit 5",
+  "Git & GitHub",
+  "Streamlit",
+  "Plotly",
+  "Power BI",
+  "DAX",
+  "Power Query",
+  "Data Visualization",
+  "Data Storytelling",
+  "Statistical Analysis",
+  "A/B Testing",
+  "Excel Avançado"
 ];
 
 const copy = {
@@ -40,45 +42,76 @@ const copy = {
     menuOpen: "Abrir menu",
     menuLabel: "Menu de navegação",
     heroGreeting: "OLÁ, EU SOU SERGIO MEYER.",
-    heroTitle: "ANALISTA DE DADOS.",
-    tagline: "Transformando dados em decisões estratégicas e insights acionáveis.",
+    heroTitle: "DATA & SOFTWARE ENGINEER.",
+    tagline: "Do dado bruto à decisão, com pipelines e APIs testados em CI.",
     heroDescription:
-      "Converto dados brutos em narrativas de negócio, dashboards executivos e análises que ajudam equipes comerciais a priorizar oportunidades, reduzir gargalos e vender melhor.",
+      "Construo pipelines de dados, automações e aplicações backend. Python e SQL de um lado, Java com Spring Boot e TypeScript do outro, sempre com testes automatizados e CI/CD.",
 
     ctaProjects: "VEJA MEUS PROJETOS",
     ctaContact: "Fale comigo",
     downloadCv: "Baixar currículo",
 
-    heroStatLabel1: "clientes analisados",
-    heroStatLabel2: "vendedores suportados",
-    heroStatLabel3: "anos em inteligência comercial",
-    bubbleValue: "80/20",
-    bubbleLabel: "Pareto de vendas",
+    heroStatLabel1: "PRs no MotherML (Bayer)",
+    heroStatLabel2: "pedidos reais analisados",
+    heroStatLabel3: "shards de coleta paralela",
+    bubbleValue: "CI/CD",
+    bubbleLabel: "Testes automatizados",
 
     aboutEyebrow: "Sobre mim",
-    aboutTitle: "Análise técnica com visão comercial de campo.",
+    aboutTitle: "Engenharia de dados com visão de negócio.",
     aboutText1:
       "Sou Sérgio Meyer, profissional de análise comercial e inteligência de vendas com experiência em FMCG, distribuição e varejo. Atuei com gestão analítica de uma carteira de 4.000 clientes ativos e suporte estratégico para uma equipe de 50 vendedores.",
     aboutText2:
-      "Hoje aprofundo minha atuação em análise de dados, ETL, Python, SQL, Pandas, PostgreSQL, Power BI, Plotly e Streamlit para transformar dados operacionais em decisões claras, priorizadas e mensuráveis.",
+      "Hoje atuo com engenharia de dados e desenvolvimento: ETL, Python, SQL, Pandas e PostgreSQL de um lado, Java com Spring Boot, TypeScript e React do outro, com testes automatizados e CI/CD.",
     aboutText3:
       "Minha diferença está em conectar execução de loja, comportamento do shopper e métricas comerciais com soluções de BI que fazem sentido para quem toma decisão.",
 
-    mini1: "rotina analítica",
+    mini1: "pipelines automatizados",
     mini2: "extração e análise",
-    mini3: "decisão acionável",
+    mini3: "APIs e interfaces",
 
     skillsTitle: "Skills & Ferramentas",
 
     projectsEyebrow: "Portfolio",
-    projectsTitle: "Projetos de dados com foco em decisão.",
+    projectsTitle: "Projetos de dados e de software, testados em CI.",
     projectsDescription:
-      "Seleção de análises, dashboards e laboratórios publicados no GitHub — com foco em performance, visualização, automação e leitura de negócio.",
+      "Seleção de pipelines, APIs e análises publicados no GitHub. Use os filtros para ver só a área que interessa.",
+    filterGroupLabel: "Filtrar projetos por área",
+    filterAll: "Todos",
+    filterData: "Data & Analytics",
+    filterSoftware: "Software & Backend",
+    filterOss: "Open Source",
+
+    ossEyebrow: "Open Source",
+    ossTitle: "Contribuições no repositório da Bayer.",
+    ossText:
+      "O MotherML é um framework de Machine Learning em Python mantido pelo grupo Bayer, usado em predição de propriedades moleculares e dados de transcriptômica. Tenho dois PRs nele.",
+    ossPr91: "Model Registry: descoberta e instanciação padronizada de modelos",
+    ossPr106: "Murcko Scaffold Grouping: validação cruzada sem vazamento entre compostos parecidos",
+
+    cmdButton: "Buscar",
+    cmdTitle: "Navegar pelo portfólio",
+    cmdInputLabel: "Buscar comando",
+    cmdPlaceholder: "Digite um comando",
+    cmdEmpty: "Nenhum comando encontrado.",
+    cmdProjects: "Ir para Projetos",
+    cmdOss: "Ir para Open Source",
+    cmdCases: "Ir para Estudos de caso",
+    cmdContact: "Ir para Contato",
+    cmdFilterData: "Filtrar projetos: Data & Analytics",
+    cmdFilterSoftware: "Filtrar projetos: Software & Backend",
+    cmdFilterOss: "Filtrar projetos: Open Source",
+    cmdFilterAll: "Mostrar todos os projetos",
+    cmdLanguage: "Mudar idioma para English",
+    cmdCopyEmail: "Copiar e-mail",
+    cmdCv: "Baixar currículo (PDF)",
+    toastEmailCopied: "E-mail copiado.",
+    toastEmailManual: "Não foi possível copiar. O e-mail é sergio.gabriel.meyer10@gmail.com",
 
     servicesEyebrow: "Serviços",
     servicesTitle: "Como posso gerar valor para o seu negócio.",
     servicesDescription:
-      "Da extração ao insight: desenho pipelines, organizo indicadores e entrego visualizações acionáveis para líderes comerciais, operações e produto.",
+      "Do pipeline à API e ao dashboard: construo a camada de dados e a de aplicação, com testes e integração contínua.",
     casesEyebrow: "Estudos de caso",
     casesTitle: "De problema a decisão.",
     casesDescription:
@@ -131,45 +164,76 @@ const copy = {
     menuOpen: "Open menu",
     menuLabel: "Navigation menu",
     heroGreeting: "HI, I AM SERGIO MEYER.",
-    heroTitle: "DATA ANALYST.",
-    tagline: "Turning data into strategic decisions and actionable insights.",
+    heroTitle: "DATA & SOFTWARE ENGINEER.",
+    tagline: "From raw data to decisions, with pipelines and APIs tested in CI.",
     heroDescription:
-      "I convert raw data into business narratives, executive dashboards, and analyses that help sales teams prioritize opportunities, remove bottlenecks, and sell smarter.",
+      "I build data pipelines, automations and backend applications. Python and SQL on one side, Java with Spring Boot and TypeScript on the other, always with automated tests and CI/CD.",
 
     ctaProjects: "VIEW MY PROJECTS",
     ctaContact: "Contact me",
     downloadCv: "Download résumé",
 
-    heroStatLabel1: "customers analyzed",
-    heroStatLabel2: "sales reps supported",
-    heroStatLabel3: "years in sales intelligence",
-    bubbleValue: "80/20",
-    bubbleLabel: "Sales Pareto",
+    heroStatLabel1: "PRs in MotherML (Bayer)",
+    heroStatLabel2: "real orders analyzed",
+    heroStatLabel3: "parallel collection shards",
+    bubbleValue: "CI/CD",
+    bubbleLabel: "Automated tests",
 
     aboutEyebrow: "About me",
-    aboutTitle: "Technical analysis with field-driven commercial vision.",
+    aboutTitle: "Data engineering with business sense.",
     aboutText1:
       "I am Sérgio Meyer, a sales intelligence and commercial analytics professional with experience across FMCG, distribution, and retail. I managed analytical routines for a 4,000-customer portfolio and supported a 50-person sales team.",
     aboutText2:
-      "I am expanding my work in data analysis, ETL, Python, SQL, Pandas, PostgreSQL, Power BI, Plotly, and Streamlit to turn operational data into clear, prioritized, measurable decisions.",
+      "Today I work in data engineering and development: ETL, Python, SQL, Pandas and PostgreSQL on one side, Java with Spring Boot, TypeScript and React on the other, with automated tests and CI/CD.",
     aboutText3:
       "My edge is connecting store execution, shopper behavior, and commercial metrics with BI solutions that make sense for decision makers.",
 
-    mini1: "analytics routine",
+    mini1: "automated pipelines",
     mini2: "extraction & analysis",
-    mini3: "actionable decision",
+    mini3: "APIs and interfaces",
 
     skillsTitle: "Skills & Tools",
 
     projectsEyebrow: "Portfolio",
-    projectsTitle: "Data projects focused on decisions.",
+    projectsTitle: "Data and software projects, tested in CI.",
     projectsDescription:
-      "A selection of analyses, dashboards, and labs published on GitHub — focused on performance, visualization, automation, and business interpretation.",
+      "A selection of pipelines, APIs and analyses published on GitHub. Use the filters to see only the area you care about.",
+    filterGroupLabel: "Filter projects by area",
+    filterAll: "All",
+    filterData: "Data & Analytics",
+    filterSoftware: "Software & Backend",
+    filterOss: "Open Source",
+
+    ossEyebrow: "Open Source",
+    ossTitle: "Contributions to Bayer's repository.",
+    ossText:
+      "MotherML is a Python Machine Learning framework maintained by the Bayer group, used for molecular property prediction and transcriptomics data. I have two PRs in it.",
+    ossPr91: "Model Registry: standard discovery and instantiation of models",
+    ossPr106: "Murcko Scaffold Grouping: cross-validation without leakage between similar compounds",
+
+    cmdButton: "Search",
+    cmdTitle: "Navigate the portfolio",
+    cmdInputLabel: "Search command",
+    cmdPlaceholder: "Type a command",
+    cmdEmpty: "No command found.",
+    cmdProjects: "Go to Projects",
+    cmdOss: "Go to Open Source",
+    cmdCases: "Go to Case studies",
+    cmdContact: "Go to Contact",
+    cmdFilterData: "Filter projects: Data & Analytics",
+    cmdFilterSoftware: "Filter projects: Software & Backend",
+    cmdFilterOss: "Filter projects: Open Source",
+    cmdFilterAll: "Show all projects",
+    cmdLanguage: "Switch language to Português",
+    cmdCopyEmail: "Copy email",
+    cmdCv: "Download résumé (PDF)",
+    toastEmailCopied: "Email copied.",
+    toastEmailManual: "Could not copy. The email is sergio.gabriel.meyer10@gmail.com",
 
     servicesEyebrow: "Services",
     servicesTitle: "How I can create value for your business.",
     servicesDescription:
-      "From extraction to insight: I design pipelines, organize KPIs, and deliver actionable visualizations for sales, operations, and product leaders.",
+      "From pipeline to API to dashboard: I build the data layer and the application layer, with tests and continuous integration.",
     casesEyebrow: "Case studies",
     casesTitle: "From problem to decision.",
     casesDescription:
@@ -211,6 +275,43 @@ const copy = {
 
 const projects = [
   {
+    title: "Mercavel — Comparador de Preços",
+    titleEn: "Mercavel — Price Comparison",
+    category: "Data Engineering & Full-Stack",
+    categoryEn: "Data Engineering & Full-Stack",
+    description:
+      "Comparador e rastreador diário de preços entre supermercados de Cascavel/PR. A coleta roda em 4 shards paralelos no GitHub Actions e o pareamento de produtos acontece em duas etapas: EAN exato e uma heurística de marca, nome e gramatura normalizados.",
+    descriptionEn:
+      "Daily price tracker and comparison across supermarkets in Cascavel/PR. Collection runs in 4 parallel GitHub Actions shards and product matching happens in two steps: exact EAN, then a heuristic on normalized brand, name and weight.",
+    result: "Coleta diária em 4 shards • Testes com Vitest",
+    resultEn: "Daily collection in 4 shards • Vitest tests",
+    technologies: ["TypeScript", "React", "Node.js", "Supabase", "Vitest", "GitHub Actions"],
+    repository: "https://github.com/sergiomeyer23/Mercavel",
+    live: "https://sergiomeyer23.github.io/Mercavel/",
+    areas: ["data", "software"],
+    featured: true,
+    flow: ["4 shards · Actions", "EAN + heurística", "Supabase", "React + TypeScript"],
+    flowEn: ["4 shards · Actions", "EAN + heuristic", "Supabase", "React + TypeScript"]
+  },
+
+  {
+    title: "Expense Tracker API",
+    titleEn: "Expense Tracker API",
+    category: "Backend & REST API",
+    categoryEn: "Backend & REST API",
+    description:
+      "API REST de gestão financeira pessoal em camadas (Controller, Service e Repository), com validação estrita por DTOs, tratamento global de exceções, persistência relacional e ambiente conteinerizado com Docker Compose.",
+    descriptionEn:
+      "Personal finance REST API in layers (Controller, Service and Repository), with strict DTO validation, global exception handling, relational persistence and a containerized Docker Compose environment.",
+    result: "Java 21 • Spring Boot • JUnit 5",
+    resultEn: "Java 21 • Spring Boot • JUnit 5",
+    technologies: ["Java 21", "Spring Boot", "Spring Data JPA", "PostgreSQL", "Docker Compose", "JUnit 5"],
+    repository: "https://github.com/sergiomeyer23/expense-tracker-api",
+    areas: ["software"],
+    flow: ["Controller", "Service", "Repository", "PostgreSQL"]
+  },
+
+  {
     title: "Olist Sales Performance Analysis",
     titleEn: "Olist Sales Performance Analysis",
     category: "E-commerce Analytics & Customer/Seller Insights",
@@ -223,23 +324,9 @@ const projects = [
     resultEn: "BRL 13.2M analyzed • 96k orders",
     technologies: ["Python", "Pandas", "Plotly", "Streamlit", "Pytest"],
     repository: "https://github.com/sergiomeyer23/olist-sales-performance-analysis",
-    bars: [72, 48, 86, 62, 95, 53, 78]
-  },
-
-  {
-    title: "Automação de Relatório de Vendas",
-    titleEn: "Sales Report Automation",
-    category: "Excel Automation & Data Quality",
-    categoryEn: "Excel Automation & Data Quality",
-    description:
-      "Aplicação Java que lê planilhas de vendas, valida datas, quantidades e preços, filtra o mês de referência e gera um relatório Excel com resumo, vendas por produto e top 5. Linhas inválidas são reportadas em vez de contaminar os totais.",
-    descriptionEn:
-      "Java application that reads sales spreadsheets, validates dates, quantities and prices, filters the reference month and generates an Excel report with summary, sales by product and top 5. Invalid rows are reported instead of contaminating totals.",
-    result: "3 abas • 13 testes • CI",
-    resultEn: "3 tabs • 13 tests • CI",
-    technologies: ["Java", "Apache POI", "Maven", "JUnit 5"],
-    repository: "https://github.com/sergiomeyer23/automacao-planilha",
-    bars: [64, 82, 57, 91, 73, 68, 87]
+    areas: ["data"],
+    flow: ["9 CSVs", "Cache Parquet", "20 funções", "Streamlit"],
+    flowEn: ["9 CSVs", "Parquet cache", "20 functions", "Streamlit"]
   },
 
   {
@@ -255,23 +342,9 @@ const projects = [
     resultEn: "Fault-injection tests • Linux and Windows CI",
     technologies: ["Python", "SQLite", "PowerShell", "ReportLab", "GitHub Actions"],
     repository: "https://github.com/sergiomeyer23/print-guard",
-    bars: [58, 79, 66, 90, 47, 84, 71]
-  },
-
-  {
-    title: "Mercavel — Comparador de Preços",
-    titleEn: "Mercavel — Price Comparison",
-    category: "Web Scraping & Retail Price Intelligence",
-    categoryEn: "Web Scraping & Retail Price Intelligence",
-    description:
-      "Plataforma web que compara preços de supermercados de Cascavel/PR a partir de dados coletados automaticamente nos sites dos mercados. Traz tabela de preços por mercado, média por categoria, cesta de compras comparada e dashboard geral — cada preço guarda a data da coleta e o link da oferta.",
-    descriptionEn:
-      "Web platform comparing supermarket prices in Cascavel/PR automatically collected from market websites. Provides per-market price table, category averages, compared shopping basket and overall dashboard — each price stores its collection date and offer link.",
-    result: "Preços reais • Múltiplos mercados • Cesta comparada",
-    resultEn: "Real prices • Multiple markets • Compared basket",
-    technologies: ["React", "TypeScript", "Vite", "Tailwind", "Web Scraping"],
-    repository: "https://github.com/sergiomeyer23/Mercavel",
-    bars: [81, 56, 93, 64, 72, 88, 60]
+    areas: ["software"],
+    flow: ["Relatório PDF", "Diário SQLite", "Impressão", "Job saiu da fila"],
+    flowEn: ["PDF report", "SQLite journal", "Print", "Job left the queue"]
   },
 
   {
@@ -288,77 +361,120 @@ const projects = [
     technologies: ["JavaScript", "Google Gemini", "Chart.js", "localStorage", "SheetJS"],
     repository: "https://github.com/sergiomeyer23/Mangos",
     live: "https://sergiomeyer23.github.io/Mangos/",
-    bars: [76, 91, 58, 83, 69, 95, 54]
+    areas: ["software"],
+    flow: ["Texto livre", "LLM extrai", "Cálculo determinístico", "Diagnóstico"],
+    flowEn: ["Free text", "LLM extracts", "Deterministic math", "Diagnosis"]
   },
 
   {
-    title: "Pandas Fundamentos — Lab 12/12",
-    titleEn: "Pandas Fundamentals — Lab 12/12",
-    category: "Data Cleaning & Pandas Fundamentals",
-    categoryEn: "Data Cleaning & Pandas Fundamentals",
+    title: "FalowAI",
+    titleEn: "FalowAI",
+    category: "Full-Stack & EdTech",
+    categoryEn: "Full-Stack & EdTech",
     description:
-      "Laboratório prático cobrindo o ciclo integral de dados: leitura, limpeza, filtros, groupby, merge, datas e exportação. Base técnica para análises de varejo, finanças e operações.",
+      "Plataforma de aprendizado adaptativo de inglês com laboratório de pronúncia, dashboard de progresso e motor de gamificação. As regras anti-farming de XP são testadas no backend.",
     descriptionEn:
-      "Practical lab covering the full data cycle: reading, cleaning, filtering, groupby, merge, dates and export. Technical foundation for retail, finance and operations analyses.",
-    result: "12/12 exercícios concluídos",
-    resultEn: "12/12 exercises completed",
-    technologies: ["Python", "Pandas", "Data Cleaning", "EDA"],
-    repository: "https://github.com/sergiomeyer23/pandas-fundamentos",
-    bars: [67, 44, 75, 88, 52, 81, 69]
+      "Adaptive English learning platform with a pronunciation lab, a progress dashboard and a gamification engine. The anti-farming XP rules are tested in the backend.",
+    result: "Next.js no front • Spring Boot no back",
+    resultEn: "Next.js frontend • Spring Boot backend",
+    technologies: ["TypeScript", "Next.js", "Java", "Spring Boot"],
+    repository: "https://github.com/sergiomeyer23/FalowAI",
+    areas: ["software"],
+    flow: ["Pronúncia", "Regras de XP", "Painel de progresso"],
+    flowEn: ["Pronunciation", "XP rules", "Progress dashboard"]
   },
 
   {
-    title: "Retail Sales Analyzer",
-    titleEn: "Retail Sales Analyzer",
-    category: "Sales Analysis & Data Quality",
-    categoryEn: "Sales Analysis & Data Quality",
+    title: "WEG Equity Pipeline",
+    titleEn: "WEG Equity Pipeline",
+    category: "Data Engineering & Quantitative Finance",
+    categoryEn: "Data Engineering & Quantitative Finance",
     description:
-      "Script Python para leitura de vendas em CSV, estatísticas gerais, ranking de produtos, filtros por valor e tratamento robusto de erros — base para automações e análises recorrentes.",
+      "Pipeline ETL modular que extrai demonstrativos regulatórios da CVM e cotações do Yahoo Finance para a WEG (WEGE3.SA), calcula múltiplos fundamentalistas e roda valuation por Fluxo de Caixa Descontado (DCF). Publica um dashboard interativo e aceita execução determinística com --mock e --live.",
     descriptionEn:
-      "Python script reading sales from CSV, general stats, product ranking, value filters and robust error handling — a foundation for automations and recurring analyses.",
-    result: "Relatórios automatizados em CSV",
-    resultEn: "Automated CSV reports",
-    technologies: ["Python", "CSV", "Data Quality", "Automation"],
-    repository: "https://github.com/sergiomeyer23/retail-sales-analyzer",
-    bars: [42, 68, 51, 84, 58, 73, 66]
+      "Modular ETL pipeline that extracts regulatory statements from CVM and quotes from Yahoo Finance for WEG (WEGE3.SA), computes fundamental multiples and runs a Discounted Cash Flow (DCF) valuation. It publishes an interactive dashboard and supports deterministic runs with --mock and --live.",
+    result: "ETL + DCF • Modos --mock e --live",
+    resultEn: "ETL + DCF • --mock and --live modes",
+    technologies: ["Python", "Pandas", "Streamlit", "Pytest", "GitHub Actions"],
+    repository: "https://github.com/sergiomeyer23/weg_equity_pipeline",
+    areas: ["data"],
+    featured: true,
+    flow: ["CVM + Yahoo Finance", "ETL", "Múltiplos + DCF", "Streamlit"],
+    flowEn: ["CVM + Yahoo Finance", "ETL", "Multiples + DCF", "Streamlit"]
+  },
+
+  {
+    title: "MotherML (Bayer-Group)",
+    titleEn: "MotherML (Bayer-Group)",
+    category: "Open Source & Machine Learning",
+    categoryEn: "Open Source & Machine Learning",
+    description:
+      "Contribuições para o framework de Machine Learning em Python mantido pelo grupo Bayer, usado em predição de propriedades moleculares e dados de transcriptômica. O PR #91 implementa um registro unificado de modelos (CatBoost, Random Forest, Lasso, TabPFN e estimadores compatíveis com Scikit-Learn). O PR #106 agrupa compostos por scaffold de Murcko na validação cruzada, evitando vazamento de dados entre moléculas parecidas.",
+    descriptionEn:
+      "Contributions to the Python Machine Learning framework maintained by the Bayer group, used for molecular property prediction and transcriptomics data. PR #91 implements a unified model registry (CatBoost, Random Forest, Lasso, TabPFN and Scikit-Learn compatible estimators). PR #106 groups compounds by Murcko scaffold in cross-validation, preventing data leakage between similar molecules.",
+    result: "PR #91 e PR #106 • Bayer-Group/MotherML",
+    resultEn: "PR #91 and PR #106 • Bayer-Group/MotherML",
+    technologies: ["Python", "Scikit-Learn", "CatBoost", "TabPFN", "Cross-validation"],
+    repository: "https://github.com/Bayer-Group/MotherML",
+    areas: ["oss", "data"],
+    featured: true,
+    flow: ["PR #91 Model Registry", "PR #106 Scaffold CV"]
+  },
+
+  {
+    title: "Automação de Relatório de Vendas",
+    titleEn: "Sales Report Automation",
+    category: "Excel Automation & Data Quality",
+    categoryEn: "Excel Automation & Data Quality",
+    description:
+      "Aplicação Java que lê planilhas de vendas, valida datas, quantidades e preços, filtra o mês de referência e gera um relatório Excel com resumo, vendas por produto e top 5. Linhas inválidas são reportadas em vez de contaminar os totais.",
+    descriptionEn:
+      "Java application that reads sales spreadsheets, validates dates, quantities and prices, filters the reference month and generates an Excel report with summary, sales by product and top 5. Invalid rows are reported instead of contaminating totals.",
+    result: "3 abas • 13 testes • CI",
+    resultEn: "3 tabs • 13 tests • CI",
+    technologies: ["Java", "Apache POI", "Maven", "JUnit 5"],
+    repository: "https://github.com/sergiomeyer23/automacao-planilha",
+    areas: ["data", "software"],
+    flow: ["Excel .xlsx", "Validação", "Relatório"],
+    flowEn: ["Excel .xlsx", "Validation", "Report"]
   }
 ];
 
 const services = [
   {
-    icon: "📊",
-    title: "Data Visualization & Dashboards",
-    titleEn: "Data Visualization & Dashboards",
+    icon: "ETL",
+    title: "Data Pipelines & ETL",
+    titleEn: "Data Pipelines & ETL",
     description:
-      "Dashboards claros, responsivos e orientados à decisão para acompanhar metas, cobertura, sell-out, ruptura e performance.",
+      "Rotinas de extração, limpeza e organização de dados com testes e execução agendada, para reduzir trabalho manual e aumentar a confiabilidade.",
     descriptionEn:
-      "Clear, responsive, decision-oriented dashboards to track targets, coverage, sell-out, stockouts and performance.",
-    items: ["Power BI / Excel", "KPIs comerciais", "Storytelling executivo"],
-    itemsEn: ["Power BI / Excel", "Commercial KPIs", "Executive storytelling"]
+      "Extraction, cleaning and data organization routines with tests and scheduled runs, to reduce manual work and increase reliability.",
+    items: ["Python / Pandas", "SQL / PostgreSQL", "GitHub Actions"],
+    itemsEn: ["Python / Pandas", "SQL / PostgreSQL", "GitHub Actions"]
   },
 
   {
-    icon: "🧠",
-    title: "Statistical Data Analysis",
-    titleEn: "Statistical Data Analysis",
+    icon: "API",
+    title: "Backend & APIs",
+    titleEn: "Backend & APIs",
     description:
-      "Análises exploratórias, segmentações, Pareto, correlações e leitura de drivers para priorizar ações de alto impacto.",
+      "APIs REST em camadas, com validação, tratamento de erros e ambiente reproduzível em Docker, prontas para receber testes automatizados.",
     descriptionEn:
-      "Exploratory analyses, segmentation, Pareto, correlations and driver reading to prioritize high-impact actions.",
-    items: ["Python / Pandas", "A/B Testing", "Modelagem de hipóteses"],
-    itemsEn: ["Python / Pandas", "A/B Testing", "Hypothesis modeling"]
+      "Layered REST APIs with validation, error handling and a reproducible Docker environment, ready for automated tests.",
+    items: ["Java / Spring Boot", "PostgreSQL", "JUnit 5 / Docker Compose"],
+    itemsEn: ["Java / Spring Boot", "PostgreSQL", "JUnit 5 / Docker Compose"]
   },
 
   {
-    icon: "⚙️",
-    title: "ETL & Data Pipeline Design",
-    titleEn: "ETL & Data Pipeline Design",
+    icon: "BI",
+    title: "Analytics & Dashboards",
+    titleEn: "Analytics & Dashboards",
     description:
-      "Rotinas de extração, limpeza e organização de dados para reduzir trabalho manual e aumentar confiabilidade operacional.",
+      "Análises exploratórias, Pareto, segmentações e dashboards para acompanhar metas, cobertura, ruptura e performance comercial.",
     descriptionEn:
-      "Extraction, cleaning and data organization routines to reduce manual work and increase operational reliability.",
-    items: ["SQL / PostgreSQL", "Automação de relatórios", "Qualidade de dados"],
-    itemsEn: ["SQL / PostgreSQL", "Report automation", "Data quality"]
+      "Exploratory analyses, Pareto, segmentation and dashboards to track targets, coverage, stockouts and commercial performance.",
+    items: ["Power BI / Streamlit", "KPIs comerciais", "A/B Testing"],
+    itemsEn: ["Power BI / Streamlit", "Commercial KPIs", "A/B Testing"]
   }
 ];
 
@@ -482,6 +598,21 @@ function renderSkills() {
     .join("");
 }
 
+let currentFilter = "all";
+
+function applyProjectFilter(filter) {
+  currentFilter = filter;
+
+  document.querySelectorAll("#projects .project").forEach(card => {
+    const areas = (card.dataset.areas || "").split(" ");
+    card.hidden = !(filter === "all" || areas.includes(filter));
+  });
+
+  document.querySelectorAll("[data-filter]").forEach(button => {
+    button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
+  });
+}
+
 function renderProjects() {
   const container = document.getElementById("projects");
   const selectedCopy = copy[currentLanguage];
@@ -494,10 +625,13 @@ function renderProjects() {
       const result = escapeHtml(localized(project, "result"));
       const repository = escapeHtml(project.repository);
       const live = project.live ? escapeHtml(project.live) : "";
+      const areas = escapeHtml(project.areas.join(" "));
+      const featured = project.featured ? " featured" : "";
 
-      const bars = project.bars
-        .map(height => `<div class="bar" style="height: ${Number(height)}%"></div>`)
-        .join("");
+      const flowSteps = currentLanguage === "en" && project.flowEn ? project.flowEn : project.flow;
+      const flow = flowSteps
+        .map(step => `<span>${escapeHtml(step)}</span>`)
+        .join('<i class="arrow" aria-hidden="true">→</i>');
 
       const tags = project.technologies
         .map(technology => `<span>${escapeHtml(technology)}</span>`)
@@ -517,38 +651,33 @@ function renderProjects() {
         : "";
 
       return `
-        <article class="project glass">
-          <div class="dash">
-            ${bars}
-            <span class="kpi">Live KPI</span>
+        <article class="project glass${featured}" data-areas="${areas}">
+          <small>${category}</small>
+
+          <h3>${title}</h3>
+
+          <div class="flow">${flow}</div>
+
+          <p>${description}</p>
+
+          <span class="metric">
+            ${result}
+          </span>
+
+          <div class="tags">
+            ${tags}
           </div>
 
-          <div class="project-body">
-            <small>${category}</small>
-
-            <h3>${title}</h3>
-
-            <p>${description}</p>
-
-            <span class="metric">
-              ${result}
-            </span>
-
-            <div class="tags">
-              ${tags}
-            </div>
-
-            <div class="project-actions">
-              <a
-                class="btn btn-primary"
-                href="${repository}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span data-btnrepo></span> ↗
-              </a>
-              ${liveButton}
-            </div>
+          <div class="project-actions">
+            <a
+              class="btn btn-primary"
+              href="${repository}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-btnrepo></span> ↗
+            </a>
+            ${liveButton}
           </div>
         </article>
       `;
@@ -562,6 +691,8 @@ function renderProjects() {
   document.querySelectorAll("[data-btnlive]").forEach(element => {
     element.textContent = selectedCopy.viewDemo;
   });
+
+  applyProjectFilter(currentFilter);
 }
 
 function renderServices() {
@@ -687,8 +818,8 @@ function setLanguage(language) {
     language === "br" ? "pt-BR" : "en";
 
   document.title = language === "br"
-    ? "Sérgio Meyer | Analista de Dados — Python · SQL · Power BI"
-    : "Sérgio Meyer | Data Analyst — Python · SQL · Power BI";
+    ? "Sérgio Meyer | Data & Software Engineer — Python · SQL · Java"
+    : "Sérgio Meyer | Data & Software Engineer — Python · SQL · Java";
 
   const mobileMenu = document.getElementById("mobileMenu");
   if (mobileMenu) {
@@ -918,10 +1049,197 @@ function setupBackToTop() {
   toggle();
 }
 
+function setupProjectFilters() {
+  document.querySelectorAll("[data-filter]").forEach(button => {
+    button.addEventListener("click", () => applyProjectFilter(button.dataset.filter));
+  });
+}
+
+// Luz que segue o cursor na borda dos cards. A posição vai para variáveis CSS.
+function setupSpotlight() {
+  const container = document.getElementById("projects");
+  if (!container) return;
+
+  container.addEventListener("pointermove", event => {
+    const card = event.target.closest(".project");
+    if (!card) return;
+    const box = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${event.clientX - box.left}px`);
+    card.style.setProperty("--my", `${event.clientY - box.top}px`);
+  });
+}
+
+let toastTimer = null;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("visible");
+  window.clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2600);
+}
+
+function scrollToSection(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+}
+
+function copyEmail() {
+  const selectedCopy = copy[currentLanguage];
+  const address = selectedCopy.mailtoLink;
+  const clipboard = navigator.clipboard;
+
+  if (!clipboard || !clipboard.writeText) {
+    showToast(selectedCopy.toastEmailManual);
+    return;
+  }
+
+  clipboard.writeText(address).then(
+    () => showToast(selectedCopy.toastEmailCopied),
+    () => showToast(selectedCopy.toastEmailManual)
+  );
+}
+
+function downloadResume() {
+  const link = document.createElement("a");
+  link.href = "assets/curriculo-sergio-meyer.pdf";
+  link.download = "";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+function getCommands() {
+  const c = copy[currentLanguage];
+  return [
+    { label: c.cmdProjects, run: () => scrollToSection("portfolio") },
+    { label: c.cmdOss, run: () => scrollToSection("opensource") },
+    { label: c.cmdCases, run: () => scrollToSection("cases") },
+    { label: c.cmdContact, run: () => scrollToSection("contact") },
+    { label: c.cmdFilterData, run: () => { applyProjectFilter("data"); scrollToSection("portfolio"); } },
+    { label: c.cmdFilterSoftware, run: () => { applyProjectFilter("software"); scrollToSection("portfolio"); } },
+    { label: c.cmdFilterOss, run: () => { applyProjectFilter("oss"); scrollToSection("portfolio"); } },
+    { label: c.cmdFilterAll, run: () => { applyProjectFilter("all"); scrollToSection("portfolio"); } },
+    { label: c.cmdLanguage, run: () => setLanguage(currentLanguage === "br" ? "en" : "br") },
+    { label: c.cmdCopyEmail, run: copyEmail },
+    { label: c.cmdCv, run: downloadResume }
+  ];
+}
+
+function setupCommandPalette() {
+  const root = document.getElementById("cmd");
+  const input = document.getElementById("cmdInput");
+  const list = document.getElementById("cmdList");
+  const opener = document.getElementById("cmdOpen");
+  if (!root || !input || !list) return;
+
+  let visible = [];
+  let returnFocus = null;
+
+  const render = () => {
+    const query = input.value.trim().toLowerCase();
+    visible = getCommands().filter(command => command.label.toLowerCase().includes(query));
+
+    list.innerHTML = visible.length
+      ? visible
+          .map((command, index) => `<li><button type="button" class="cmd-item" data-cmd="${index}">${escapeHtml(command.label)}</button></li>`)
+          .join("")
+      : `<li class="cmd-empty">${escapeHtml(copy[currentLanguage].cmdEmpty)}</li>`;
+  };
+
+  const open = () => {
+    if (!root.hidden) return;
+    returnFocus = document.activeElement;
+    root.hidden = false;
+    input.value = "";
+    render();
+    input.focus();
+  };
+
+  const close = () => {
+    if (root.hidden) return;
+    root.hidden = true;
+    if (returnFocus && returnFocus.focus) returnFocus.focus();
+  };
+
+  const run = command => {
+    close();
+    if (command) command.run();
+  };
+
+  const items = () => Array.from(list.querySelectorAll(".cmd-item"));
+
+  if (opener) opener.addEventListener("click", open);
+
+  document.addEventListener("keydown", event => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      if (root.hidden) open(); else close();
+      return;
+    }
+
+    if (root.hidden) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      close();
+    } else if (event.key === "Tab") {
+      const focusable = [input, ...items()];
+      const index = focusable.indexOf(document.activeElement);
+      const next = event.shiftKey ? index - 1 : index + 1;
+      event.preventDefault();
+      focusable[(next + focusable.length) % focusable.length].focus();
+    }
+  });
+
+  input.addEventListener("input", render);
+
+  input.addEventListener("keydown", event => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      const first = items()[0];
+      if (first) first.focus();
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      run(visible[0]);
+    }
+  });
+
+  list.addEventListener("keydown", event => {
+    const buttons = items();
+    const index = buttons.indexOf(document.activeElement);
+    if (index === -1) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      buttons[Math.min(index + 1, buttons.length - 1)].focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (index === 0) input.focus(); else buttons[index - 1].focus();
+    }
+  });
+
+  list.addEventListener("click", event => {
+    const button = event.target.closest(".cmd-item");
+    if (button) run(visible[Number(button.dataset.cmd)]);
+  });
+
+  root.addEventListener("mousedown", event => {
+    if (event.target === root) close();
+  });
+}
+
 renderSkills();
 setLanguage(currentLanguage);
 
 setupLanguageButtons();
+setupProjectFilters();
+setupSpotlight();
+setupCommandPalette();
 setupMobileMenu();
 setupContactForm();
 setupScrollSpy();

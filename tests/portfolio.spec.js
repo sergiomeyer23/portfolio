@@ -27,9 +27,9 @@ test("renderiza o conteúdo principal e os links internos", async ({ page }) => 
 
   await page.goto("./");
 
-  await expect(page).toHaveTitle(/Sérgio Meyer \| Analista de Dados/);
+  await expect(page).toHaveTitle(/Sérgio Meyer \| Data & Software Engineer/);
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("ANALISTA DE DADOS");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
   await expect(page.locator("#projects article").first()).toBeVisible();
   await expect(page.locator("#projects").getByRole("heading", { name: "Olist Sales Performance Analysis" })).toBeVisible();
   await expect(page.locator("#casesGrid article").first()).toBeVisible();
@@ -93,6 +93,77 @@ test("os projetos apontam para repositórios HTTPS e o currículo está disponí
   expect(cv.headers()["content-type"]).toContain("application/pdf");
 });
 
+test("a lista de projetos tem os destaques de engenharia e não tem exercícios básicos", async ({ page }) => {
+  await page.goto("./");
+  const projects = page.locator("#projects");
+
+  for (const name of ["Mercavel", "WEG Equity Pipeline", "MotherML", "Expense Tracker API", "FalowAI"]) {
+    await expect(projects.getByRole("heading", { name: new RegExp(name) })).toHaveCount(1);
+  }
+  await expect(projects.getByRole("heading", { name: /Pandas Fundamentos/ })).toHaveCount(0);
+  await expect(projects.getByRole("heading", { name: /Retail Sales Analyzer/ })).toHaveCount(0);
+  await expect(page.locator("#opensource a[href='https://github.com/Bayer-Group/MotherML']")).toHaveCount(2);
+  await expect(page.locator("#opensource")).toContainText("PR #91");
+  await expect(page.locator("#opensource")).toContainText("PR #106");
+});
+
+test("os filtros por área reorganizam o grid e sobrevivem à troca de idioma", async ({ page }) => {
+  await page.goto("./");
+  const cards = page.locator("#projects article:visible");
+  const total = await cards.count();
+  expect(total).toBeGreaterThan(5);
+
+  await page.getByRole("button", { name: "Open Source", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Open Source", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(cards).toHaveCount(1);
+  await expect(cards.first()).toContainText("MotherML");
+
+  await page.locator('.actions [data-lang="en"]').click();
+  await expect(cards).toHaveCount(1);
+  await expect(page.getByRole("button", { name: "Open Source", exact: true })).toHaveAttribute("aria-pressed", "true");
+
+  await page.getByRole("button", { name: "Software & Backend" }).click();
+  await expect(cards.first()).toBeVisible();
+  for (const card of await cards.all()) {
+    const areas = await card.getAttribute("data-areas");
+    expect(areas.split(" ")).toContain("software");
+  }
+
+  await page.getByRole("button", { name: "All", exact: true }).click();
+  await expect(cards).toHaveCount(total);
+});
+
+test("a paleta de comandos abre com Ctrl+K, filtra, executa e devolve o foco", async ({ page }) => {
+  await page.goto("./");
+  const dialog = page.getByRole("dialog");
+
+  await expect(dialog).toBeHidden();
+  await page.locator("#cmdOpen").focus();
+  await page.keyboard.press("Control+K");
+  await expect(dialog).toBeVisible();
+  await expect(page.locator("#cmdInput")).toBeFocused();
+
+  await page.keyboard.type("data");
+  await expect(page.locator("#cmdList .cmd-item")).toHaveCount(1);
+  await page.keyboard.press("Enter");
+  await expect(dialog).toBeHidden();
+  await expect(page.locator("#cmdOpen")).toBeFocused();
+  await expect(page.getByRole("button", { name: "Data & Analytics", exact: true })).toHaveAttribute("aria-pressed", "true");
+
+  await page.keyboard.press("Control+K");
+  await page.keyboard.type("zzzz");
+  await expect(page.locator("#cmdList")).toContainText("Nenhum comando encontrado.");
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+});
+
+test("a paleta de comandos troca o idioma", async ({ page }) => {
+  await page.goto("./");
+  await page.locator("#cmdOpen").click();
+  await page.getByRole("button", { name: "Mudar idioma para English" }).click();
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+});
+
 test("o card do Print Guard aparece nos dois idiomas com o repositório correto", async ({ page }) => {
   await page.goto("./");
 
@@ -120,14 +191,14 @@ test("troca o idioma e o mantém após recarregar", async ({ page }) => {
   await expect(page.locator('.actions [data-lang="en"]')).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".actions .lang")).toHaveAccessibleName("Language");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await expect(page).toHaveTitle(/Sérgio Meyer \| Data Analyst/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA ANALYST");
+  await expect(page).toHaveTitle(/Sérgio Meyer \| Data & Software Engineer/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
   await expect(page.locator("#projects [data-btnrepo]").first()).toHaveText("View repository");
   expect(await page.evaluate(() => localStorage.getItem("portfolio-lang"))).toBe("en");
 
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA ANALYST");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
 
   await page.locator('.actions [data-lang="br"]').click();
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
@@ -398,7 +469,7 @@ test.describe("sem JavaScript", () => {
   test("mantém o contato direto e o formulário disponíveis", async ({ page }) => {
     await page.goto("./");
 
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("ANALISTA DE DADOS");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
     await expect(page.locator('#contact a[href^="mailto:"]')).toBeVisible();
     await expect(page.locator("#contactForm")).toHaveAttribute("action", /^https:\/\/formsubmit\.co\//);
     await expect(page.locator("#contactForm")).toHaveAttribute("method", "POST");
