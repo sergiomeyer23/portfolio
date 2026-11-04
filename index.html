@@ -12,7 +12,7 @@
     content="Portfólio de Sérgio Meyer — Data &amp; Software Engineer. Pipelines de dados, ETL, APIs REST em Java com Spring Boot, TypeScript, Python, SQL e contribuições open source."
   >
 
-  <meta name="theme-color" content="#f4efe6">
+  <meta name="theme-color" content="#0a0d12">
 
   <link rel="canonical" href="https://sergiomeyer23.github.io/portfolio/">
 
@@ -62,7 +62,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -135,7 +135,7 @@
 
   <!-- Menu mobile -->
 
-  <nav class="mobile" id="mobileMenu" aria-label="Menu de navegação" hidden>
+  <nav class="mobile glass" id="mobileMenu" aria-label="Menu de navegação" hidden>
 
     <a href="#home" data-i18n="navHome">Início</a>
     <a href="#about" data-i18n="navAbout">Sobre</a>
@@ -162,7 +162,7 @@
 
         <div class="hero-content">
 
-          <div class="available reveal">
+          <div class="available">
             <span class="dot"></span>
 
             <span data-i18n="available">
@@ -170,27 +170,27 @@
             </span>
           </div>
 
-          <h1 class="reveal">
+          <h1>
             <span data-i18n="heroGreeting">
-              Olá, eu sou Sérgio Meyer.
+              OLÁ, EU SOU SÉRGIO MEYER.
             </span>
 
             <span
               class="gradient"
               data-i18n="heroTitle"
             >
-              Data &amp; Software Engineer.
+              DATA &amp; SOFTWARE ENGINEER.
             </span>
           </h1>
 
-          <p class="tagline reveal">
+          <p class="tagline">
             “<span data-i18n="tagline">
               Do dado bruto à decisão, com pipelines e APIs testados em CI.
             </span>”
           </p>
 
           <p
-            class="desc reveal"
+            class="desc"
             data-i18n="heroDescription"
           >
             Construo pipelines de dados, automações e aplicações backend.
@@ -199,14 +199,14 @@
           </p>
 
 
-          <div class="cta-row reveal">
+          <div class="cta-row">
 
             <a
               class="btn btn-primary"
               href="#portfolio"
               data-i18n="ctaProjects"
             >
-              Veja meus projetos
+              VEJA MEUS PROJETOS
             </a>
 
             <a
@@ -227,6 +227,32 @@
 
           </div>
 
+
+          <div class="stats">
+
+            <div class="stat glass">
+              <b>2</b>
+              <span data-i18n="heroStatLabel1">
+                PRs no MotherML (Bayer)
+              </span>
+            </div>
+
+            <div class="stat glass">
+              <b>96K</b>
+              <span data-i18n="heroStatLabel2">
+                pedidos reais analisados
+              </span>
+            </div>
+
+            <div class="stat glass">
+              <b>4</b>
+              <span data-i18n="heroStatLabel3">
+                shards de coleta paralela
+              </span>
+            </div>
+
+          </div>
+
         </div>
 
 
@@ -234,7 +260,7 @@
 
         <div class="photo-wrap">
 
-          <div class="photo-card">
+          <div class="photo-card glass">
 
             <div class="photo-inner">
 
@@ -247,10 +273,50 @@
                 decoding="async"
               >
 
+              <div class="photo-label">
+
+                <div>
+                  <b>Sérgio Meyer</b>
+                  <span>Python • SQL • Java • TypeScript</span>
+                </div>
+
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3v18h18"></path>
+                  <path d="m19 9-5 5-4-4-3 3"></path>
+                </svg>
+
+              </div>
+
             </div>
 
           </div>
 
+
+          <div class="bubble glass">
+
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M3 17l6-6 4 4 8-8"></path>
+              <path d="M14 7h7v7"></path>
+            </svg>
+
+            <div>
+              <strong data-i18n="bubbleValue">CI/CD</strong>
+              <small data-i18n="bubbleLabel">Testes automatizados</small>
+            </div>
+
+          </div>
 
         </div>
 
@@ -282,7 +348,7 @@
         <ul class="oss-prs">
           <li>
             <a
-              class="pr"
+              class="pr glass"
               href="https://github.com/Bayer-Group/MotherML"
               target="_blank"
               rel="noopener noreferrer"
@@ -293,7 +359,7 @@
           </li>
           <li>
             <a
-              class="pr"
+              class="pr glass"
               href="https://github.com/Bayer-Group/MotherML"
               target="_blank"
               rel="noopener noreferrer"
@@ -317,7 +383,7 @@
 
         <div class="portrait">
 
-          <div class="portrait-card">
+          <div class="portrait-card glass">
 
             <img
               src="assets/sergio-open-to-work.jpg"
@@ -377,21 +443,21 @@
 
           <div class="mini-grid">
 
-            <div class="mini">
+            <div class="mini glass">
               <b>ETL + CI/CD</b>
               <span data-i18n="mini1">
                 pipelines automatizados
               </span>
             </div>
 
-            <div class="mini">
+            <div class="mini glass">
               <b>SQL + Python</b>
               <span data-i18n="mini2">
                 extração e análise
               </span>
             </div>
 
-            <div class="mini">
+            <div class="mini glass">
               <b>Java + TypeScript</b>
               <span data-i18n="mini3">
                 APIs e interfaces
@@ -558,19 +624,22 @@
 
           <div class="contact-cards">
 
-            <div class="contact-card">
+            <div class="contact-card glass">
+              <span aria-hidden="true">📍</span>
               <span data-i18n="contact1">
                 Cascavel, Paraná, Brasil
               </span>
             </div>
 
-            <div class="contact-card">
+            <div class="contact-card glass">
+              <span aria-hidden="true">💻</span>
               <span data-i18n="contact2">
                 Português nativo • Inglês B1
               </span>
             </div>
 
-            <div class="contact-card">
+            <div class="contact-card glass">
+              <span aria-hidden="true">✨</span>
               <span data-i18n="contact3">
                 Aberto a oportunidades remotas
               </span>
@@ -613,6 +682,7 @@
 
 
         <form
+          class="glass"
           id="contactForm"
           action="https://formsubmit.co/sergio.gabriel.meyer10@gmail.com"
           method="POST"
@@ -766,7 +836,7 @@
   <!-- Paleta de comandos (Ctrl+K / ⌘K) -->
 
   <div class="cmd" id="cmd" hidden>
-    <div class="cmd-panel" role="dialog" aria-modal="true" aria-labelledby="cmdTitle">
+    <div class="cmd-panel glass" role="dialog" aria-modal="true" aria-labelledby="cmdTitle">
       <p class="visually-hidden" id="cmdTitle" data-i18n="cmdTitle">Navegar pelo portfólio</p>
 
       <input

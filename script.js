@@ -41,13 +41,13 @@ const copy = {
     navContact: "Contato",
     menuOpen: "Abrir menu",
     menuLabel: "Menu de navegação",
-    heroGreeting: "Olá, eu sou Sérgio Meyer.",
-    heroTitle: "Data & Software Engineer.",
+    heroGreeting: "OLÁ, EU SOU SÉRGIO MEYER.",
+    heroTitle: "DATA & SOFTWARE ENGINEER.",
     tagline: "Do dado bruto à decisão, com pipelines e APIs testados em CI.",
     heroDescription:
       "Construo pipelines de dados, automações e aplicações backend. Python e SQL de um lado, Java com Spring Boot e TypeScript do outro, sempre com testes automatizados e CI/CD.",
 
-    ctaProjects: "Veja meus projetos",
+    ctaProjects: "VEJA MEUS PROJETOS",
     ctaContact: "Fale comigo",
     downloadCv: "Baixar currículo",
 
@@ -167,13 +167,13 @@ const copy = {
     navContact: "Contact",
     menuOpen: "Open menu",
     menuLabel: "Navigation menu",
-    heroGreeting: "Hi, I am Sérgio Meyer.",
-    heroTitle: "Data & Software Engineer.",
+    heroGreeting: "HI, I AM SÉRGIO MEYER.",
+    heroTitle: "DATA & SOFTWARE ENGINEER.",
     tagline: "From raw data to decisions, with pipelines and APIs tested in CI.",
     heroDescription:
       "I build data pipelines, automations and backend applications. Python and SQL on one side, Java with Spring Boot and TypeScript on the other, always with automated tests and CI/CD.",
 
-    ctaProjects: "View my projects",
+    ctaProjects: "VIEW MY PROJECTS",
     ctaContact: "Contact me",
     downloadCv: "Download résumé",
 
@@ -668,7 +668,7 @@ function renderProjects() {
         : "";
 
       return `
-        <article class="project${featured}" data-areas="${areas}">
+        <article class="project glass${featured}" data-areas="${areas}">
           <small>${category}</small>
 
           <h3>${title}</h3>
@@ -726,7 +726,7 @@ function renderServices() {
         .join("");
 
       return `
-        <article class="service">
+        <article class="service glass">
           <div class="service-icon">
             ${escapeHtml(service.icon)}
           </div>
@@ -761,7 +761,7 @@ function renderCases() {
         .join("");
 
       return `
-        <article class="case">
+        <article class="case glass">
           <h3>${title}</h3>
 
           <div class="case-block">
