@@ -29,7 +29,7 @@ test("renderiza o conteúdo principal e os links internos", async ({ page }) => 
 
   await expect(page).toHaveTitle(/Sérgio Meyer \| Data & Software Engineer/);
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Data & Software Engineer");
   await expect(page.locator("#projects article").first()).toBeVisible();
   await expect(page.locator("#projects").getByRole("heading", { name: "Olist Sales Performance Analysis" })).toBeVisible();
   await expect(page.locator("#casesGrid article").first()).toBeVisible();
@@ -231,13 +231,13 @@ test("troca o idioma e o mantém após recarregar", async ({ page }) => {
   await expect(page.locator(".actions .lang")).toHaveAccessibleName("Language");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page).toHaveTitle(/Sérgio Meyer \| Data & Software Engineer/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Data & Software Engineer");
   await expect(page.locator("#projects [data-btnrepo]").first()).toHaveText("View repository");
   expect(await page.evaluate(() => localStorage.getItem("portfolio-lang"))).toBe("en");
 
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Data & Software Engineer");
 
   await page.locator('.actions [data-lang="br"]').click();
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
@@ -462,7 +462,7 @@ test.describe("em telas móveis", () => {
 
     await expect(menu).toBeHidden();
     await expect(button).toHaveAttribute("aria-expanded", "false");
-    await expect(page.getByRole("link", { name: "VEJA MEUS PROJETOS" })).toBeFocused();
+    await expect(page.getByRole("link", { name: "Veja meus projetos" })).toBeFocused();
   });
 
   test("fecha ao mudar para o layout de desktop", async ({ page }) => {
@@ -508,7 +508,7 @@ test.describe("sem JavaScript", () => {
   test("mantém o contato direto e o formulário disponíveis", async ({ page }) => {
     await page.goto("./");
 
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("DATA & SOFTWARE ENGINEER");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Data & Software Engineer");
     await expect(page.locator('#contact a[href^="mailto:"]')).toBeVisible();
     await expect(page.locator("#contactForm")).toHaveAttribute("action", /^https:\/\/formsubmit\.co\//);
     await expect(page.locator("#contactForm")).toHaveAttribute("method", "POST");
