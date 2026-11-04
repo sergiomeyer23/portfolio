@@ -2,15 +2,15 @@
 
 ## Visão geral
 
-Site estático (HTML/CSS/JS puro) servido pelo GitHub Pages. Sem build step e sem
-backend: o formulário de contato usa o FormSubmit para entregar mensagens direto
+Site estático servido pelo GitHub Pages. O código-fonte é TypeScript em `src/` e o
+esbuild gera `script.js`, `engineering.js` e `terminal.js` na raiz, que ficam commitados.
+Não há backend: o formulário de contato usa o FormSubmit para entregar mensagens direto
 no e-mail.
 
 ## Decisões principais
 
-- **Sem framework frontend**: o site é pequeno e o custo de manutenção de um
-  framework pesaria mais do que ajudaria. Vanilla mantém tudo legível e fácil de
-  ajustar.
+- **Sem framework frontend**: o site é pequeno e um framework custaria mais
+  manutenção do que devolve. O único passo de build é a compilação do TypeScript.
 - **i18n por objeto `copy`**: termos estáticos (títulos, botões, rótulos dos
   cases) vivem em `copy.br`/`copy.en`. Projetos e serviços têm campos `*En`
   opcionais para não duplicar toda a lista. Placeholders de formulário usam
@@ -29,26 +29,41 @@ no e-mail.
 - **Spotlight dos cards**: um único `pointermove` no container grava `--mx` e
   `--my` no card sob o cursor; o brilho é desenhado em CSS.
 
+## TypeScript e build
+
+O código está em `src/`: `script.ts` (interface, i18n, filtros e paleta), `engineering.ts`,
+`terminal.ts`, os dados em `data.ts` e os tipos em `types.ts`. O `tsc` roda em modo estrito
+sem emitir nada, e o esbuild empacota cada entrada num arquivo com o mesmo nome de antes.
+
+- `npm run build` gera os três arquivos JS. Não edite os JS da raiz, o build sobrescreve.
+- `npm run typecheck` checa os tipos.
+- `npm run verify:build` falha se os JS commitados não batem com o que o build produz.
+- `npm test` roda o build antes dos testes.
+
+Os JS gerados ficam no repositório de propósito. O GitHub Pages publica a branch como
+está, então nenhuma configuração extra é necessária.
+
 ## Vitrine de engenharia
 
-Três arquivos, todos vanilla e sem dependências, comunicando-se por uma API pública enxuta
-(`window.portfolio`) e pelo evento `portfolio:languagechange`:
+`engineering.ts` e `terminal.ts` conversam com `script.ts` por `window.portfolio` (idioma,
+projetos, download do currículo) e pelo evento `portfolio:languagechange`.
 
-- `engineering.js`: barra de telemetria, DAG do pipeline (SVG puro + slide-over), ADR viewer e
-  simulador de benchmark. Os dados editáveis ficam no topo de cada bloco, marcados com `EDIT:`.
-- `terminal.js`: terminal embutido (`help`, `tech-stack`, `query`, `pipeline --status`,
-  `download cv`, `clear`). Cria o próprio DOM, guarda histórico e saída em `sessionStorage`
-  e só captura a crase fora de campos editáveis. Ctrl/Cmd+K continua sendo da paleta.
-- Estilos em `style.css`, apenas com variáveis de tema existentes (sem cores novas).
+`engineering.ts` cuida da barra de telemetria, do DAG do pipeline (SVG puro com painel
+lateral), dos ADRs e do simulador de benchmark. Os dados editáveis ficam no começo de cada
+bloco, marcados com `EDIT:`.
 
-Decisões:
+`terminal.ts` implementa `help`, `tech-stack`, `query`, `pipeline --status`, `download cv` e
+`clear`. Guarda histórico e saída em `sessionStorage` e só captura a crase quando o foco não
+está num campo editável. Ctrl/Cmd+K continua abrindo a paleta de comandos.
 
-- **Honestidade dos números**: telemetria usa só valores verificáveis do site. Orçamentos do DAG
-  e o benchmark são rotulados como alvo/estimativa de modelo, nunca como medição.
-- **Desempenho**: animação do fluxo do DAG roda só com o diagrama visível
-  (`IntersectionObserver`); contadores animam uma vez; `prefers-reduced-motion` é respeitado.
-- **Acessibilidade**: nós do DAG são `role="button"` com nome acessível iniciando pelo texto
-  visível (WCAG 2.5.3); painel e terminal fecham com `Esc` e devolvem o foco.
+Os estilos novos usam só as variáveis de tema que já existiam.
+
+- A telemetria mostra apenas números que dá para conferir no próprio site. Os orçamentos do
+  DAG e o benchmark aparecem na tela como alvo e estimativa, nunca como medição.
+- A animação do fluxo do DAG só roda com o diagrama visível. Os contadores animam uma vez e
+  `prefers-reduced-motion` é respeitado.
+- Os nós do DAG são `role="button"` e o nome acessível começa pelo texto visível (WCAG
+  2.5.3). O painel e o terminal fecham com Esc e devolvem o foco.
 
 ## Segurança
 

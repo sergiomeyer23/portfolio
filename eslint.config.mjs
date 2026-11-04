@@ -3,17 +3,6 @@ import globals from "globals";
 
 export default [
   {
-    files: ["script.js", "engineering.js", "terminal.js"],
-    languageOptions: {
-      globals: globals.browser,
-      sourceType: "script"
-    },
-    rules: {
-      ...js.configs.recommended.rules,
-      "no-unused-vars": ["error", { caughtErrors: "none" }]
-    }
-  },
-  {
     files: ["tests/**/*.spec.js"],
     languageOptions: {
       globals: { ...globals.node, ...globals.browser },

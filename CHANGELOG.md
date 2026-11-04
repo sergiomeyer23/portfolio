@@ -1,13 +1,14 @@
 # Changelog
 
 ## v0.7 (2026-11-04)
-- Barra de telemetria com contadores animados e números verificáveis do próprio site (substitui as estatísticas do hero)
-- Visualizador de topologia do pipeline (DAG em SVG puro) com painel lateral de contratos, tolerância a falhas e orçamentos
-- ADR viewer na seção de estudos de caso (ADR-001 Mercavel, ADR-002 Print Guard, ADR-003 exemplo de referência)
-- Seção Performance com simulador inspirado no 1BRC (Java, Python/Polars, SQL/DuckDB), rotulado como estimativa
-- Terminal interativo (crase, botão ou paleta de comandos) com `help`, `tech-stack`, `query`, `pipeline --status`, `download cv` e `clear`
-- Atualiza a URL do LinkedIn para linkedin.com/in/sergio-meyer-data
-- Novos testes E2E e axe para a vitrine; servidor de teste passa a servir `engineering.js` e `terminal.js`
+- O código passa para TypeScript estrito em `src/`, com build via esbuild e checagem de tipos com `tsc`
+- Barra de telemetria com contadores animados e números tirados do próprio site, no lugar das estatísticas do hero
+- Diagrama do pipeline (DAG em SVG puro) com painel lateral de contratos, tolerância a falhas e orçamentos
+- Registros de decisão (ADR) na seção de estudos de caso: Mercavel, Print Guard e um exemplo de referência
+- Seção Performance com um simulador inspirado no 1BRC (Java, Python com Polars, SQL com DuckDB), marcado como estimativa
+- Terminal interativo, aberto pela crase, pelo botão ou pela paleta, com `help`, `tech-stack`, `query`, `pipeline --status`, `download cv` e `clear`
+- URL do LinkedIn atualizada para linkedin.com/in/sergio-meyer-data
+- Testes E2E e axe para os componentes novos, e o servidor de teste passa a servir `engineering.js` e `terminal.js`
 
 ## v0.6 (2026-11-03)
 - Corrige o acento de SÉRGIO no hero (BR e EN)
