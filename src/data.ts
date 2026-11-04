@@ -88,7 +88,7 @@ export const copy: Record<Lang, CopyDict> = {
     ossTitle: "Contribuições no repositório da Bayer.",
     ossText:
       "O MotherML é um framework de Machine Learning em Python mantido pelo grupo Bayer, usado em predição de propriedades moleculares e dados de transcriptômica. Tenho dois PRs nele.",
-    ossPr91: "Model Registry: descoberta e instanciação padronizada de modelos",
+    ossPr91: "Correção no Model Registry: nomes de algoritmo corrompidos por lstrip, com testes de regressão",
     ossPr106: "Murcko Scaffold Grouping: validação cruzada sem vazamento entre compostos parecidos",
 
     cmdButton: "Buscar",
@@ -215,7 +215,7 @@ export const copy: Record<Lang, CopyDict> = {
     ossTitle: "Contributions to Bayer's repository.",
     ossText:
       "MotherML is a Python Machine Learning framework maintained by the Bayer group, used for molecular property prediction and transcriptomics data. I have two PRs in it.",
-    ossPr91: "Model Registry: standard discovery and instantiation of models",
+    ossPr91: "Model Registry fix: algorithm names corrupted by lstrip, with regression tests",
     ossPr106: "Murcko Scaffold Grouping: cross-validation without leakage between similar compounds",
 
     cmdButton: "Search",
@@ -426,16 +426,16 @@ export const projects: Project[] = [
     category: "Open Source & Machine Learning",
     categoryEn: "Open Source & Machine Learning",
     description:
-      "Contribuições para o framework de Machine Learning em Python mantido pelo grupo Bayer, usado em predição de propriedades moleculares e dados de transcriptômica. O PR #91 implementa um registro unificado de modelos (CatBoost, Random Forest, Lasso, TabPFN e estimadores compatíveis com Scikit-Learn). O PR #106 agrupa compostos por scaffold de Murcko na validação cruzada, evitando vazamento de dados entre moléculas parecidas.",
+      "Contribuições para o framework de Machine Learning em Python mantido pelo grupo Bayer, usado em predição de propriedades moleculares e dados de transcriptômica. O PR #91 corrige um bug no registro de modelos: o nome do algoritmo era derivado com str.lstrip, que remove caracteres e não um prefixo, então um módulo como m_mlp virava \"lp\" e não era encontrado. Incluí testes de regressão. O PR #106 adiciona um transformer que agrupa compostos por scaffold de Murcko na validação cruzada, evitando vazamento de dados entre moléculas parecidas.",
     descriptionEn:
-      "Contributions to the Python Machine Learning framework maintained by the Bayer group, used for molecular property prediction and transcriptomics data. PR #91 implements a unified model registry (CatBoost, Random Forest, Lasso, TabPFN and Scikit-Learn compatible estimators). PR #106 groups compounds by Murcko scaffold in cross-validation, preventing data leakage between similar molecules.",
+      "Contributions to the Python Machine Learning framework maintained by the Bayer group, used for molecular property prediction and transcriptomics data. PR #91 fixes a bug in the model registry: the algorithm name was derived with str.lstrip, which strips characters instead of a prefix, so a module like m_mlp became \"lp\" and could not be found. I added regression tests. PR #106 adds a transformer that groups compounds by Murcko scaffold in cross-validation, preventing data leakage between similar molecules.",
     result: "PR #91 e PR #106 • Bayer-Group/MotherML",
     resultEn: "PR #91 and PR #106 • Bayer-Group/MotherML",
-    technologies: ["Python", "Scikit-Learn", "CatBoost", "TabPFN", "Cross-validation"],
+    technologies: ["Python", "Scikit-Learn", "RDKit", "Cross-validation"],
     repository: "https://github.com/Bayer-Group/MotherML",
     areas: ["oss", "data"],
     featured: true,
-    flow: ["PR #91 Model Registry", "PR #106 Scaffold CV"]
+    flow: ["PR #91 Registry fix", "PR #106 Scaffold CV"]
   },
 
   {

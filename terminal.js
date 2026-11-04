@@ -112,7 +112,7 @@
       {
         periodo: "n/d",
         cargo: "Open source: MotherML (Bayer-Group)",
-        realizacao_chave: "2 PRs: Model Registry (#91) e Murcko Scaffold Grouping (#106)",
+        realizacao_chave: "2 PRs: corre\xE7\xE3o no Model Registry (#91) e Murcko Scaffold Grouping (#106)",
         tecnologia: "Python; Machine Learning"
       }
     ];

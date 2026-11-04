@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8 (2026-11-04)
+- Corrige a descrição do PR #91 do MotherML no site e nos currículos: é uma correção de bug no registro de modelos (nomes de algoritmo derivados com `str.lstrip`), com testes de regressão, e não a criação do registro
+- Currículos em PDF com o LinkedIn atualizado e versões em inglês
+
 ## v0.7 (2026-11-04)
 - O código passa para TypeScript estrito em `src/`, com build via esbuild e checagem de tipos com `tsc`
 - Barra de telemetria com contadores animados e números tirados do próprio site, no lugar das estatísticas do hero
