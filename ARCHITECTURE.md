@@ -29,6 +29,27 @@ no e-mail.
 - **Spotlight dos cards**: um único `pointermove` no container grava `--mx` e
   `--my` no card sob o cursor; o brilho é desenhado em CSS.
 
+## Vitrine de engenharia
+
+Três arquivos, todos vanilla e sem dependências, comunicando-se por uma API pública enxuta
+(`window.portfolio`) e pelo evento `portfolio:languagechange`:
+
+- `engineering.js`: barra de telemetria, DAG do pipeline (SVG puro + slide-over), ADR viewer e
+  simulador de benchmark. Os dados editáveis ficam no topo de cada bloco, marcados com `EDIT:`.
+- `terminal.js`: terminal embutido (`help`, `tech-stack`, `query`, `pipeline --status`,
+  `download cv`, `clear`). Cria o próprio DOM, guarda histórico e saída em `sessionStorage`
+  e só captura a crase fora de campos editáveis. Ctrl/Cmd+K continua sendo da paleta.
+- Estilos em `style.css`, apenas com variáveis de tema existentes (sem cores novas).
+
+Decisões:
+
+- **Honestidade dos números**: telemetria usa só valores verificáveis do site. Orçamentos do DAG
+  e o benchmark são rotulados como alvo/estimativa de modelo, nunca como medição.
+- **Desempenho**: animação do fluxo do DAG roda só com o diagrama visível
+  (`IntersectionObserver`); contadores animam uma vez; `prefers-reduced-motion` é respeitado.
+- **Acessibilidade**: nós do DAG são `role="button"` com nome acessível iniciando pelo texto
+  visível (WCAG 2.5.3); painel e terminal fecham com `Esc` e devolvem o foco.
+
 ## Segurança
 
 - Todo dado vindo de `projects`/`services`/`skills`/`caseStudies` é escapado em

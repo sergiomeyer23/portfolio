@@ -3,7 +3,7 @@ import globals from "globals";
 
 export default [
   {
-    files: ["script.js"],
+    files: ["script.js", "engineering.js", "terminal.js"],
     languageOptions: {
       globals: globals.browser,
       sourceType: "script"

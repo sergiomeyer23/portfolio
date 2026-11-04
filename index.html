@@ -227,32 +227,6 @@
 
           </div>
 
-
-          <div class="stats">
-
-            <div class="stat glass">
-              <b>2</b>
-              <span data-i18n="heroStatLabel1">
-                PRs no MotherML (Bayer)
-              </span>
-            </div>
-
-            <div class="stat glass">
-              <b>96K</b>
-              <span data-i18n="heroStatLabel2">
-                pedidos reais analisados
-              </span>
-            </div>
-
-            <div class="stat glass">
-              <b>4</b>
-              <span data-i18n="heroStatLabel3">
-                shards de coleta paralela
-              </span>
-            </div>
-
-          </div>
-
         </div>
 
 
@@ -322,6 +296,13 @@
 
       </div>
 
+    </section>
+
+
+    <!-- Telemetria -->
+
+    <section class="telemetry" id="telemetry">
+      <div class="container" id="telemetryRoot"></div>
     </section>
 
 
@@ -513,6 +494,9 @@
         </div>
 
 
+        <div class="eng-block" id="dagRoot"></div>
+
+
         <div
           class="filters"
           role="group"
@@ -546,6 +530,17 @@
           <p data-i18n="casesDescription">Alguns exemplos de como transformei dados operacionais em ações concretas para times comerciais.</p>
         </div>
         <div class="cases" id="casesGrid"></div>
+        <div class="eng-block" id="adrRoot"></div>
+      </div>
+    </section>
+
+
+    <!-- Benchmark -->
+
+    <section class="section" id="benchmark">
+      <div class="container">
+        <div class="section-head" id="benchHead"></div>
+        <div id="benchRoot"></div>
       </div>
     </section>
 
@@ -856,6 +851,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js" defer></script>
+  <script src="engineering.js" defer></script>
+  <script src="terminal.js" defer></script>
 
 </body>
 </html>

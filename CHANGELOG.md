@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.7 (2026-11-04)
+- Barra de telemetria com contadores animados e números verificáveis do próprio site (substitui as estatísticas do hero)
+- Visualizador de topologia do pipeline (DAG em SVG puro) com painel lateral de contratos, tolerância a falhas e orçamentos
+- ADR viewer na seção de estudos de caso (ADR-001 Mercavel, ADR-002 Print Guard, ADR-003 exemplo de referência)
+- Seção Performance com simulador inspirado no 1BRC (Java, Python/Polars, SQL/DuckDB), rotulado como estimativa
+- Terminal interativo (crase, botão ou paleta de comandos) com `help`, `tech-stack`, `query`, `pipeline --status`, `download cv` e `clear`
+- Atualiza a URL do LinkedIn para linkedin.com/in/sergio-meyer-data
+- Novos testes E2E e axe para a vitrine; servidor de teste passa a servir `engineering.js` e `terminal.js`
+
 ## v0.6 (2026-11-03)
 - Corrige o acento de SÉRGIO no hero (BR e EN)
 - Currículo em duas versões (Data & Analytics e Software & Backend) com menu de download no header, no hero e na paleta Ctrl+K

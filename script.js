@@ -106,6 +106,7 @@ const copy = {
     cmdCopyEmail: "Copiar e-mail",
     cmdCvData: "Baixar currículo: Data & Analytics (PDF)",
     cmdCvSoftware: "Baixar currículo: Software & Backend (PDF)",
+    cmdTerminal: "Abrir terminal interativo",
     cvData: "Data & Analytics (PDF)",
     cvSoftware: "Software & Backend (PDF)",
     ciAlt: "Status do CI",
@@ -232,6 +233,7 @@ const copy = {
     cmdCopyEmail: "Copy email",
     cmdCvData: "Download résumé: Data & Analytics (PDF)",
     cmdCvSoftware: "Download résumé: Software & Backend (PDF)",
+    cmdTerminal: "Open interactive terminal",
     cvData: "Data & Analytics (PDF)",
     cvSoftware: "Software & Backend (PDF)",
     ciAlt: "CI status",
@@ -860,6 +862,8 @@ function setLanguage(language) {
 
   const backBtn = document.querySelector(".back-to-top");
   if (backBtn) backBtn.setAttribute("aria-label", selectedCopy.backToTop);
+
+  document.dispatchEvent(new CustomEvent("portfolio:languagechange", { detail: { language } }));
 }
 
 function setupLanguageButtons() {
@@ -1184,7 +1188,8 @@ function getCommands() {
     { label: c.cmdLanguage, run: () => setLanguage(currentLanguage === "br" ? "en" : "br") },
     { label: c.cmdCopyEmail, run: copyEmail },
     { label: c.cmdCvData, run: () => downloadResume("data") },
-    { label: c.cmdCvSoftware, run: () => downloadResume("software") }
+    { label: c.cmdCvSoftware, run: () => downloadResume("software") },
+    { label: c.cmdTerminal, run: () => document.dispatchEvent(new CustomEvent("portfolio:toggle-terminal")) }
   ];
 }
 
@@ -1303,3 +1308,13 @@ setupMobileMenu();
 setupContactForm();
 setupScrollSpy();
 setupBackToTop();
+
+// Superfície pública para engineering.js e terminal.js (sem acoplamento por variáveis globais soltas).
+window.portfolio = {
+  getLanguage: () => currentLanguage,
+  projects,
+  skills,
+  escapeHtml,
+  downloadResume,
+  showToast
+};

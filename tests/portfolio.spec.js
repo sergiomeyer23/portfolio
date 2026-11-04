@@ -514,3 +514,220 @@ test.describe("sem JavaScript", () => {
     await expect(page.locator("#contactForm")).toHaveAttribute("method", "POST");
   });
 });
+
+test.describe("vitrine de engenharia", () => {
+  test("a barra de telemetria mostra números verificáveis do próprio site", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("./");
+
+    const values = page.locator("#telemetryRoot .tele-value");
+    await expect(values).toHaveCount(4);
+    await expect(values.nth(0)).toHaveText("96K");
+    await expect(values.nth(1)).toHaveText("4");
+    await expect(values.nth(3)).toHaveText("2");
+  });
+
+  test("o nó do DAG abre o painel com contratos, falhas e orçamento, e Esc devolve o foco", async ({ page }) => {
+    await page.goto("./");
+
+    const node = page.locator('#dagRoot [data-node="process"]');
+    await node.scrollIntoViewIfNeeded();
+    await node.focus();
+    await page.keyboard.press("Enter");
+
+    const panel = page.locator("#dagPanel");
+    await expect(panel).toBeVisible();
+    await expect(panel.getByRole("heading", { name: /Processamento & Transformação/ })).toBeFocused();
+    await expect(panel).toContainText("Schema Arrow");
+    await expect(panel).toContainText("Idempotência por event_id");
+    await expect(panel).toContainText("≤ 120 ms");
+    await expect(node).toHaveAttribute("aria-expanded", "true");
+
+    await page.keyboard.press("Escape");
+    await expect(panel).toBeHidden();
+    await expect(node).toBeFocused();
+  });
+
+  test("o fluxo animado do DAG só roda enquanto o diagrama está visível", async ({ page }) => {
+    await page.goto("./");
+
+    const root = page.locator("#dagRoot");
+    await root.scrollIntoViewIfNeeded();
+    await expect(root).toHaveClass(/is-live/);
+
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect(root).not.toHaveClass(/is-live/);
+  });
+
+  test("o painel do DAG cabe no mobile sem rolagem horizontal", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto("./");
+
+    await page.locator('#dagRoot [data-node="ingest"]').click();
+    const panel = page.locator("#dagPanel");
+    await expect(panel).toBeVisible();
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+
+  test("o ADR viewer expande e recolhe os registros", async ({ page }) => {
+    await page.goto("./");
+
+    const first = page.locator("#adrRoot .adr-trigger").first();
+    await expect(first).toHaveAttribute("aria-expanded", "true");
+    await first.click();
+    await expect(first).toHaveAttribute("aria-expanded", "false");
+
+    const third = page.locator("#adrRoot .adr-trigger", { hasText: "ADR-003" });
+    await third.click();
+    await expect(page.locator("#adrRoot .adr-panel:visible")).toContainText("Project Loom");
+    await expect(page.locator("#adrRoot .adr-panel:visible")).toContainText("Exemplo de referência");
+  });
+
+  test("o simulador de benchmark reage aos controles e troca as abas de código", async ({ page }) => {
+    await page.goto("./");
+
+    const volume = page.locator("#benchVolume");
+    await volume.scrollIntoViewIfNeeded();
+    await volume.fill("3");
+    await expect(page.locator("#benchVolumeOut")).toHaveText("1 bilhão");
+
+    await page.locator("#benchMode").fill("0");
+    await expect(page.locator("#benchModeOut")).toHaveText("Núcleo único");
+    await expect(page.locator("#benchResults")).toContainText("Mais rápido neste cenário");
+    await expect(page.locator("#benchResults")).toContainText("MB");
+
+    await page.getByRole("tab", { name: "SQL · DuckDB" }).click();
+    await expect(page.locator("#benchPanel-sql")).toBeVisible();
+    await expect(page.locator("#benchPanel-sql")).toContainText("read_csv");
+    await expect(page.locator("#benchPanel-java")).toBeHidden();
+  });
+
+  test("a vitrine acompanha a troca de idioma", async ({ page }) => {
+    await page.goto("./");
+    await page.locator('.actions [data-lang="en"]').click();
+
+    await expect(page.locator("#dagRoot h3")).toHaveText("Pipeline topology");
+    await expect(page.locator("#adrRoot h3")).toHaveText("Architecture decision records");
+    await expect(page.locator("#benchVolumeOut")).toHaveText("100 million");
+  });
+
+  test.describe("terminal", () => {
+    test("abre com a crase, executa comandos e mantém o histórico na sessão", async ({ page }) => {
+      await page.goto("./");
+
+      await page.keyboard.press("`");
+      const terminal = page.locator("#term");
+      await expect(terminal).toBeVisible();
+      await expect(page.locator("#termInput")).toBeFocused();
+
+      await page.locator("#termInput").fill("tech-stack");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut")).toContainText('"languages"');
+      await expect(page.locator("#termOut")).toContainText('"name": "Java"');
+
+      await page.locator("#termInput").fill("clear");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut .term-line")).toHaveCount(0);
+
+      await page.locator("#termInput").fill("help");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut")).toContainText("pipeline --status");
+
+      await page.reload();
+      await page.locator(".term-toggle").click();
+      await expect(page.locator("#termOut")).toContainText("pipeline --status");
+
+      await page.keyboard.press("ArrowUp");
+      await expect(page.locator("#termInput")).toHaveValue("help");
+    });
+
+    test("query filtra a tabela experiencia e informa erros de SQL", async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto("./");
+      await page.locator(".term-toggle").click();
+
+      await page.locator("#termInput").fill("query SELECT periodo, cargo FROM experiencia WHERE tecnologia LIKE '%Java%';");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut")).toContainText("Expense Tracker API");
+      await expect(page.locator("#termOut")).toContainText("(1 linha)");
+
+      await page.locator("#termInput").fill("query SELECT salario FROM experiencia;");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut")).toContainText('column "salario" does not exist');
+
+      await page.locator("#termInput").fill("pipeline --status");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut")).toContainText("orçamentos de projeto");
+
+      await page.locator("#termInput").fill("comando-inexistente");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#termOut")).toContainText("comando não encontrado");
+    });
+
+    test("download cv dispara o PDF do currículo", async ({ page }) => {
+      await page.goto("./");
+      await page.locator(".term-toggle").click();
+
+      const downloadPromise = page.waitForEvent("download");
+      await page.locator("#termInput").fill("download cv data");
+      await page.keyboard.press("Enter");
+      const download = await downloadPromise;
+      expect(download.suggestedFilename()).toContain("curriculo-sergio-meyer-data");
+    });
+
+    test("a crase não abre o terminal enquanto o foco está em um campo de texto", async ({ page }) => {
+      await page.goto("./");
+
+      const name = page.locator('#contactForm input[name="name"]');
+      await name.scrollIntoViewIfNeeded();
+      await name.focus();
+      await page.keyboard.type("a`b");
+
+      await expect(name).toHaveValue("a`b");
+      await expect(page.locator("#term")).toBeHidden();
+    });
+
+    test("Ctrl+K continua abrindo a paleta e Esc fecha o terminal devolvendo o foco", async ({ page }) => {
+      await page.goto("./");
+
+      await page.keyboard.press("Control+k");
+      await expect(page.locator("#cmd")).toBeVisible();
+      await expect(page.locator("#term")).toBeHidden();
+      await page.keyboard.press("Escape");
+
+      const toggle = page.locator(".term-toggle");
+      await toggle.focus();
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#term")).toBeVisible();
+      await page.keyboard.press("Escape");
+      await expect(page.locator("#term")).toBeHidden();
+      await expect(toggle).toBeFocused();
+    });
+
+    test("a paleta de comandos oferece abrir o terminal", async ({ page }) => {
+      await page.goto("./");
+      await page.keyboard.press("Control+k");
+      await page.locator("#cmdInput").fill("terminal");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#term")).toBeVisible();
+    });
+  });
+
+  for (const scenario of ["terminal aberto", "painel do DAG aberto"]) {
+    test(`não apresenta violações WCAG com ${scenario}`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      await page.goto("./");
+
+      if (scenario === "terminal aberto") {
+        await page.locator(".term-toggle").click();
+      } else {
+        await page.locator('#dagRoot [data-node="store"]').click();
+      }
+
+      const results = await new AxeBuilder({ page }).withTags(wcagTags).analyze();
+      expect(results.violations.map(violation => ({ id: violation.id, targets: violation.nodes.map(node => node.target) }))).toEqual([]);
+    });
+  }
+});
