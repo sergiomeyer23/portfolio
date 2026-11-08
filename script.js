@@ -246,12 +246,11 @@
       titleEn: "Science Fit \u2014 Evidence-Based Training & Nutrition Engine",
       category: "Full-Stack & Ci\xEAncia do Esporte",
       categoryEn: "Full-Stack & Sports Science",
-      description: "Monorepo TypeScript (Core + Next.js) que modela TDEE/BMR din\xE2mico, faixas cient\xEDficas de volume muscular (MEV/MAV/MRV), c\xE1lculo de e1RM ajustado por RIR, d\xE9bito de sono com autorregula\xE7\xE3o de treino e tend\xEAncia de peso por m\xE9dia m\xF3vel de 7 dias, coberto por +400 testes automatizados.",
-      descriptionEn: "TypeScript monorepo (Core + Next.js) modeling dynamic TDEE/BMR, scientific muscle volume landmarks (MEV/MAV/MRV), RIR-adjusted e1RM estimation, sleep-debt workout autoregulation, and 7-day moving average weight trends, backed by 400+ automated tests.",
-      result: "Vitest (400+ testes) \u2022 Vercel",
-      resultEn: "Vitest (400+ tests) \u2022 Vercel",
-      technologies: ["TypeScript", "Next.js", "PostgreSQL", "Vitest (400+ tests)"],
-      repository: "https://github.com/sergiomeyer23/science-fit",
+      description: "Monorepo TypeScript (Core + Next.js) que modela TDEE/BMR din\xE2mico, faixas cient\xEDficas de volume muscular (MEV/MAV/MRV), c\xE1lculo de e1RM ajustado por RIR, d\xE9bito de sono com autorregula\xE7\xE3o de treino e tend\xEAncia de peso por m\xE9dia m\xF3vel de 7 dias, coberto por 273 testes no core e 126 na interface.",
+      descriptionEn: "TypeScript monorepo (Core + Next.js) modeling dynamic TDEE/BMR, scientific muscle volume landmarks (MEV/MAV/MRV), RIR-adjusted e1RM estimation, sleep-debt workout autoregulation, and 7-day moving average weight trends, backed by 273 core tests and 126 UI tests.",
+      result: "Vitest (273 + 126 testes) \u2022 Vercel",
+      resultEn: "Vitest (273 + 126 tests) \u2022 Vercel",
+      technologies: ["TypeScript", "Next.js", "PostgreSQL", "Vitest (273 + 126 tests)"],
       live: "https://science-fit-nine.vercel.app/",
       areas: ["software", "data"],
       featured: true,
@@ -543,7 +542,7 @@
       const category = escapeHtml(localized(project, "category"));
       const description = escapeHtml(localized(project, "description"));
       const result = escapeHtml(localized(project, "result"));
-      const repository = escapeHtml(project.repository);
+      const repository = project.repository ? escapeHtml(project.repository) : "";
       const live = project.live ? escapeHtml(project.live) : "";
       const areas = escapeHtml(project.areas.join(" "));
       const featured = project.featured ? " featured" : "";
@@ -559,6 +558,16 @@
               rel="noopener noreferrer"
             >
               <span data-btnlive></span> \u2197
+            </a>
+            ` : "";
+      const repositoryButton = repository ? `
+            <a
+              class="btn btn-primary"
+              href="${repository}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-btnrepo></span> \u2197
             </a>
             ` : "";
       return `
@@ -582,14 +591,7 @@
           ${badge}
 
           <div class="project-actions">
-            <a
-              class="btn btn-primary"
-              href="${repository}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span data-btnrepo></span> \u2197
-            </a>
+            ${repositoryButton}
             ${liveButton}
           </div>
         </article>

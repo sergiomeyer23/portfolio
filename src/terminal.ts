@@ -296,7 +296,9 @@ import type { DagBudget, Lang } from "./types";
       [t("estágio", "stage"), "p99", "throughput"],
       budgets.map(item => [item.name, item.p99, item.throughput])
     );
-    const repositories = app.projects.filter(project => project.ci).map(project => `  - ${project.title}: ${project.repository}`);
+    const repositories = app.projects.flatMap(project =>
+      project.ci && project.repository ? [`  - ${project.title}: ${project.repository}`] : []
+    );
 
     return [
       t("Pipeline de referência: orçamentos de projeto (alvos), não medições ao vivo.", "Reference pipeline: design budgets (targets), not live measurements."),

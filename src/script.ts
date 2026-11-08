@@ -91,7 +91,7 @@ function renderProjects(): void {
       const category = escapeHtml(localized(project, "category"));
       const description = escapeHtml(localized(project, "description"));
       const result = escapeHtml(localized(project, "result"));
-      const repository = escapeHtml(project.repository);
+      const repository = project.repository ? escapeHtml(project.repository) : "";
       const live = project.live ? escapeHtml(project.live) : "";
       const areas = escapeHtml(project.areas.join(" "));
       const featured = project.featured ? " featured" : "";
@@ -121,6 +121,19 @@ function renderProjects(): void {
             `
         : "";
 
+      const repositoryButton = repository
+        ? `
+            <a
+              class="btn btn-primary"
+              href="${repository}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-btnrepo></span> ↗
+            </a>
+            `
+        : "";
+
       return `
         <article class="project glass${featured}" data-areas="${areas}">
           <small>${category}</small>
@@ -142,14 +155,7 @@ function renderProjects(): void {
           ${badge}
 
           <div class="project-actions">
-            <a
-              class="btn btn-primary"
-              href="${repository}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span data-btnrepo></span> ↗
-            </a>
+            ${repositoryButton}
             ${liveButton}
           </div>
         </article>

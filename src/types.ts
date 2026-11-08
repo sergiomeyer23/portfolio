@@ -15,7 +15,7 @@ export interface Project {
   result: string;
   resultEn: string;
   technologies: string[];
-  repository: string;
+  repository?: string;
   areas: ProjectArea[];
   flow: string[];
   flowEn?: string[];

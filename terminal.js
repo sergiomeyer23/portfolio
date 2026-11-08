@@ -216,7 +216,9 @@
         [t("est\xE1gio", "stage"), "p99", "throughput"],
         budgets.map((item) => [item.name, item.p99, item.throughput])
       );
-      const repositories = app.projects.filter((project) => project.ci).map((project) => `  - ${project.title}: ${project.repository}`);
+      const repositories = app.projects.flatMap(
+        (project) => project.ci && project.repository ? [`  - ${project.title}: ${project.repository}`] : []
+      );
       return [
         t("Pipeline de refer\xEAncia: or\xE7amentos de projeto (alvos), n\xE3o medi\xE7\xF5es ao vivo.", "Reference pipeline: design budgets (targets), not live measurements."),
         ...table,

@@ -294,13 +294,12 @@ export const projects: Project[] = [
     category: "Full-Stack & Ciência do Esporte",
     categoryEn: "Full-Stack & Sports Science",
     description:
-      "Monorepo TypeScript (Core + Next.js) que modela TDEE/BMR dinâmico, faixas científicas de volume muscular (MEV/MAV/MRV), cálculo de e1RM ajustado por RIR, débito de sono com autorregulação de treino e tendência de peso por média móvel de 7 dias, coberto por +400 testes automatizados.",
+      "Monorepo TypeScript (Core + Next.js) que modela TDEE/BMR dinâmico, faixas científicas de volume muscular (MEV/MAV/MRV), cálculo de e1RM ajustado por RIR, débito de sono com autorregulação de treino e tendência de peso por média móvel de 7 dias, coberto por 273 testes no core e 126 na interface.",
     descriptionEn:
-      "TypeScript monorepo (Core + Next.js) modeling dynamic TDEE/BMR, scientific muscle volume landmarks (MEV/MAV/MRV), RIR-adjusted e1RM estimation, sleep-debt workout autoregulation, and 7-day moving average weight trends, backed by 400+ automated tests.",
-    result: "Vitest (400+ testes) • Vercel",
-    resultEn: "Vitest (400+ tests) • Vercel",
-    technologies: ["TypeScript", "Next.js", "PostgreSQL", "Vitest (400+ tests)"],
-    repository: "https://github.com/sergiomeyer23/science-fit",
+      "TypeScript monorepo (Core + Next.js) modeling dynamic TDEE/BMR, scientific muscle volume landmarks (MEV/MAV/MRV), RIR-adjusted e1RM estimation, sleep-debt workout autoregulation, and 7-day moving average weight trends, backed by 273 core tests and 126 UI tests.",
+    result: "Vitest (273 + 126 testes) • Vercel",
+    resultEn: "Vitest (273 + 126 tests) • Vercel",
+    technologies: ["TypeScript", "Next.js", "PostgreSQL", "Vitest (273 + 126 tests)"],
     live: "https://science-fit-nine.vercel.app/",
     areas: ["software", "data"],
     featured: true,

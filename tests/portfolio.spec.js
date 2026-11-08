@@ -220,6 +220,15 @@ test("o card do Print Guard aparece nos dois idiomas com o repositório correto"
   await expect(page.locator("#casesGrid article", { hasText: "Print Guard" })).toHaveCount(1);
 });
 
+test("o card do Science Fit aponta para o app ao vivo e não expõe o repositório privado", async ({ page }) => {
+  await page.goto("./");
+
+  const card = page.locator("#projects article", { hasText: "Science Fit" });
+  await expect(card).toHaveCount(1);
+  await expect(card.locator("[data-btnrepo]")).toHaveCount(0);
+  await expect(card.locator("a[href='https://science-fit-nine.vercel.app/']")).toHaveCount(1);
+});
+
 test("troca o idioma e o mantém após recarregar", async ({ page }) => {
   await page.goto("./");
 
