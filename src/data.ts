@@ -109,6 +109,7 @@ export const copy: Record<Lang, CopyDict> = {
     cmdCvData: "Baixar currículo: Data & Analytics (PDF)",
     cmdCvSoftware: "Baixar currículo: Software & Backend (PDF)",
     cmdTerminal: "Abrir terminal interativo",
+    cmdScienceFit: "Abrir Science Fit (app ao vivo)",
     cvData: "Data & Analytics (PDF)",
     cvSoftware: "Software & Backend (PDF)",
     ciAlt: "Status do CI",
@@ -236,6 +237,7 @@ export const copy: Record<Lang, CopyDict> = {
     cmdCvData: "Download résumé: Data & Analytics (PDF)",
     cmdCvSoftware: "Download résumé: Software & Backend (PDF)",
     cmdTerminal: "Open interactive terminal",
+    cmdScienceFit: "Open Science Fit (live app)",
     cvData: "Data & Analytics (PDF)",
     cvSoftware: "Software & Backend (PDF)",
     ciAlt: "CI status",
@@ -286,6 +288,25 @@ export const copy: Record<Lang, CopyDict> = {
 };
 
 export const projects: Project[] = [
+  {
+    title: "Science Fit — Motor de Treino & Nutrição Baseado em Evidências",
+    titleEn: "Science Fit — Evidence-Based Training & Nutrition Engine",
+    category: "Full-Stack & Ciência do Esporte",
+    categoryEn: "Full-Stack & Sports Science",
+    description:
+      "Monorepo TypeScript (Core + Next.js) que modela TDEE/BMR dinâmico, faixas científicas de volume muscular (MEV/MAV/MRV), cálculo de e1RM ajustado por RIR, débito de sono com autorregulação de treino e tendência de peso por média móvel de 7 dias, coberto por +400 testes automatizados.",
+    descriptionEn:
+      "TypeScript monorepo (Core + Next.js) modeling dynamic TDEE/BMR, scientific muscle volume landmarks (MEV/MAV/MRV), RIR-adjusted e1RM estimation, sleep-debt workout autoregulation, and 7-day moving average weight trends, backed by 400+ automated tests.",
+    result: "Vitest (400+ testes) • Vercel",
+    resultEn: "Vitest (400+ tests) • Vercel",
+    technologies: ["TypeScript", "Next.js", "PostgreSQL", "Vitest (400+ tests)"],
+    repository: "https://github.com/sergiomeyer23/science-fit",
+    live: "https://science-fit-nine.vercel.app/",
+    areas: ["software", "data"],
+    featured: true,
+    flow: ["Core fisiológico", "Next.js", "PostgreSQL", "Vercel"],
+    flowEn: ["Physiology core", "Next.js", "PostgreSQL", "Vercel"]
+  },
   {
     title: "Mercavel — Comparador de Preços",
     titleEn: "Mercavel — Price Comparison",

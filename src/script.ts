@@ -642,6 +642,7 @@ function getCommands() {
     { label: c.cmdCopyEmail, run: copyEmail },
     { label: c.cmdCvData, run: () => downloadResume("data") },
     { label: c.cmdCvSoftware, run: () => downloadResume("software") },
+    { label: c.cmdScienceFit, run: () => window.open("https://science-fit-nine.vercel.app/", "_blank", "noopener") },
     { label: c.cmdTerminal, run: () => document.dispatchEvent(new CustomEvent("portfolio:toggle-terminal")) }
   ];
 }

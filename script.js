@@ -96,6 +96,7 @@
       cmdCvData: "Baixar curr\xEDculo: Data & Analytics (PDF)",
       cmdCvSoftware: "Baixar curr\xEDculo: Software & Backend (PDF)",
       cmdTerminal: "Abrir terminal interativo",
+      cmdScienceFit: "Abrir Science Fit (app ao vivo)",
       cvData: "Data & Analytics (PDF)",
       cvSoftware: "Software & Backend (PDF)",
       ciAlt: "Status do CI",
@@ -199,6 +200,7 @@
       cmdCvData: "Download r\xE9sum\xE9: Data & Analytics (PDF)",
       cmdCvSoftware: "Download r\xE9sum\xE9: Software & Backend (PDF)",
       cmdTerminal: "Open interactive terminal",
+      cmdScienceFit: "Open Science Fit (live app)",
       cvData: "Data & Analytics (PDF)",
       cvSoftware: "Software & Backend (PDF)",
       ciAlt: "CI status",
@@ -239,6 +241,23 @@
     }
   };
   var projects = [
+    {
+      title: "Science Fit \u2014 Motor de Treino & Nutri\xE7\xE3o Baseado em Evid\xEAncias",
+      titleEn: "Science Fit \u2014 Evidence-Based Training & Nutrition Engine",
+      category: "Full-Stack & Ci\xEAncia do Esporte",
+      categoryEn: "Full-Stack & Sports Science",
+      description: "Monorepo TypeScript (Core + Next.js) que modela TDEE/BMR din\xE2mico, faixas cient\xEDficas de volume muscular (MEV/MAV/MRV), c\xE1lculo de e1RM ajustado por RIR, d\xE9bito de sono com autorregula\xE7\xE3o de treino e tend\xEAncia de peso por m\xE9dia m\xF3vel de 7 dias, coberto por +400 testes automatizados.",
+      descriptionEn: "TypeScript monorepo (Core + Next.js) modeling dynamic TDEE/BMR, scientific muscle volume landmarks (MEV/MAV/MRV), RIR-adjusted e1RM estimation, sleep-debt workout autoregulation, and 7-day moving average weight trends, backed by 400+ automated tests.",
+      result: "Vitest (400+ testes) \u2022 Vercel",
+      resultEn: "Vitest (400+ tests) \u2022 Vercel",
+      technologies: ["TypeScript", "Next.js", "PostgreSQL", "Vitest (400+ tests)"],
+      repository: "https://github.com/sergiomeyer23/science-fit",
+      live: "https://science-fit-nine.vercel.app/",
+      areas: ["software", "data"],
+      featured: true,
+      flow: ["Core fisiol\xF3gico", "Next.js", "PostgreSQL", "Vercel"],
+      flowEn: ["Physiology core", "Next.js", "PostgreSQL", "Vercel"]
+    },
     {
       title: "Mercavel \u2014 Comparador de Pre\xE7os",
       titleEn: "Mercavel \u2014 Price Comparison",
@@ -957,6 +976,7 @@
       { label: c.cmdCopyEmail, run: copyEmail },
       { label: c.cmdCvData, run: () => downloadResume("data") },
       { label: c.cmdCvSoftware, run: () => downloadResume("software") },
+      { label: c.cmdScienceFit, run: () => window.open("https://science-fit-nine.vercel.app/", "_blank", "noopener") },
       { label: c.cmdTerminal, run: () => document.dispatchEvent(new CustomEvent("portfolio:toggle-terminal")) }
     ];
   }
